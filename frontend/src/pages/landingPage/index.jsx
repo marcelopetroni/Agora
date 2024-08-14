@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import './landing.sass';
+import LanguageSelector from '../../components/LanguageSelector';
+import ArtisticFieldSelector from '../../components/artisticFieldSelector';
+import CountrySelector from '../../components/CountrySelector';
 
 const LandingPage = () => {
-  const [step, setStep] = useState('login'); // Estado inicial na tela de login
+  const [step, setStep] = useState('login'); // Inicial state of login screen
 
-  // Função para lidar com a mudança de tela
+  // to handle with the screen change
   const handleSignUpClick = () => {
     setStep('chooseRole');
   };
@@ -92,14 +95,14 @@ const LandingPage = () => {
         {step === 'chooseRole' && (
           <div className="role-selection-content">
             <div className="signup-info">
-              <h2>Join us now and turn your talent into opportunity</h2>
+              <h2>Join us now and turn your<br></br> talent into opportunity</h2>
               <p>Already have an account? <span className="signup-link" onClick={() => setStep('login')}>Login</span></p>
             </div>
             <div className="role-selection">
               <h3>Which role fits you best?</h3>
               <p>Choose the option that describes your talent or priorities.</p>
-              <button className="role-button artist" onClick={() => handleRoleClick('artist')}>I am an Artist</button>
-              <button className="role-button hunter" onClick={() => handleRoleClick('hunter')}>I am an Talent Hunter</button>
+              <button className="role-button artist" onClick={() => handleRoleClick('artist')}>I am an <strong>Artist</strong></button>
+              <button className="role-button hunter" onClick={() => handleRoleClick('hunter')}>I am an <strong>Talent Hunter</strong></button>
             </div>
           </div>
         )}
@@ -107,36 +110,49 @@ const LandingPage = () => {
         {step === 'personalInfo' && (
           <div className="personal-info-content">
             <div className="signup-info">
-              <h2>Join us now and turn your talent into opportunity</h2>
+              <h2>Join us now and turn your<br></br> talent into opportunity</h2>
               <p>Already have an account? <span className="signup-link" onClick={() => setStep('login')}>Login</span></p>
             </div>
             <div className="personal-info-form">
               <h3>Personal informations</h3>
               <form>
-                <label>Full Name</label>
-                <input type="text" placeholder="Enter your full name" />
-                <label>Date of Birth</label>
-                <input type="date" />
-                <label>Country</label>
-                <input type="text" placeholder="Enter your country" />
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email" />
-                <label>Password</label>
-                <input type="password" placeholder="Enter your password" />
-                <label>Language Spoken</label>
-                <select multiple>
-                  <option>English</option>
-                  <option>Portuguese</option>
-                  {/* Outras línguas */}
-                </select>
-                <label>Artistic Field</label>
-                <select multiple>
-                  <option>Music</option>
-                  <option>Theater</option>
-                  {/* Outras áreas */}
-                </select>
-                <button type="submit" className="register-button">Register</button>
+                <div className='form-line'>
+                  <div className='name-input'>
+                    <label>Full Name</label>
+                    <input type="text" />
+                  </div>
+                  <div className='date-input'>
+                    <label>Date of Birth</label>
+                    <input type="date" />
+                  </div>
+                  <div>
+                    <CountrySelector />
+                  </div>
+                </div>
+                <div className='form-line'>
+                  <div>
+                    <label>E-mail</label>
+                    <input type="email" />
+                  </div>
+                  <div>
+                    <label>Password</label>
+                    <input type="password" />
+                  </div>
+                </div>
+                <div>
+                <div>
+                  <LanguageSelector />
+                </div>
+                </div>
+                <div>
+                 <ArtisticFieldSelector />
+                </div>
               </form>
+              <div className='checkbox-section'>
+                <input className='checkbox' type="checkbox" />
+                <p className='checkbox-label'>I agree to the <a href="#">terms and policies</a><p>and confirm that I have read and understood them.</p></p>
+                <button type="submit" className="register-button">Register</button>
+              </div>
             </div>
           </div>
         )}
