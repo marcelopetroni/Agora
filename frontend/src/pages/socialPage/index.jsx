@@ -5,7 +5,10 @@ import NavbarItems from '../../components/Navbar';
 const Social = () => {
   return (
     <div className="social-container">
-      <NavbarItems/>
+      <NavbarItems />
+      <div className="social-items">
+        <div className="title-container">conteudo social</div>
+      </div>
     </div>
   )
 }
