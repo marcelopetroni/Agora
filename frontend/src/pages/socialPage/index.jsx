@@ -1,10 +1,13 @@
 import React from 'react'
 import './social.sass';
+import NavbarItems from '../../components/Navbar';
 
-const SocialPage = () => {
+const Social = () => {
   return (
-    <div>SocialPage</div>
+    <div className="social-container">
+      <NavbarItems/>
+    </div>
   )
 }
 
-export default SocialPage
+export default Social
