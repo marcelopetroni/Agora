@@ -1,0 +1,608 @@
+body
+  margin: 0
+  overflow-x: hidden
+
+.landing-page
+  background: #2B2726
+  color: #f8f8f8
+  font-family: 'Amiko', sans-serif
+
+.header
+  position: absolute
+  padding: 10px 20px
+  z-index: 100
+  display: flex
+  flex-direction: row
+  align-items: center
+  
+
+.navbar
+  display: flex
+  flex-direction: row
+  align-items: center
+  margin-right: auto
+
+  ul
+    display: flex
+    list-style: none
+    color: #FFF
+    text-align: center
+    font-family: Amiko, sans-serif
+    font-size: 20px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+    letter-spacing: 2px
+
+    li
+      margin: 0 15px
+      cursor: pointer
+
+.auth-buttons
+  position: absolute
+  display: flex
+  gap: 15px
+  left: 170vh
+
+
+  .login
+    color: #E6D9AE
+    background: none
+    border: none
+    font-family: Amiko
+    font-size: 20px
+    font-weight: 400
+    letter-spacing: 2px
+    margin-left: auto
+
+  .register
+    color: #2B2726
+    font-family: Amiko, sans-serif
+    font-size: 20px
+    font-weight: 600
+    letter-spacing: 2px
+    width: 126px
+    height: 40px
+    border-radius: 60px
+    border: none
+    background: #E6D9AE
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25)
+    margin-left: auto
+
+.content
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  text-align: center
+
+.background-overlay
+  // background: url('./src/assets/landingPage/grecia.png') no-repeat
+  background: linear-gradient(0deg, rgba(43, 39, 38, 0.53) 0%, rgba(43, 39, 38, 0.53) 100%), linear-gradient(178deg, rgba(43, 39, 38, 0.00) 51.59%, #2B2726 96.07%), linear-gradient(93deg, rgba(43, 39, 38, 0.00) 37.19%, #2B2726 92.51%), linear-gradient(359deg, rgba(43, 39, 38, 0.00) 69.77%, #2B2726 93.04%), url('./src/assets/landingPage/grecia.svg') lightgray 50% / cover no-repeat
+  background-size: cover
+  padding-top: 200px
+  width: 100vw
+  height: 82vh
+
+.overview-container
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: center
+
+.welcome-text
+  justify-content: center
+  text-align: center
+  margin: auto
+
+  h1
+    color: #FFF
+    font-family: Amiko, sans-serif
+    font-size: 36px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+    letter-spacing: 24.48px
+
+  img
+    width: 448px
+    height: 139px
+    flex-shrink: 0
+
+  p
+    color: #FFF
+    font-family: Amiko, sans-serif
+    font-size: 20px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+    letter-spacing: 3px
+
+.description
+  max-width: 522px
+  margin: auto
+  color: #FFF
+  font-family: Amiko, sans-serif
+  font-size: 17px
+  font-style: normal
+  font-weight: 400
+  line-height: normal
+  letter-spacing: 1.7px
+  text-align: left
+
+.solution
+  margin-top: 80px
+
+  h3
+    color: #E6D9AE
+    text-align: center
+    font-family: Amiko, sans-serif
+    font-size: 36px
+    font-style: normal
+    font-weight: 700
+    line-height: normal
+    letter-spacing: 3.6px
+    margin-bottom: 60px
+
+  .cards
+    display: flex
+    flex-direction: row
+    justify-content: center
+    gap: 50px
+    flex-wrap: wrap
+
+    .card
+      width: 350px
+      height: 200px
+      flex-shrink: 0
+      border-radius: 10px
+      background: #4D4A4C
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+
+      h4
+        color: #E6D9AE
+        text-align: center
+        font-family: Amiko
+        font-size: 24px
+        font-style: normal
+        font-weight: 700
+        line-height: normal
+        letter-spacing: 2.4px
+
+      p
+        color: #E6D9AE
+        text-align: center
+        font-family: Amiko
+        font-size: 16px
+        font-style: normal
+        font-weight: 400
+        line-height: normal
+
+  /* Estilização da Seção de Login */
+
+.login-section
+  background-color: #f4f4f4
+  padding: 20px 0
+  width: 100%
+  height: 25em
+
+.login-content
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: 100px
+
+.signup-info
+  h2
+    color: #2B2726
+    font-family: Amiko
+    font-size: 36px
+    font-style: normal
+    font-weight: 700
+    line-height: normal
+    letter-spacing: 3.6px
+    text-align: left
+
+  p
+    color: #9B7243
+    font-family: Amiko, sans-serif
+    font-size: 20px
+    font-style: normal
+    font-weight: 400
+    line-height: normal
+    letter-spacing: 4px
+    text-align: left
+
+  .signup-link
+    color: #9B7243
+    font-family: Amiko, sans-serif
+    font-size: 20px
+    font-style: normal
+    font-weight: 700
+    line-height: normal
+    letter-spacing: 4px
+    text-decoration-line: underline
+    cursor: pointer
+
+.login-form
+  padding: 40px
+  width: 350px
+
+  h3
+    color: #2B2726
+    font-family: Amiko, sans-serif
+    font-size: 24px
+    font-weight: 700
+    letter-spacing: 2.4px
+
+  p
+    color: #2B2726
+    font-family: Amiko, sans-serif
+    font-size: 17px
+    font-weight: 400
+    letter-spacing: 1.7px
+
+  label
+    display: block
+    color: #2B2726
+    font-family: Amiko, sans-serif
+    font-size: 16px
+    font-weight: 600
+    text-align: left
+
+  input
+    width: 100%
+    padding: 10px
+    margin-bottom: 20px
+    border-radius: 10px
+    border: none
+    background: #FFFCF7
+    
+
+  .login-button
+    color: #FFFCF7
+    text-align: center
+    font-family: Amiko, sans-serif
+    font-size: 16px
+    font-style: normal
+    font-weight: 600
+    line-height: normal
+    width: 165px
+    height: 38px
+    flex-shrink: 0
+    border-radius: 10px
+    border: none
+    background: #2B2726
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+
+/* Estilo para a seleção de papéis */
+
+.role-selection-content
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: 100px
+  background-color: #f4f4f4
+  padding: 20px 0
+  width: 100%
+  height: 20em
+
+.role-selection
+  padding: 40px
+  width: 400px
+
+  h3
+    color: #2B2726
+    font-family: Amiko, sans-serif
+    font-size: 24px
+    font-weight: 700
+    letter-spacing: 2.4px
+
+  p
+    color: #2B2726
+    font-family: Amiko, sans-serif
+    font-size: 17px
+    font-weight: 400
+    letter-spacing: 1.7px
+    
+
+  .signup-link
+    color: #9B7243
+    font-family: Amiko, sans-serif
+    font-size: 20px
+    font-style: normal
+    font-weight: 700
+    line-height: normal
+    letter-spacing: 4px
+    text-decoration-line: underline
+    cursor: pointer
+
+  .role-button
+    width: 342px
+    height: 73px
+    border-radius: 20px
+    border: none
+    background: #FFF
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+    color: #2B2726
+    font-family: Amiko, sans-serif
+    font-size: 20px
+    font-weight: 600
+    letter-spacing: 2px
+    margin-bottom: 20px
+
+  .artist
+    background-color: #E6D9AE
+    color: #2c2c2c
+
+/* Personal Information Form */
+
+.personal-info-content
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: 100px
+
+.personal-info-form
+  width: 550px
+
+  h3
+    color: #2c2c2c
+    font-family: Amiko, sans-serif
+    font-size: 24px
+    font-weight: 700
+
+  form
+    display: flex
+    flex-direction: column
+
+    label
+      display: block
+      color: #2c2c2c
+      font-family: Amiko, sans-serif
+      font-size: 14px
+      margin-bottom: 5px
+      text-align: left
+
+    input, select
+      width: 100%
+      padding: 10px
+      border: none
+      border-radius: 10px
+      margin-bottom: 10px
+
+    .form-line
+      display: flex
+      flex-direction: row
+      gap: 30px
+      align-items: center
+
+      div
+        flex: 1
+        display: flex
+        flex-direction: column
+
+      .name-input
+        display: flex
+        flex-grow: 1
+
+      .date-input
+        display: flex
+        flex-grow: 0
+
+  .checkbox-section
+    display: flex
+    flex-direction: row
+    align-items: center
+    gap: 5px
+
+    .checkbox-label
+      display: flex
+      flex-direction: row
+      align-items: center
+      gap: 2px
+      color: #000
+      font-family: Amiko, sans-serif
+      font-size: 8px
+      font-weight: 600
+      
+      a
+        color: #000
+        font-weight: bold
+
+      p
+        color: #B6926F  
+
+    .register-button
+      background-color: #2c2c2c
+      color: #fff
+      padding: 10px
+      border: none
+      border-radius: 5px
+      cursor: pointer
+      font-family: Amiko, sans-serif
+      font-size: 16px
+      font-weight: 700
+      margin-left: 10vh
+
+    
+
+
+
+  
+
+    /* Seção Hedera Hashgraph */
+
+.hedera-section
+  background: #2B2726
+  padding: 60px 20px
+  color: #f8f8f8
+
+.hedera-content
+  display: flex
+  flex-direction: row
+  align-items: center
+  max-width: 1200px
+  margin: 0 auto
+  gap: 15px
+
+.hedera-left
+  max-width: 600px
+  margin-right: 100px 
+  align-items: center
+
+  h2
+    color: #E6D9AE
+    font-family: Amiko, sans-serif
+    font-size: 30px
+    font-style: normal
+    font-weight: 400
+    line-height: normal
+    letter-spacing: 3px
+
+  img
+    width: 583px
+    height: 153px
+    flex-shrink: 0
+
+.hedera-right
+  max-width: 600px
+
+  h1
+    color: #FFF
+    font-family: Amiko, sans-serif
+    font-size: 36px
+    font-style: normal
+    font-weight: 700
+    line-height: normal
+    letter-spacing: 3.6px
+
+  p
+    color: #FFF
+    font-family: Amiko, sans-serif
+    font-size: 17px
+    font-style: normal
+    font-weight: 400
+    line-height: normal
+    letter-spacing: 1.7px
+
+  .visit-hedera
+    width: 146px
+    height: 36px
+    color: #2B2726
+    text-align: center
+    font-family: Amiko, sans-serif
+    font-size: 16px
+    font-style: normal
+    font-weight: 700
+    line-height: normal
+    border-radius: 10px
+    border: none
+    background: #E6D9AE
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+
+/* Seção de Depoimentos */
+
+.testimonials-section
+  background: #2B2726
+  padding: 60px 20px
+
+  h3
+    color: #FFF
+    text-align: center
+    font-family: Amiko, sans-serif
+    font-size: 36px
+    font-style: normal
+    font-weight: 700
+    line-height: normal
+    letter-spacing: 3.6px
+
+  .testimonials-cards
+    display: flex
+    justify-content: center
+    gap: 30px
+
+    .card
+      border-radius: 30px
+      background: #EAEAEA
+      padding: 20px
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
+      text-align: center
+      max-width: 250px
+      margin-bottom: 80px
+
+      .photo-placeholder
+        width: 100px
+        height: 100px
+        background-color: #e0e0e0
+        border-radius: 50%
+        margin: 0 auto 20px
+
+      h4
+        color: #9B7243
+        text-align: center
+        font-family: Amiko
+        font-size: 16px
+        font-style: normal
+        font-weight: 600
+        line-height: normal
+
+      p
+        color: #2c2c2c
+        font-family: Amiko, sans-serif
+        font-size: 14px
+        line-height: 1.6
+
+    .highlighted
+      border-radius: 30px
+      background: #E6D9AE
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+
+
+      .specialist-photo
+        width: 100px
+        height: 100px
+        border-radius: 50%
+        margin: 0 auto 20px
+
+/* Footer */
+
+.footer
+  background: #E6D9AE
+  padding: 20px 0
+  height: 100px
+  width: 100%
+
+  .footer-content
+    display: flex
+    justify-content: space-between
+    align-items: center
+    max-width: 1200px
+    margin: 0 auto
+
+    .footer-logo
+      display: flex
+      flex-direction: column
+
+      img
+        max-width: 220px
+        height: auto
+      p
+        color: #000
+        font-family: Amiko, sans-serif
+        font-size: 14px
+        font-style: normal
+        font-weight: 400
+        line-height: normal
+        letter-spacing: 1.7px
+
+
+  .footer-links
+    display: flex
+    gap: 15px
+
+    a
+      color: #2c2c2c
+      font-family: Amiko, sans-serif
+      font-size: 14px
+      text-decoration: none
