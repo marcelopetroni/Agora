@@ -1,11 +1,16 @@
 import React from 'react'
-import NavbarItems from '../../components/Navbar'
 import './project.sass';
+import NavbarItems from '../../components/Navbar';
+import HelpTips from "../../components/HelpTips";
 
 const Project = () => {
   return (
     <div className="project-container">
-        <NavbarItems/>
+      <NavbarItems />
+      <div className="project-items">
+        <div className="title-container">conteudo project</div>
+      </div>
+      <HelpTips/>
     </div>
   )
 }
