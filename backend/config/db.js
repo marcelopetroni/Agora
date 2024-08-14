@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 
 // PostgreSQL
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, // .env
+  connectionString: process.env.POSTGRES_URL, // .env
 });
 
 pool.connect((err, client, release) => {
