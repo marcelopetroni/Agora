@@ -1,53 +1,74 @@
 import React, { useState } from 'react';
+import './CountrySelector.sass';
 
-const CountrySelector = () => {
-  const allCountries = ['United States', 'Brazil', 'Canada', 'France', 'Germany', 'Australia', 'India', 'China', 'Japan', 'United Kingdom']; // Lista de países disponíveis
-  const [filteredCountries, setFilteredCountries] = useState(allCountries); // Países filtrados
-  const [selectedCountry, setSelectedCountry] = useState(''); // País selecionado
-  const [inputValue, setInputValue] = useState(''); // Valor do input
-  const [showDropdown, setShowDropdown] = useState(false); // Controla a exibição do dropdown
+const countries = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia",
+  "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
+  "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+  "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia",
+  "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Côte d'Ivoire", "Croatia",
+  "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador",
+  "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France",
+  "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+  "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica",
+  "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan",
+  "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
+  "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia",
+  "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal",
+  "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau",
+  "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia",
+  "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe",
+  "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
+  "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+  "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan",
+  "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
+  "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
 
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-    const filtered = allCountries.filter(country =>
-      country.toLowerCase().includes(value.toLowerCase())
+export default function CountrySelector() {
+    const [filteredCountries, setFilteredCountries] = useState(countries);
+    const [inputValue, setInputValue] = useState('');
+    const [isDropdownVisible, setDropdownVisible] = useState(false);
+
+    const handleInputChange = (event) => {
+        const value = event.target.value;
+        setInputValue(value);
+        setDropdownVisible(true);
+        setFilteredCountries(
+            countries.filter((country) =>
+                country.toLowerCase().startsWith(value.toLowerCase())
+            )
+        );
+    };
+
+    const handleCountrySelect = (country) => {
+        setInputValue(country);
+        setDropdownVisible(false);
+    };
+
+    return (
+        <div className="country-selector-container">
+            <label className="country-selector-label">Country</label>
+            <input
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}
+                onFocus={() => setDropdownVisible(true)}
+                className="country-selector-input"
+            />
+            {isDropdownVisible && (
+                <ul className="country-selector-dropdown">
+                    {filteredCountries.map((country, index) => (
+                        <li
+                            key={index}
+                            onClick={() => handleCountrySelect(country)}
+                            className="country-selector-item"
+                        >
+                            {country}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
     );
-    setFilteredCountries(filtered);
-    setShowDropdown(true);
-  };
-
-  const handleSelectCountry = (country) => {
-    setSelectedCountry(country);
-    setInputValue(country);
-    setShowDropdown(false);
-  };
-
-  const handleSelectClick = () => {
-    setShowDropdown(!showDropdown);
-  };
-
-  return (
-    <div className="country-selector">
-      <label>Country</label>
-      <div className="country-input" onClick={handleSelectClick} >
-        {showDropdown && filteredCountries.length > 0 && (
-            <ul className="dropdown">
-              {filteredCountries.map((country) => (
-                <li key={country} onClick={() => handleSelectCountry(country)}>
-                  {country}
-                </li>
-              ))}
-            </ul>
-          )}
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        </div> 
-      </div>
-  );
-};
-
-export default CountrySelector;
+}

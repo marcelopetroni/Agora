@@ -2,7 +2,22 @@ import React, { useState } from 'react';
 import './LanguageSelector.sass'
 
 const LanguageSelector = () => {
-  const allLanguages = ['English', 'Portuguese', 'Spanish', 'French', 'German', 'Italian', 'Mandarin', 'Japanese'];
+  const allLanguages = [
+    "Mandarin Chinese", "Spanish", "English", "Hindi", "Arabic", "Bengali", "Portuguese", "Russian", "Japanese", "Western Punjabi",
+    "Marathi", "Telugu", "Wu Chinese", "Turkish", "Korean", "French", "German", "Vietnamese", "Tamil", "Urdu", "Javanese",
+    "Italian", "Egyptian Arabic", "Gujarati", "Iranian Persian", "Bhojpuri", "Southern Min", "Hakka Chinese", "Jin Chinese",
+    "Hausa", "Kannada", "Indonesian", "Polish", "Yoruba", "Xiang Chinese", "Malayalam", "Odia", "Maithili", "Burmese",
+    "Eastern Punjabi", "Sunda", "Sudanese Arabic", "Algerian Arabic", "Moroccan Arabic", "Ukrainian", "Igbo", "Northern Uzbek",
+    "Sindhi", "North Levantine Arabic", "Romanian", "Tagalog", "Dutch", "Saʽidi Arabic", "Gan Chinese", "Amharic", "Northern Pashto",
+    "Magahi", "Thai", "Saraiki", "Khmer", "Chhattisgarhi", "Somali", "Malagasy", "Cebuano", "Nepali", "Mesopotamian Arabic",
+    "Assamese", "Sinhalese", "Northern Kurdish", "Hejazi Arabic", "Nigerian Fulfulde", "Bavarian", "South Azerbaijani",
+    "Greek", "Chittagonian", "Kazakh", "Deccan", "Hungarian", "Kinyarwanda", "Zulu", "South Levantine Arabic", "Tunisian Arabic",
+    "Sanaani Spoken Arabic", "Min Bei Chinese", "Min Dong Chinese", "Southern Kurdish", "Czech", "Uyghur", "Sylheti", "Zulu",
+    "Haitian Creole", "Belarusian", "Balochi", "Mandinka", "Shona", "Kirundi", "Swedish", "Hmong", "Catalan", "Mossi", "Xhosa",
+    "Afrikaans", "Lithuanian", "Serbo-Croatian", "Slovak", "Lombard", "Shan", "Tachelhit", "Quechua", "Armenian", "Azerbaijani",
+    "Fijian", "Finnish", "Georgian", "Hebrew", "Khasi", "Lao", "Latvian", "Luxembourgish", "Maltese", "Māori", "Marshallese",
+    "Mongolian", "Navajo", "Samoan", "Sardinian", "Seychellois Creole", "Tongan", "Turkmen", "Welsh", "Zulu"
+    ];
   const [filteredLanguages, setFilteredLanguages] = useState(allLanguages);
   const [selectedLanguages, setSelectedLanguages] = useState([]);
   const [inputValue, setInputValue] = useState('');
