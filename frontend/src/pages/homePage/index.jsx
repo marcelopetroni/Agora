@@ -1,10 +1,12 @@
-import React from 'react'
-import './home.sass';
+import NavbarItems from "../../components/Navbar";
+import "./home.sass";
 
-const HomePage = () => {
+const Home = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div className="homepage-container">
+      <NavbarItems />
+    </div>
+  );
+};
 
-export default HomePage
+export default Home;
