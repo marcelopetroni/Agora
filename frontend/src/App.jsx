@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/homePage';
-import ProfilePage from './pages/profilePage';
+import ArtistProfilePage from './pages/profilePage';
 import SocialPage from './pages/socialPage';
 import LandingPage from './pages/landingPage'
 import Home from './pages/homePage';
@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ProfilePage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/profile" element={<HomePage />} />
         <Route path="/profile" element={<LandingPage />} />
         <Route path="/social" element={<SocialPage />} />
