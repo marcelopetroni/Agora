@@ -3,6 +3,9 @@ import './CarouselStyle.sass';
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import Singer from "../assets/singer.jpg";
+import Singer2 from "../assets/singer2.jpg";
+import Guitarist from "../assets/guitarist2.jpg";
+import Woman from "../assets/woman.png";
 
 const Carousel = () => {
     const contents = [
@@ -15,19 +18,19 @@ const Carousel = () => {
         {
             title: 'Jade Tori',
             roles: ['Singer', 'Dancer'],
-            imageUrl: Singer,
+            imageUrl: Singer2,
             description: "Hi, I'm Jade Tori, a passionate singer and dancer dedicated to creating unforgettable experiences for my audience. From a young age, music and dance have been at the center of...",
         },
         {
             title: 'Joana de Sá',
             roles: ['Singer', 'Dancer'],
-            imageUrl: Singer,
+            imageUrl: Woman,
             description: "Hi, I'm Joana de Sá, a passionate singer and dancer dedicated to creating unforgettable experiences for my audience. From a young age, music and dance have been at the center of...",
         },
         {
             title: 'Robert Sparks',
             roles: ['Singer', 'Dancer'],
-            imageUrl: Singer,
+            imageUrl: Guitarist,
             description: "Hi, I'm a new artist called Robert, a passionate singer and dancer dedicated to creating unforgettable experiences for my audience.",
         },
     ];
