@@ -22,11 +22,20 @@ const Home = () => {
       <NavbarItems />
       <div className="home-items">
         <div className="title-buttons">
+          {userType === "artist" ? (
+          <>
           <div className="title-container-home">Hello, Joana de Sá!</div>
-          <div className="button-container">
-            <button className="projects-button">Projects</button>
-            <button className="create-project-button">Create Project</button>
-          </div>
+            <div className="button-container">
+              <button className="projects-button">Projects</button>
+              <button className="create-project-button">Create Project</button>
+            </div>
+          </>
+          ) : (
+            <>
+              <div className="title-container-home">Hello, Tyler!</div>
+              <div className="sub-title-talent-hunter">Meet the talents that you're looking for right here.</div>
+            </>
+          )}
         </div>
         <div className="line-home"></div>
 
