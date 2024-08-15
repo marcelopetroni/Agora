@@ -19,7 +19,7 @@ const Home = () => {
       <NavbarItems />
       <div className="home-items">
         <div className="title-buttons">
-          <div className="title-container">Hello, Joana de Sá!</div>
+          <div className="title-container-home">Hello, Joana de Sá!</div>
           <div className="button-container">
             <button className="projects-button">Projects</button>
             <button className="create-project-button">Create Project</button>
