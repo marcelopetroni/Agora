@@ -1,6 +1,7 @@
 import NavbarItems from "../../components/Navbar";
 import HelpTips from "../../components/HelpTips";
 import Carousel from "../../components/Carousel";
+import DonationBox from "../../components/DonationBox";
 import SearchInput from "../../components/SearchInput";
 import WomanImage from "../../assets/woman.png";
 import Singer from "../../assets/singer.jpg";
@@ -17,6 +18,16 @@ import "./home.sass";
 
 const Home = () => {
   const [userType, setUserType] = useState("talent_hunter");
+
+  const [showDonationBox, setShowDonationBox] = useState(false);
+
+  const handleDonateClick = () => {
+    setShowDonationBox(true);
+  };
+
+  const handleCloseDonationBox = () => {
+    setShowDonationBox(false);
+  };
   return (
     <div className="homepage-container">
       <NavbarItems />
@@ -188,7 +199,7 @@ const Home = () => {
                       </div>
                       <div className="collaborators-text">+ 10 collaborators</div>
                     </div>
-                <button className="donate-button">Donate</button>
+                    <button className="donate-button" onClick={handleDonateClick}>Donate</button>
               </div>
             </div>
 
@@ -213,7 +224,7 @@ const Home = () => {
                       </div>
                       <div className="collaborators-text">+ 10 collaborators</div>
                   </div>
-                <button className="donate-button">Donate</button>
+                  <button className="donate-button" onClick={handleDonateClick}>Donate</button>
               </div>
             </div>
 
@@ -238,11 +249,12 @@ const Home = () => {
                       </div>
                       <div className="collaborators-text">+ 10 collaborators</div>
                   </div>
-                <button className="donate-button">Donate</button>
+                  <button className="donate-button" onClick={handleDonateClick}>Donate</button>
               </div>
             </div>
           </div>
         </div>
+        {showDonationBox && <DonationBox onClose={handleCloseDonationBox} />}
         <div className="button-container-home">
           <button className="view-all-button">View All</button>
         </div>

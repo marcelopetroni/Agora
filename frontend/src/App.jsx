@@ -8,12 +8,13 @@ import Home from './pages/homePage';
 import Profile from './pages/profilePage';
 import Social from './pages/socialPage';
 import Project from './pages/projectPage';
+import Info from './pages/infoPage';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Info />} />
         <Route path="/profile" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/social" element={<SocialPage />} />
