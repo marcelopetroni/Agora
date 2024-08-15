@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Social />} />
         <Route path="/profile" element={<HomePage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/social" element={<SocialPage />} />
