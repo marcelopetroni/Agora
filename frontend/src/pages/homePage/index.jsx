@@ -1,5 +1,6 @@
 import NavbarItems from "../../components/Navbar";
 import HelpTips from "../../components/HelpTips";
+import Carousel from "../../components/Carousel";
 import SearchInput from "../../components/SearchInput";
 import WomanImage from "../../assets/woman.png";
 import Singer from "../../assets/singer.jpg";
@@ -11,9 +12,11 @@ import Grid3 from "../../assets/gridImages4.png";
 import Videomaker from "../../assets/videomaker.png";
 import VideoRecord from "../../assets/videorecord.png";
 import RecordedSongs from "../../assets/recordedSongs.png";
+import { useState } from "react";
 import "./home.sass";
 
 const Home = () => {
+  const [userType, setUserType] = useState("talent_hunter");
   return (
     <div className="homepage-container">
       <NavbarItems />
@@ -26,6 +29,10 @@ const Home = () => {
           </div>
         </div>
         <div className="line-home"></div>
+
+         {userType === "artist" ? (
+          <>
+
         <div className="title-container2">My projects</div>
         <section className="projects-container">
           
@@ -137,7 +144,10 @@ const Home = () => {
             </div>
           </div>
         </section>
-
+        </>
+        ) : (
+          <Carousel/>
+        )}
         <div className="button-container-home">
           <button className="view-all-button">View All</button>
         </div>
