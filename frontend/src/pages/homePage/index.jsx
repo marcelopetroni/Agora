@@ -28,6 +28,13 @@ const Home = () => {
   const handleCloseDonationBox = () => {
     setShowDonationBox(false);
   };
+
+  const handleOutsideClick = (e) => {
+    if (e.target.className === "donation-box-overlay") {
+      handleCloseDonationBox();
+    }
+  };
+
   return (
     <div className="homepage-container">
       <NavbarItems />
@@ -254,7 +261,13 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {showDonationBox && <DonationBox onClose={handleCloseDonationBox} />}
+        {showDonationBox && (
+        <div className="donation-box-overlay" onClick={handleOutsideClick}>
+          <div className="donation-box-content">
+            <DonationBox onClose={handleCloseDonationBox} />
+          </div>
+        </div>
+      )}
         <div className="button-container-home">
           <button className="view-all-button">View All</button>
         </div>
