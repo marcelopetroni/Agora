@@ -1,10 +1,159 @@
 #root, html, body
-    width: 100%
-    height: 100%
-    margin: 0
-    padding: 0
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  background-color: #FAFAFA
 
 .social-container
   width: 100%
   height: 100%
-  background-color: #F5F5F5
+  display: flex
+  flex-direction: row
+
+.chat-history
+  width: 30%
+  padding: 20px
+  background-color: #FAFAFA
+  display: flex
+  flex-direction: column
+
+.search-bar
+  display: flex
+  align-items: center
+  padding: 10px 12px
+  background-color: #FFFFFF
+  border-radius: 30px
+  margin-bottom: 20px
+  border: 1px solid #E0E0E0
+
+  input
+    border: none
+    flex-grow: 1
+    outline: none
+    padding-left: 10px
+    background-color: transparent
+
+.search-icon
+  color: #9B7243
+  opacity: 0.66
+
+.chat-list
+  flex-grow: 1
+  overflow-y: auto
+
+.chat-item
+  display: flex
+  flex-direction: column
+  margin-bottom: 10px
+  padding: 5px
+  background-color: #E8E8E8
+  border-radius: 10px
+  cursor: pointer
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05)
+  height: 70px
+  position: relative
+
+.chat-item-header
+  display: flex
+  align-items: center
+
+.profile-pic
+  width: 50px
+  height: 50px
+  border-radius: 50%
+  background-color: #C4C4C4
+  margin-right: 20px
+  margin-left: 10px
+
+.profile-pic.large
+  width: 70px
+  height: 70px
+
+.username
+  font-size: 1.1em
+  font-weight: bold
+  margin-bottom: 3px
+
+.last-message
+  font-size: 1em
+  color: #7A7A7A
+  margin-top: 0 
+
+.message-time
+  position: absolute
+  right: 10px
+  top: 10px
+  font-size: 0.75em
+  color: #B3B3B3
+
+.chat-box
+  width: 70%
+  height: 100%
+  padding: 20px
+  background-color: #FEFEFE
+  border-radius: 10px
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.chat-header
+  display: flex
+  align-items: center
+  border-bottom: 3px solid #E0E0E0
+  padding-bottom: 10px
+  margin-bottom: 20px
+
+.chat-username
+  font-size: 1.5em
+  font-weight: bold
+  margin-right: 70px
+
+.messages
+  flex-grow: 1
+  overflow-y: auto
+  display: flex
+  flex-direction: column
+  gap: 10px
+
+.message-bubble
+  max-width: 60%
+  padding: 10px
+  border-radius: 10px
+  word-wrap: break-word
+
+.user-message
+  background-color: #9B7243
+  color: white
+  align-self: flex-end
+
+.other-message
+  background-color: #FFFFFF
+  color: black
+  align-self: flex-start
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1)
+
+.message-input
+  display: flex
+  align-items: center
+  background-color: #F7F7F7
+  border: 1px solid #E0E0E0
+  border-radius: 10px
+  padding: 10px
+  margin-top: 10px
+
+  input
+    flex-grow: 1
+    border: none
+    outline: none
+    padding: 10px
+    font-size: 1em
+    border-radius: 10px
+    background-color: #FFFFFF
+    color: #2B2726
+    margin-right: 10px
+
+  .send-icon
+    cursor: pointer
+    color: #9B7243

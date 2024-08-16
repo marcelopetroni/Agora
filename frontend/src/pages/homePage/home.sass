@@ -1,10 +1,320 @@
 #root, html, body
-    width: 100%
-    height: 100%
-    margin: 0
-    padding: 0
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
 
 .homepage-container
   width: 100%
   height: 100%
   background-color: #F5F5F5
+  display: flex
+  flex-direction: row
+
+.home-items
+  overflow-y: auto
+  width: 100%
+  padding-bottom: 60px
+
+.title-container-home
+  font-family: Amiko, sans-serif
+  font-size: 25px
+  color: #4d4a4c
+  font-weight: bold
+  margin-bottom: 10px 
+
+.sub-title-talent-hunter
+  font-family: Amiko, sans-serif
+  font-size: 13px
+  color: rgba(43, 39, 38, 1)
+  margin-bottom: 10px 
+
+.title-container2
+  font-family: Amiko, sans-serif
+  font-size: 21px
+  color: rgba(77, 74, 76, 1)
+  font-weight: bold
+  margin-bottom: 10px 
+  margin-left: 35px 
+  margin-top: 30px
+
+.title-container3
+  font-family: Amiko, sans-serif
+  font-size: 16px
+  color: rgba(77, 74, 76, 0.55)
+  font-weight: 600
+  margin-bottom: 15px 
+  margin-left: 35px 
+  margin-top: 30px
+
+.title-buttons
+  margin-left: 80px
+  margin-top: 50px
+
+.button-container
+  display: flex
+  gap: 10px  
+
+.projects-button
+  width: 100px
+  padding: 8px 15px
+  background-color: #e6d9ae
+  border: none
+  border-radius: 10.17px
+  font-family: Amiko, sans-serif
+  font-size: 14px
+  color: #4d4a4c
+  font-weight: bold
+  cursor: pointer
+
+.create-project-button
+  padding: 10px 10px
+  background-color: transparent
+  border: none
+  font-family: Amiko, sans-serif
+  font-size: 14px
+  color: #4d4a4c
+  font-weight: bold
+  cursor: pointer
+
+.line-home
+  margin-top: 20px
+  border: 1px #cccccc solid
+
+.projects-container
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 20px
+  width: 95%
+  padding-right: 15px
+  padding-top: 15px
+  padding-left: 25px
+
+.project-box
+  display: flex
+  padding: 15px
+  border-radius: 10.17px
+  background-color: rgba(255, 255, 255, 0.40)
+
+.project-image
+  width: 32%
+  height: 120px
+  background-color: #cccccc
+  border-radius: 10.17px
+  background-size: cover
+  background-position: center
+
+.profile-image2
+    width: 100%
+    height: 100%
+    object-fit: cover 
+    border-radius: 10.17px
+
+.project-details
+  flex: 1
+  padding-left: 12px
+  display: flex
+  flex-direction: column
+
+.project-title
+  font-family: Amiko, sans-serif
+  font-size: 14px
+  font-weight: bold
+  color: #2b2726
+  margin-bottom: 5px
+
+.project-description
+  font-family: Amiko, sans-serif
+  font-size: 11px
+  color: #4a4a4a
+  margin-bottom: 10px
+
+.project-progress
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+
+.progress-label
+  font-family: Amiko, sans-serif
+  font-size: 10px
+  color: #4a4a4a
+  margin-right: 10px
+  margin-bottom: 2.5px
+
+.progress-bar
+  width: 100px
+  height: 6px
+  background-color: #cccccc
+  border-radius: 3px
+  position: relative
+
+.progress-filled
+  height: 100%
+  width: 30%  
+  background-color: green
+  border-radius: 3px
+
+.progress-filled2
+  height: 100%
+  width: 70%  
+  background-color: green
+  border-radius: 3px
+
+.progress-percentage
+  font-family: Amiko, sans-serif
+  font-size: 10px
+  color: green
+  display: flex
+  margin-left: 6px
+  margin-top: 15px
+
+.progress-plus-buttons
+    display: flex
+    flex-direction: row
+    gap: 10px
+
+.progress-content
+    display: flex
+    flex-direction: row
+    align-items: center
+
+.project-buttons
+  display: flex
+  gap: 10px
+  margin-top: 10px
+
+.finish-button
+  padding: 5px 8px
+  background-color: #cccccc
+  border: none
+  border-radius: 10.17px
+  font-family: Amiko, sans-serif
+  font-size: 12px
+  color:#2b2726
+  cursor: pointer
+
+.see-more-button
+  padding: 5px 8px
+  background-color: #e6d9ae
+  border: none
+  border-radius: 10.17px
+  font-family: Amiko, sans-serif
+  font-size: 12px
+  color: #2b2726
+  cursor: pointer
+
+.donations-container
+    padding: 10px
+    display: flex
+    flex-direction: column
+
+.donation-projects
+  display: flex
+  justify-content: space-between
+  margin-left: 35px
+  margin-right: 35px
+  gap: 20px
+
+.donation-box
+  background-color: rgba(255, 255, 255, 0.4)
+  border-radius: 10px
+  padding: 15px
+  width: 30%
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.donation-image
+  width: 92%
+  height: 125px
+  border-radius: 25.42px
+
+.donation-title
+  font-family: Amiko, sans-serif
+  font-size: 16px
+  font-weight: bold
+  color: #2b2726
+  margin-top: 10px
+  text-align: center
+
+.donation-description
+  font-family: Amiko, sans-serif
+  font-size: 12px
+  color: #4a4a4a
+  text-align: center
+  margin-top: 5px
+  margin-bottom: 10px
+
+.collaborators-section
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  width: 100%
+  margin-top: 10px
+
+.images-plus-collaborators
+    display: flex
+    flex-direction: column
+    margin-left: 20px
+
+.collaborators-images
+  display: flex
+  align-items: center
+  position: relative 
+
+  .image-container
+    width: 30px 
+    height: 30px
+    border-radius: 50%
+    overflow: hidden 
+    position: relative 
+
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      border-radius: 50%
+
+    &:nth-child(2)
+      margin-left: -10px 
+
+    &:nth-child(3)
+      margin-left: -10px 
+
+.collaborators-text
+  font-family: Amiko
+  font-size: 10px
+  color: #4a4a4a
+  margin-top: 3px
+  margin-right: 3px
+
+.donate-button
+  color: #2b2726
+  font-weight: bold
+  padding: 8px 10px
+  background-color: #e6d9ae
+  border: none
+  border-radius: 10.17px
+  font-family: Amiko
+  font-size: 12px
+  color: #4d4a4c
+  cursor: pointer
+  margin-right: 15px
+
+.button-container-home
+    width: 100%
+    display: flex
+    justify-content: flex-end
+    
+.view-all-button
+  padding: 10px 15px
+  background-color: #4d4a4c
+  border: none
+  border-radius: 10.17px
+  font-family: Amiko, sans-serif
+  font-size: 14px
+  color: white
+  margin-right: 35px
+  margin-top: 15px
+  cursor: pointer
