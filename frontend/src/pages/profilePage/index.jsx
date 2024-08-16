@@ -4,10 +4,36 @@ import NavbarItems from '../../components/Navbar';
 import CountrySelector from '../../components/CountrySelector';
 import LanguageSelector from '../../components/LanguageSelector';
 import ArtisticFieldSelector from '../../components/ArtisticFieldSelector';
+import UploadModal from '../../components/UploadModal';
+import PortfolioSection from '../../components/PortfolioSection';
 
 const Profile = () => {
 
   const [activeTab, setActiveTab] = useState('Audios');
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [files, setFiles] = useState({
+    Photos: [],
+    Videos: [],
+    Audios: [],
+    Writing: []
+  });
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSaveFile = (newFile) => {
+    setFiles(prevFiles => ({
+      ...prevFiles,
+      Audios: [...prevFiles.Audios, newFile],
+       // Aqui você pode escolher a aba correta (Audios, Photos, etc.)
+    }));
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -118,37 +144,10 @@ const Profile = () => {
         </div>
       </form>
     </div>
-    <div className="portfolio-section">
-      <h3>Portfólio</h3>
-      <div className="portfolio-tabs">
-        <button
-          className={`tab ${activeTab === 'Photos' ? 'active' : ''}`}
-          onClick={() => setActiveTab('Photos')}
-        >
-          Photos
-        </button>
-        <button
-          className={`tab ${activeTab === 'Videos' ? 'active' : ''}`}
-          onClick={() => setActiveTab('Videos')}
-        >
-          Videos
-        </button>
-        <button
-          className={`tab ${activeTab === 'Audios' ? 'active' : ''}`}
-          onClick={() => setActiveTab('Audios')}
-        >
-          Audios
-        </button>
-        <button
-          className={`tab ${activeTab === 'Writing' ? 'active' : ''}`}
-          onClick={() => setActiveTab('Writing')}
-        >
-          Writing
-        </button>
-      </div>
-      <div className="portfolio-content">
-        {renderContent()}
-      </div>
+    <div className="profile-page">
+      <PortfolioSection files={files} />
+      <button className='upload-button' onClick={handleOpenModal}>Upload New File</button>
+      {isModalOpen && <UploadModal onClose={handleCloseModal} onSave={handleSaveFile} />}
     </div>
     </div>  
   </div>
