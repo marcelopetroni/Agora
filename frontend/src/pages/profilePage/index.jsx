@@ -5,7 +5,7 @@ import NavbarItems from '../../components/Navbar';
 const Profile = () => {
   return (
     <div className="profile-container">
-      <NavbarItems />
+      <NavbarItems activePage="profile" />
       <div className="profile-items">
         <div className="title-container">conteudo profile</div>
       </div>
@@ -13,4 +13,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default Profile;

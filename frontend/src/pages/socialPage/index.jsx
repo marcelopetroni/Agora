@@ -61,7 +61,7 @@ const Social = () => {
 
   return (
     <div className="social-container">
-      <NavbarItems />
+      <NavbarItems activePage="social" />
       <div className="chat-history">
         <div className="search-bar">
           <FaSearch className="search-icon" />

@@ -68,7 +68,6 @@
   align-items: center
   height: 100%
   cursor: pointer
-  color: rgba(43, 39, 38, 0.6)
 
 .iconamoonprofile-fill-group
   align-self: stretch
@@ -94,7 +93,6 @@
   align-items: center
   height: 100%
   cursor: pointer
-  color: rgba(43, 39, 38, 0.6)
 
 .material-symbolssocial-distan-group
   align-self: stretch
@@ -152,3 +150,25 @@
   z-index: 1
   text-align: left
   color: var(--color-gray-200)
+
+.frame-parent14
+  font-family: "Amiko", sans-serif
+  display: flex
+  flex-direction: column
+  margin-left: 30px
+  gap: 18px
+  font-size: 22px
+
+// Cor padrão para itens ativos
+.teenyiconshome-solid-group.active,
+.iconamoonprofile-fill-group.active,
+.material-symbolssocial-distan-group.active
+  color: black
+  font-weight: bold
+
+// Cor padrão para itens não ativos
+.teenyiconshome-solid-group:not(.active),
+.iconamoonprofile-fill-group:not(.active),
+.material-symbolssocial-distan-group:not(.active)
+  color: lightgray
+  font-weight: bold

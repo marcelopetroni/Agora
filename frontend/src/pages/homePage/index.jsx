@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <div className="homepage-container">
-      <NavbarItems />
+      <NavbarItems activePage="home" />
       <div className="home-items">
         <div className="title-buttons">
           {userType === "artist" ? (
