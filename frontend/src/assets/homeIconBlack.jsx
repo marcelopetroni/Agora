@@ -1,6 +1,6 @@
 import React from 'react'
 
-const homeIcon = () => {
+const homeIcon2 = () => {
   return (
     <svg width="22" height="22" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="teenyicons:home-solid" clip-path="url(#clip0_49_597)">
@@ -16,4 +16,4 @@ const homeIcon = () => {
   )
 }
 
-export default homeIcon
+export default homeIcon2
