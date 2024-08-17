@@ -1,22 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './info.sass';
 import NavbarItems from '../../components/Navbar';
 import { FaArrowLeft } from 'react-icons/fa';
-import { FaFlag } from 'react-icons/fa'; 
+import { FaPaperPlane, FaFlag } from 'react-icons/fa';
 
 const InfoPage = () => {
+  const [activeTab, setActiveTab] = useState('Audios');
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'Photos':
+        return <div className="content">Photos content goes here.</div>;
+      case 'Videos':
+        return <div className="content">Videos content goes here.</div>;
+      case 'Audios':
+        return (
+          <div className="content">
+            <div className="audio-item">
+              <div className="audio-icon">🎵</div>
+              <div className="audio-details">
+                <p><strong>Audio name:</strong> Moonlight</p>
+                <p><strong>Date:</strong> 08-03-23</p>
+                <p><strong>Type:</strong> Song</p>
+                <p><strong>Description:</strong> This is a song I wrote about a night when I fell asleep looking at the moon...</p>
+              </div>
+            </div>
+            {/* Add more audio items here if needed */}
+          </div>
+        );
+      case 'Writing':
+        return <div className="content">Writing content goes here.</div>;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="info-container">
-      <div className="sidebar">
-        <NavbarItems />
-      </div>
-      <div className="info-content">
-        <div className="header">
+      <NavbarItems />
+      <div className='info-items'>
+        <div className="info-page">
           <button className="back-button">
             <FaArrowLeft />
           </button>
           <div className="profile-section">
-            <img src="path_to_profile_image" alt="Profile" className="profile-pic" />
+            <div className="profile-picture">
+              <img src=".\src\assets\woman.png" alt="Profile" />
+            </div>
             <div className="profile-details">
               <div className="profile-name-section">
                 <h1 className="profile-name">Joana de Sá</h1>
@@ -45,6 +75,49 @@ const InfoPage = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* My Works Section */}
+          <div className="my-works">
+            <h3>My works</h3>
+            <div className="portfolio-tabs">
+              <button
+                className={`tab ${activeTab === 'Photos' ? 'active' : ''}`}
+                onClick={() => setActiveTab('Photos')}
+              >
+                Photos
+              </button>
+              <button
+                className={`tab ${activeTab === 'Videos' ? 'active' : ''}`}
+                onClick={() => setActiveTab('Videos')}
+              >
+                Videos
+              </button>
+              <button
+                className={`tab ${activeTab === 'Audios' ? 'active' : ''}`}
+                onClick={() => setActiveTab('Audios')}
+              >
+                Audios
+              </button>
+              <button
+                className={`tab ${activeTab === 'Writing' ? 'active' : ''}`}
+                onClick={() => setActiveTab('Writing')}
+              >
+                Writing
+              </button>
+            </div>
+            <div className="portfolio-content">
+              {renderContent()}
+            </div>
+          </div>
+
+          {/* Send Message Section */}
+          <div className="send-message">
+            <h4>Send a message</h4>
+            <div className="message-input-container">
+              <input type="text" placeholder="Write here a message to let the artist know you're interested in their work." />
+              {/* <FaPaperPlane className="send-icon" onClick={handleSendMessage} /> */}
             </div>
           </div>
         </div>
