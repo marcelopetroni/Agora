@@ -1,3 +1,6 @@
+html
+  scroll-behavior: smooth
+  
 body
   margin: 0
   overflow-x: hidden
@@ -41,10 +44,9 @@ body
 .auth-buttons
   position: absolute
   display: flex
+  align-items: center
   gap: 15px
   left: 170vh
-  
-
 
   .login
     color: #E6D9AE
@@ -80,12 +82,12 @@ body
   text-align: center
 
 .background-overlay
-  // background: url('./src/assets/landingPage/grecia.png') no-repeat
   background: linear-gradient(0deg, rgba(43, 39, 38, 0.53) 0%, rgba(43, 39, 38, 0.53) 100%), linear-gradient(178deg, rgba(43, 39, 38, 0.00) 51.59%, #2B2726 96.07%), linear-gradient(93deg, rgba(43, 39, 38, 0.00) 37.19%, #2B2726 92.51%), linear-gradient(359deg, rgba(43, 39, 38, 0.00) 69.77%, #2B2726 93.04%), url('./src/assets/landingPage/grecia.svg') lightgray 50% / cover no-repeat
   background-size: cover
   padding-top: 200px
+  margin-bottom: 80px
   width: 100vw
-  height: 82vh
+  height: 100vh
 
 .overview-container
   display: flex

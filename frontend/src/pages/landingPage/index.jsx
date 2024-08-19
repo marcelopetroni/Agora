@@ -96,8 +96,13 @@ const LandingPage = () => {
             <li onClick={() => scrollToSection('feedback')}>Feedback</li>
           </ul>
           <div className="auth-buttons">
-            <button className="login" onClick={() => (scrollToSection('join'), handleLoginClick())}  >Login</button>
-            <button className="register" onClick={() => (scrollToSection('join'), handleSignUpClick())}>Register</button>
+            <a href="#login-section">
+              <button className="login" onClick={handleLoginClick}>Login</button>
+            </a>
+            <a href="#login-section">
+              <button className="register" onClick={() => (scrollToSection('join'), handleSignUpClick())}>Register</button>
+            </a>
+            
           </div>
         </nav>
       </header>
@@ -139,7 +144,7 @@ const LandingPage = () => {
       </div>
 
       {/* Login Section */}
-      <div className="login-section">
+      <div id="login-section" className="login-section">
         {step === 'login' && (
           <div className="login-content">
             <div className="signup-info">
