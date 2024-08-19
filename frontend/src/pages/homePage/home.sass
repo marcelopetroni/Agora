@@ -55,10 +55,8 @@
   display: flex
   gap: 10px  
 
-.projects-button
-  width: 100px
-  padding: 8px 15px
-  background-color: #e6d9ae
+.projects-button, .create-project-button
+  padding: 10px 20px
   border: none
   border-radius: 10.17px
   font-family: Amiko, sans-serif
@@ -66,16 +64,10 @@
   color: #4d4a4c
   font-weight: bold
   cursor: pointer
+  background-color: transparent // Background padrão transparente
 
-.create-project-button
-  padding: 10px 10px
-  background-color: transparent
-  border: none
-  font-family: Amiko, sans-serif
-  font-size: 14px
-  color: #4d4a4c
-  font-weight: bold
-  cursor: pointer
+.projects-button.active, .create-project-button.active
+  background-color: #e6d9ae // Background quando o botão está ativo
 
 .line-home
   margin-top: 20px

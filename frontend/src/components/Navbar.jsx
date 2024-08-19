@@ -9,6 +9,7 @@ import SocialIcon2 from "../assets/socialIconBlack";
 import LogOutIcon from "../assets/logOutIcon";
 import LogoIcon from "../assets/logoIcon";
 import WomanImage from '../assets/woman.png';
+import ManImage from '../assets/man.jpg'
 import { Link } from "react-router-dom";
 
 const NavbarItems = ({ className = "", activePage = "home" }) => {
@@ -21,7 +22,7 @@ const NavbarItems = ({ className = "", activePage = "home" }) => {
             <LogoIcon />
           </div>
           <div className="circle-container">
-            <img src={WomanImage} alt="Profile" className="profile-image" />
+            <img src={ManImage} alt="Profile" className="profile-image" />
           </div>
         </div>
         <div className="frame-parent14">

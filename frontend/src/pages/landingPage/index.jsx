@@ -24,6 +24,10 @@ const LandingPage = () => {
     useState('')
   }
 
+  const handleRegister = () => {
+    useState('')
+  }
+
   // Anchors
 
   const scrollToSection = (sectionId) => {
@@ -103,7 +107,9 @@ const LandingPage = () => {
                 <input type="email" />
                 <label>Password</label>
                 <input type="password" />
+                <a href='/home' >
                 <button type="submit" className="login-button" onClick={handleLogin}>Login</button>
+                </a>
               </form>
             </div>
           </div>
@@ -168,7 +174,9 @@ const LandingPage = () => {
               <div className='checkbox-section'>
                 <input className='checkbox' type="checkbox" />
                 <p className='checkbox-label'>I agree to the <a href="#">terms and policies</a><p>and confirm that I have read and understood them.</p></p>
-                <button type="submit" className="register-button">Register</button>
+                <a href='/home' >
+                <button type="submit" className="register-button" onClick={handleRegister} >Register</button>
+                </a>
               </div>
             </div>
           </div>
