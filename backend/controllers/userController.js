@@ -13,7 +13,7 @@ const getUsers = async (req, res) => {
   }
 };
 
-// Post: add data to users
+// POST: Add new user
 const createUser = async (req, res) => {
   const { name, email, birthDate, country, searchFields, password, languages, hedera_account_id } = req.body;
 
@@ -24,16 +24,16 @@ const createUser = async (req, res) => {
         email,
         birthDate: new Date(birthDate),
         country,
-        searchFields: searchFields ? JSON.parse(searchFields) : null,
-        languages: languages ? JSON.parse(languages) : null,
+        searchFields: null,
+        languages: null,
         hedera_account_id,
         password,
       }
     });
-    res.status(201).json(user);
+    res.status(201).json(user); 
   } catch (error) {
-      console.error('Error creating user:', error.message); 
-      res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error creating user:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 module.exports = { getUsers, createUser };
