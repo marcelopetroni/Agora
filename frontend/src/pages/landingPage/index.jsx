@@ -28,7 +28,7 @@ const LandingPage = () => {
       searchFields: JSON.stringify(searchFields),
       private_key: null,
       hedera_account_id: null,
-    };
+    };    
   
     try {
       const response = await fetch('https://agorahacka.onrender.com/users', {
