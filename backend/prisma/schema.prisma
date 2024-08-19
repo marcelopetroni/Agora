@@ -18,13 +18,14 @@ model User {
   id                Int      @id @default(autoincrement())
   name              String?
   birthDate         DateTime?
-  searchFields      String?
+  searchFields      Json? 
   email             String   @unique
   country           String?
   private_key       String?
   hedera_account_id String?
   experience        String?
   password          String? 
+  languages         Json? 
 }
 
 

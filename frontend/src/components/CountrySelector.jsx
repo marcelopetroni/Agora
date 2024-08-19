@@ -25,7 +25,7 @@ const countries = [
   "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
 ];
 
-export default function CountrySelector() {
+export default function CountrySelector({ setCountry }) {
     const [filteredCountries, setFilteredCountries] = useState(countries);
     const [inputValue, setInputValue] = useState('');
     const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -43,6 +43,7 @@ export default function CountrySelector() {
 
     const handleCountrySelect = (country) => {
         setInputValue(country);
+        setCountry(country);  
         setDropdownVisible(false);
     };
 

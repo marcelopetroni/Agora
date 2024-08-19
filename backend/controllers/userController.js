@@ -15,26 +15,25 @@ const getUsers = async (req, res) => {
 
 // POST: Add new user
 const createUser = async (req, res) => {
-  const { name, email, birthDate, country, searchFields, password, hedera_account_id } = req.body;
+  const { name, email, birthDate, country, searchFields, password, languages, hedera_account_id } = req.body;
 
   try {
-    // Adicionar usuário
     const user = await prisma.user.create({
       data: {
         name,
         email,
         birthDate: new Date(birthDate),
         country,
-        searchFields,
+        searchFields: searchFields ? JSON.parse(searchFields) : null,
+        languages: languages ? JSON.parse(languages) : null,
         hedera_account_id,
         password,
       }
     });
-    res.status(201).json(user); // JSON
+    res.status(201).json(user); 
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
-
 module.exports = { getUsers, createUser };

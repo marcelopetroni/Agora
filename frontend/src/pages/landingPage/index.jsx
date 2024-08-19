@@ -7,21 +7,27 @@ import CountrySelector from '../../components/CountrySelector';
 const LandingPage = () => {
   const [step, setStep] = useState('login');
 
-   const [name, setName] = useState('');
-   const [birthDate, setBirthDate] = useState('');
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
-   const [country, setCountry] = useState('');
-   const [searchFields, setSearchFields] = useState(''); 
+  const [name, setName] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [country, setCountry] = useState('');
+  const [languages, setLanguages] = useState([]);
+  const [searchFields, setSearchFields] = useState([]);
  
-   const handleRegisterClick = async (e) => {
+  const handleRegisterClick = async (e) => {
     e.preventDefault();
   
     const newUser = {
       name,
       email,
       birthDate,
-      password
+      password,
+      country,
+      languages: JSON.stringify(languages), 
+      searchFields: JSON.stringify(searchFields),
+      private_key: null,
+      hedera_account_id: null,
     };
   
     try {
@@ -42,8 +48,9 @@ const LandingPage = () => {
         setBirthDate('');
         setPassword('');
         setCountry('');
-        setSearchFields('');
-        
+        setLanguages([]);       
+        setSearchFields([]); 
+  
       } else {
         console.error('Failed to create user');
       }
@@ -51,6 +58,7 @@ const LandingPage = () => {
       console.error('Error:', error);
     }
   };
+
   
   const handleSignUpClick = () => {
     setStep('chooseRole');
@@ -187,7 +195,7 @@ const LandingPage = () => {
                     <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
                   </div>
                   <div>
-                    <CountrySelector />
+                    <CountrySelector setCountry={setCountry} />
                   </div>
                 </div>
                 <div className='form-line'>
@@ -202,11 +210,11 @@ const LandingPage = () => {
                 </div>
                 <div>
                 <div>
-                  <LanguageSelector />
+                  <LanguageSelector setLanguages={setLanguages} />
                 </div>
                 </div>
                 <div>
-                 <ArtisticFieldSelector />
+                  <ArtisticFieldSelector setSearchFields={setSearchFields} />
                 </div>
               </form>
               <div className='checkbox-section'>
