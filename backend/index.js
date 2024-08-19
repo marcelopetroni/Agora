@@ -18,7 +18,7 @@ app.use('/users', userRouter);
 
 const SECRET_KEY = process.env.SECRET_KEY;
 const DATABASE_URL = process.env.DATABASE_URL;
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.listen(PORT, () => {
     console.log(`Backend running on port ${PORT}`);
