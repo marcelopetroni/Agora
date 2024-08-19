@@ -24,7 +24,6 @@ const LandingPage = () => {
       birthDate,
       password,
       country,
-      languages: JSON.stringify(languages), 
       searchFields: JSON.stringify(searchFields),
       private_key: null,
       hedera_account_id: null,
