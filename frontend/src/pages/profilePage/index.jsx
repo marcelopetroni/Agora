@@ -1,16 +1,23 @@
-import React from 'react'
-import './profile.sass';
-import NavbarItems from '../../components/Navbar';
+import React from 'react';
+import ArtistProfile from '../../components/ArtistProfile.jsx';
+import HunterProfile from '../../components/HunterProfile';
+
+const getAccountType = () => {
+
+return 'talent-hunter'; 
+
+};
 
 const Profile = () => {
-  return (
-    <div className="profile-container">
-      <NavbarItems activePage="profile" />
-      <div className="profile-items">
-        <div className="title-container">conteudo profile</div>
-      </div>
-    </div>
-  )
-}
+  const accountType = getAccountType();
+
+  if (accountType === 'artist') {
+    return <ArtistProfile />;
+  } else if (accountType === 'talent-hunter') {
+    return <HunterProfile />;
+  } else {
+    return <div>Invalid account type.</div>;
+  }
+};
 
 export default Profile;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './pages/landingPage'
+import Landing from './pages/landingPage'
 import Home from './pages/homePage';
 import Profile from './pages/profilePage';
 import Social from './pages/socialPage';
@@ -15,6 +15,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/social" element={<Social />} />
+        <Route path="/landing" element={<Landing />} />
       </Routes>
     </Router>
   );

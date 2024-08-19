@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './landing.sass';
 import LanguageSelector from '../../components/LanguageSelector';
-import ArtisticFieldSelector from '../../components/artisticFieldSelector';
+import ArtisticFieldSelector from '../../components/ArtisticFieldSelector';
 import CountrySelector from '../../components/CountrySelector';
 
 const LandingPage = () => {
@@ -60,20 +60,37 @@ const LandingPage = () => {
     setStep('personalInfo');
   };
 
+  const handleLoginClick = () => {
+    setStep('login');
+  };
+
+  const handleLogin = () => {
+    useState('')
+  }
+
+  // Anchors
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="landing-page">
       <header className="header">
         <nav className="navbar">
           <img src='./src/assets/landingPage/agoraLogo.svg' alt="Agora Logo" className="logo"/>
           <ul>
-            <li>About Us</li>
-            <li>Join</li>
-            <li>Security</li>
-            <li>Feedback</li>
+            <li onClick={() => scrollToSection('about')}>About Us</li>
+            <li onClick={() => scrollToSection('join')}>Join</li>
+            <li onClick={() => scrollToSection('security')}>Security</li>
+            <li onClick={() => scrollToSection('feedback')}>Feedback</li>
           </ul>
           <div className="auth-buttons">
-            <button className="login">Login</button>
-            <button className="register">Register</button>
+            <button className="login" onClick={() => (scrollToSection('join'), handleLoginClick())}  >Login</button>
+            <button className="register" onClick={() => (scrollToSection('join'), handleSignUpClick())}>Register</button>
           </div>
         </nav>
       </header>
@@ -81,7 +98,7 @@ const LandingPage = () => {
       <div className="content">
         <div className="background-overlay">
           <div className='overview-container'>
-            <div className="welcome-text">
+            <div id='about' className="welcome-text">
               <h1>Welcome to</h1>
               <img src='./src/assets/landingPage/agoraLogoName.svg' alt="Agora Name Logo"/>
               <p>Connecting Talent and Opportunity</p>
@@ -130,7 +147,7 @@ const LandingPage = () => {
                 <input type="email" />
                 <label>Password</label>
                 <input type="password" />
-                <button type="submit" className="login-button">Login</button>
+                <button type="submit" className="login-button" onClick={handleLogin}>Login</button>
               </form>
             </div>
           </div>
@@ -217,12 +234,14 @@ const LandingPage = () => {
             <p>
               Our use of smart contracts ensures that all agreements are executed transparently and reliably, allowing artists and talent hunters to focus on their creative and business.
             </p>
-            <button className="visit-hedera">Visit Hedera</button>
+            <a href='https://hedera.com/'>
+              <button className="visit-hedera">Visit Hedera</button>
+            </a>
           </div>
         </div>
       </div>
         {/* Seção de Depoimentos */}
-        <div className="testimonials-section">
+        <div id='feedback' className="testimonials-section">
         <h3>What the Specialists Are Saying</h3>
         <div className="testimonials-cards">
           <div className="card">
