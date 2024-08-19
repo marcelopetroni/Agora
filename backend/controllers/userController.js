@@ -13,7 +13,7 @@ const getUsers = async (req, res) => {
   }
 };
 
-// GET: Get data from users
+// Post: add data to users
 const createUser = async (req, res) => {
   const { name, email, birthDate, country, searchFields, password, languages, hedera_account_id } = req.body;
 
