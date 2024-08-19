@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './info.sass';
 import NavbarItems from '../../components/Navbar';
 import { FaArrowLeft } from 'react-icons/fa';
 import { FaPaperPlane, FaFlag } from 'react-icons/fa';
+import Arrow2 from "../../assets/arrow2";
 
 const InfoPage = () => {
   const [activeTab, setActiveTab] = useState('Audios');
+  const [message, setMessage] = useState(''); 
+
+  const handleInputChange = (event) => {
+    setMessage(event.target.value); 
+  };
+
+  const handleSendClick = () => {
+    setMessage(''); 
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -25,7 +36,6 @@ const InfoPage = () => {
                 <p><strong>Description:</strong> This is a song I wrote about a night when I fell asleep looking at the moon...</p>
               </div>
             </div>
-            {/* Add more audio items here if needed */}
           </div>
         );
       case 'Writing':
@@ -40,9 +50,14 @@ const InfoPage = () => {
       <NavbarItems />
       <div className='info-items'>
         <div className="info-page">
+        <Link 
+          to="/home" 
+          style={{ textDecoration: 'none' }}
+        >
           <button className="back-button">
             <FaArrowLeft />
           </button>
+        </Link>
           <div className="profile-section">
             <div className="profile-picture">
               <img src=".\src\assets\woman.png" alt="Profile" />
@@ -116,10 +131,17 @@ const InfoPage = () => {
           <div className="send-message">
             <h4>Send a message</h4>
             <div className="message-input-container">
-              <input type="text" placeholder="Write here a message to let the artist know you're interested in their work." />
-              {/* <FaPaperPlane className="send-icon" onClick={handleSendMessage} /> */}
-            </div>
+            <input
+              type="text"
+              placeholder="Write here a message to let the artist know you're interested in their work."
+              value={message} 
+              onChange={handleInputChange}
+            />
+              <button className="send-button" onClick={handleSendClick}>
+                <Arrow2 />
+              </button>
           </div>
+    </div>
         </div>
       </div>
     </div>

@@ -13,11 +13,12 @@ import Grid3 from "../../assets/gridImages4.png";
 import Videomaker from "../../assets/videomaker.png";
 import VideoRecord from "../../assets/videorecord.png";
 import RecordedSongs from "../../assets/recordedSongs.png";
+import { Link } from 'react-router-dom';
 import { useState } from "react";
 import "./home.sass";
 
 const Home = () => {
-  const [userType, setUserType] = useState("talent_hunter");
+  const [userType, setUserType] = useState("artist");
 
   const [showDonationBox, setShowDonationBox] = useState(false);
 
@@ -43,10 +44,12 @@ const Home = () => {
           {userType === "artist" ? (
           <>
           <div className="title-container-home">Hello, Joana de Sá!</div>
-            <div className="button-container">
+          <div className="button-container">
               <button className="projects-button">Projects</button>
+            <Link to="/info" style={{ textDecoration: 'none' }}>
               <button className="create-project-button">Create Project</button>
-            </div>
+            </Link>
+          </div>
           </>
           ) : (
             <>
