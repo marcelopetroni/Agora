@@ -1,5 +1,4 @@
 const { PrismaClient } = require('@prisma/client');
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const prisma = new PrismaClient();
@@ -16,9 +15,7 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ error: 'Credenciais inválidas' });
         }
 
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-
-        if (!isPasswordValid) {
+        if (password !== user.password) {
             return res.status(401).json({ error: 'Credenciais inválidas' });
         }
 
