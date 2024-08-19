@@ -37,5 +37,6 @@ Aligned with Web3 principles, Agora promotes a decentralized, fair, and transpar
 
 - [Figma](https://www.figma.com/design/z0LVUH2xzazGOR9SXHCKX5/Agora---Hedera-Hackathon?node-id=0-1&t=NfeaWuxFurA2sJEP-1)
 - add pitch quando tiver pronto
+- add video da solução também
   
 
