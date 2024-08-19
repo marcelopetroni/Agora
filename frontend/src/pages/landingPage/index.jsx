@@ -3,9 +3,11 @@ import './landing.sass';
 import LanguageSelector from '../../components/LanguageSelector';
 import ArtisticFieldSelector from '../../components/ArtisticFieldSelector';
 import CountrySelector from '../../components/CountrySelector';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
   const [step, setStep] = useState('login');
+  const navigate = useNavigate();
 
   const [name, setName] = useState('');
   const [birthDate, setBirthDate] = useState('');
@@ -71,12 +73,36 @@ const LandingPage = () => {
     setStep('login');
   };
 
-  const handleLogin = () => {
-    useState('')
-  }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const credentials = { email, password };
+
+    try {
+      const response = await fetch('https://agorahacka.onrender.com/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
+        console.log('Login successful');
+
+        // go to "/home" if it's authenticated
+        navigate('/home');
+      } else {
+        console.error('Login failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   // Anchors
-
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -154,11 +180,11 @@ const LandingPage = () => {
             <div className="login-form">
               <h3>Welcome Back</h3>
               <p>We're glad you're here</p>
-              <form>
+              <form onSubmit={handleLogin}>
                 <label>Email</label>
-                <input type="email" />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <label>Password</label>
-                <input type="password" />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit" className="login-button" onClick={handleLogin}>Login</button>
               </form>
             </div>
