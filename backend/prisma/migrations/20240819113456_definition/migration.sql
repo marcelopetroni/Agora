@@ -3,13 +3,14 @@ CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "name" TEXT,
     "birthDate" TIMESTAMP(3),
-    "searchFields" TEXT,
+    "searchFields" JSONB,
     "email" TEXT NOT NULL,
     "country" TEXT,
     "private_key" TEXT,
     "hedera_account_id" TEXT,
     "experience" TEXT,
     "password" TEXT,
+    "languages" JSONB,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );

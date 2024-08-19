@@ -24,8 +24,8 @@ const createUser = async (req, res) => {
         email,
         birthDate: new Date(birthDate),
         country,
-        searchFields: null,
-        languages: null,
+        searchFields: searchFields ? JSON.parse(searchFields) : null,
+        languages: languages ? JSON.parse(languages) : null,
         hedera_account_id,
         password,
       }
