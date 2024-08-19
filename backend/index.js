@@ -4,22 +4,22 @@ require('dotenv').config({
     path: path.join(__dirname, '.env')
 });
 
+console.log('Database URL:', process.env.DATABASE_URL);
 const express = require('express');
+const cors = require('cors');  
 const app = express();
 
-// transform json file in JavaScript object to be understood by express
+app.use(cors());
 app.use(express.json());
 
 // user route
 const userRouter = require('./routes/user');
 app.use('/users', userRouter);
 
-// variables
 const SECRET_KEY = process.env.SECRET_KEY;
 const DATABASE_URL = process.env.DATABASE_URL;
 const PORT = process.env.PORT || 3000;
 
-// to start server
 app.listen(PORT, () => {
     console.log(`Backend running on port ${PORT}`);
 });

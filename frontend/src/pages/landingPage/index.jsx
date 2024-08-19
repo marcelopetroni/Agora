@@ -5,9 +5,53 @@ import ArtisticFieldSelector from '../../components/artisticFieldSelector';
 import CountrySelector from '../../components/CountrySelector';
 
 const LandingPage = () => {
-  const [step, setStep] = useState('login'); // Inicial state of login screen
+  const [step, setStep] = useState('login');
 
-  // to handle with the screen change
+   const [name, setName] = useState('');
+   const [birthDate, setBirthDate] = useState('');
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
+   const [country, setCountry] = useState('');
+   const [searchFields, setSearchFields] = useState(''); 
+ 
+   const handleRegisterClick = async (e) => {
+    e.preventDefault();
+  
+    const newUser = {
+      name,
+      email,
+      birthDate,
+      password
+    };
+  
+    try {
+      const response = await fetch('http://localhost:3000/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('User created:', data);
+  
+        setName('');
+        setEmail('');
+        setBirthDate('');
+        setPassword('');
+        setCountry('');
+        setSearchFields('');
+        
+      } else {
+        console.error('Failed to create user');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+  
   const handleSignUpClick = () => {
     setStep('chooseRole');
   };
@@ -70,7 +114,7 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Seção de Login */}
+      {/* Login Section */}
       <div className="login-section">
         {step === 'login' && (
           <div className="login-content">
@@ -119,11 +163,11 @@ const LandingPage = () => {
                 <div className='form-line'>
                   <div className='name-input'>
                     <label>Full Name</label>
-                    <input type="text" />
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
                   </div>
                   <div className='date-input'>
                     <label>Date of Birth</label>
-                    <input type="date" />
+                    <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
                   </div>
                   <div>
                     <CountrySelector />
@@ -132,11 +176,11 @@ const LandingPage = () => {
                 <div className='form-line'>
                   <div>
                     <label>E-mail</label>
-                    <input type="email" />
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                   </div>
                   <div>
                     <label>Password</label>
-                    <input type="password" />
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                   </div>
                 </div>
                 <div>
@@ -151,14 +195,14 @@ const LandingPage = () => {
               <div className='checkbox-section'>
                 <input className='checkbox' type="checkbox" />
                 <p className='checkbox-label'>I agree to the <a href="#">terms and policies</a><p>and confirm that I have read and understood them.</p></p>
-                <button type="submit" className="register-button">Register</button>
+                <button type="submit" className="register-button" onClick={handleRegisterClick}>Register</button>
               </div>
             </div>
           </div>
         )}
       </div>
 
-    {/* Seção Hedera Hashgraph */}
+    {/* Hedera Hashgraph Section */}
     <div className="hedera-section">
         <div className="hedera-content">
           <div className="hedera-left">
