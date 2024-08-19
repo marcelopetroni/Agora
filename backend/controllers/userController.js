@@ -1,5 +1,4 @@
 const { PrismaClient } = require('@prisma/client');
-const bcrypt = require('bcrypt'); // for hashing passwords
 
 const prisma = new PrismaClient();
 
@@ -19,9 +18,6 @@ const createUser = async (req, res) => {
   const { name, email, birthDate, country, searchFields, password, hedera_account_id } = req.body;
 
   try {
-    // Hash da senha
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     // Adicionar usuário
     const user = await prisma.user.create({
       data: {
@@ -31,7 +27,7 @@ const createUser = async (req, res) => {
         country,
         searchFields,
         hedera_account_id,
-        password: hashedPassword,
+        password,
       }
     });
     res.status(201).json(user); // JSON
