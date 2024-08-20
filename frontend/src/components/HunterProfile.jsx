@@ -14,7 +14,7 @@ const Profile = () => {
           <h2>Personal informations</h2>
           <form className="profile-form">
             <div className="profile-picture">
-              <img src="./src/assets/man.jpg" alt="Profile" />
+              <img src="/man.jpg" alt="Profile" />
               <button className="upload-button">Upload new picture</button>
             </div>
     
