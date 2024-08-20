@@ -21,6 +21,8 @@ Aligned with Web3 principles, Agora promotes a decentralized, fair, and transpar
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
+![Solidity](https://img.shields.io/badge/Solidity-363636?style=for-the-badge&logo=solidity&logoColor=white)
 ![Hedera Hashgraph](https://img.shields.io/badge/Hedera%20Hashgraph-2C3454?style=for-the-badge&logo=hedera&logoColor=white)
 
 ## Project Demo Link 🔗
