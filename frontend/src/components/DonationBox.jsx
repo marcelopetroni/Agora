@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./Donation.sass";
 import PhotoIndicator from '../assets/photoIndicator';
 
-const DonationBox = ({ onClose }) => {
+const DonationBox = ({ onClose, onClose2 }) => {
 
   const [walletAddress, setWalletAddress] = useState('');
 
@@ -77,7 +77,7 @@ const DonationBox = ({ onClose }) => {
         </div>
         <div className="action-buttons">
           <button className="cancel-button" onClick={onClose}>Cancel</button>
-          <button className="donate-button2">Donate</button>
+          <button className="donate-button2" onClick={onClose2}>Donate</button>
         </div>
       </div>
     </div>
