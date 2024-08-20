@@ -4,7 +4,7 @@ import HunterProfile from '../../components/HunterProfile';
 
 const getAccountType = () => {
 
-return 'talent-hunter'; 
+return 'artist';
 
 };
 
