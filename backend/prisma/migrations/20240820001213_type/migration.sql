@@ -11,6 +11,7 @@ CREATE TABLE "User" (
     "experience" TEXT,
     "password" TEXT,
     "languages" JSONB,
+    "type" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
