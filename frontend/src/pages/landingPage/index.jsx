@@ -289,22 +289,22 @@ const LandingPage = () => {
         <h3>What the Specialists Are Saying</h3>
         <div className="testimonials-cards">
           <div className="card">
-            <div className="photo-placeholder"></div>
-            <h4>Profissão</h4>
-            <p>Nome do profissional</p>
-            <p>Lorem ipsum dolor sit amet consectetur. Sed eleifend nibh vitae eros consequat sed odio. Orci a posuere fermentum consectetur elementum.</p>
+          <img src='/Saulo.jpg' alt="Saulo" className="photo-placeholder"/>
+            <h4>Producer</h4>
+            <p>Saulo Aleixo</p>
+            <p>Beyond being useful and relevant, the platform will facilitate an exchange between art and its audience, making the digital world increasingly valuable. The platform will attract attention from various sectors, leading other companies to create their own platforms, increasing competition and offering more options for users. This platform will be the "mother of platforms."</p>
           </div>
           <div className="card highlighted">
-            <img src='/cristinaPhoto.svg' alt="Cristina Amaral" className="specialist-photo"/>
+          <img src='/cristinaPhoto.svg' alt="Cristina Amaral" className="specialist-photo"/>
             <h4>Brazilian Singer</h4>
             <p>Cristina Amaral</p>
-            <p>Lorem ipsum dolor sit amet consectetur. Sed eleifend nibh vitae eros consequat sed odio. Orci a posuere fermentum consectetur elementum.</p>
+            <p>I see it as a platform that can significantly contribute to artistic and cultural growth, investing in the current market and social media. The presented features align with the musical and artistic world, offering chances to showcase and develop artistic ideas in a virtual space. I believe it’s a very useful platform.</p>
           </div>
           <div className="card">
-            <div className="photo-placeholder"></div>
-            <h4>Profissão</h4>
-            <p>Nome do profissional</p>
-            <p>Lorem ipsum dolor sit amet consectetur. Sed eleifend nibh vitae eros consequat sed odio. Orci a posuere fermentum consectetur elementum.</p>
+          <img src='/Breno.png' alt="Breno" className="photo-placeholder"/>
+            <h4>Entrepreneur</h4>
+            <p>Breno falcão</p>
+            <p>The platform will be of great use. There is a huge demand in this sector, and it will give visibility to a large number of people who are ready to enter the market. The platform is very useful for ensuring that artists and their work are seen by producers, entrepreneurs.</p>
           </div>
         </div>
       </div>
