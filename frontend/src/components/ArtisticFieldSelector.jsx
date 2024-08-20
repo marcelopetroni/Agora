@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ArtisticFieldSelector.sass'
 
-const ArtisticFieldSelector = () => {
+const ArtisticFieldSelector = ({ setSearchFields }) => {
   const allFields = ['Music', 'Theater', 'Dance', 'Painting', 'Sculpture', 'Photography', 'Film', 'Literature'];
   const [filteredFields, setFilteredFields] = useState(allFields);
   const [selectedFields, setSelectedFields] = useState([]);
@@ -21,14 +21,19 @@ const ArtisticFieldSelector = () => {
 
   const handleAddField = (field) => {
     if (!selectedFields.includes(field)) {
-      setSelectedFields([...selectedFields, field]);
-      setInputValue('');
+      const updatedFields = [...selectedFields, field];
+      setSelectedFields(updatedFields);
+      setSearchFields(updatedFields);
+      setInputValue(''); 
       setFilteredFields(allFields.filter(fld => fld !== field));
     }
   };
+  
 
   const handleRemoveField = (field) => {
-    setSelectedFields(selectedFields.filter(fld => fld !== field));
+    const updatedFields = selectedFields.filter(f => f !== field);
+    setSelectedFields(updatedFields);
+    setSearchFields(updatedFields);  
     setFilteredFields([...filteredFields, field]);
   };
 

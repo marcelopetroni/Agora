@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './LanguageSelector.sass'
 
-const LanguageSelector = () => {
+const LanguageSelector = ({ setLanguages }) => {
   const allLanguages = [
     "Mandarin Chinese", "Spanish", "English", "Hindi", "Arabic", "Bengali", "Portuguese", "Russian", "Japanese", "Western Punjabi",
     "Marathi", "Telugu", "Wu Chinese", "Turkish", "Korean", "French", "German", "Vietnamese", "Tamil", "Urdu", "Javanese",
@@ -33,17 +33,22 @@ const LanguageSelector = () => {
     setFilteredLanguages(filtered);
     setShowDropdown(true);
   };
+  
 
   const handleAddLanguage = (language) => {
     if (!selectedLanguages.includes(language)) {
-      setSelectedLanguages([...selectedLanguages, language]);
+      const updatedLanguages = [...selectedLanguages, language];
+      setSelectedLanguages(updatedLanguages);
+      setLanguages(updatedLanguages);
       setInputValue('');
       setFilteredLanguages(allLanguages.filter(lang => lang !== language));
     }
   };
 
   const handleRemoveLanguage = (language) => {
-    setSelectedLanguages(selectedLanguages.filter(lang => lang !== language));
+    const updatedLanguages = selectedLanguages.filter(lang => lang !== language);
+    setSelectedLanguages(updatedLanguages);
+    setLanguages(updatedLanguages); 
     setFilteredLanguages([...filteredLanguages, language]);
   };
 

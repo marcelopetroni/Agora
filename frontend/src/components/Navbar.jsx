@@ -10,9 +10,14 @@ import LogOutIcon from "../assets/logOutIcon";
 import LogoIcon from "../assets/logoIcon";
 import WomanImage from '../assets/woman.png';
 import ManImage from '../assets/man.jpg'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavbarItems = ({ className = "", activePage = "home" }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate('/'); 
+  };
   return (
     <div className="line-group">
       <div className={`navbar-items ${className}`}>
@@ -39,7 +44,7 @@ const NavbarItems = ({ className = "", activePage = "home" }) => {
             <div className="social1">Social</div>
           </Link>
         </div>
-        <div className="rilogout-circle-r-line-group">
+        <div className="rilogout-circle-r-line-group" onClick={handleLogout}>
           <LogOutIcon />
           <div className="log-out-container">
             <div className="log-out1">Log Out</div>
