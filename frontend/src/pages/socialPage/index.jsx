@@ -115,7 +115,7 @@ const Social = () => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <FaPaperPlane className="send-icon" onClick={handleSendMessage} />
+          <button type='submit' className="send-icon"><FaPaperPlane onClick={handleSendMessage} /></button>
         </div>
       </div>
     </div>

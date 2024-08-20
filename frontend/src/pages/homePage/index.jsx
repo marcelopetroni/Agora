@@ -14,6 +14,7 @@ import Grid3 from "../../assets/gridImages4.png";
 import Videomaker from "../../assets/videomaker.png";
 import VideoRecord from "../../assets/videorecord.png";
 import RecordedSongs from "../../assets/recordedSongs.png";
+import { Link } from 'react-router-dom';
 import { useState } from "react";
 import "./home.sass";
 

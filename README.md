@@ -19,7 +19,9 @@ Aligned with Web3 principles, Agora promotes a decentralized, fair, and transpar
 ![SASS](https://img.shields.io/badge/SASS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Hedera Hashgraph](https://img.shields.io/badge/Hedera_Hashgraph-2C3454?style=for-the-badge&logo=hedera-hashgraph&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![Hedera Hashgraph](https://img.shields.io/badge/Hedera%20Hashgraph-2C3454?style=for-the-badge&logo=hedera&logoColor=white)
 
 ## Project Demo Link 🔗
 - colocar aqui o link do testnet
@@ -35,5 +37,6 @@ Aligned with Web3 principles, Agora promotes a decentralized, fair, and transpar
 
 - [Figma](https://www.figma.com/design/z0LVUH2xzazGOR9SXHCKX5/Agora---Hedera-Hackathon?node-id=0-1&t=NfeaWuxFurA2sJEP-1)
 - add pitch quando tiver pronto
+- add video da solução também
   
 

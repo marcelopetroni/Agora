@@ -89,7 +89,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-    <NavbarItems activePage='profile' />
+    <NavbarItems activePage="profile"/>
     <div className="profile-items">
     <div className="profile-page">
       <h2>Personal informations</h2>
