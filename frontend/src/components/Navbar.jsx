@@ -27,7 +27,7 @@ const NavbarItems = ({ className = "", activePage = "home" }) => {
             <LogoIcon />
           </div>
           <div className="circle-container">
-            <img src={ManImage} alt="Profile" className="profile-image" />
+            <img src={WomanImage} alt="Profile" className="profile-image" />
           </div>
         </div>
         <div className="frame-parent14">
