@@ -27,6 +27,7 @@ const createUser = async (req, res) => {
         searchFields, 
         hedera_account_id,
         password,
+        languages,
         type
       }
     });

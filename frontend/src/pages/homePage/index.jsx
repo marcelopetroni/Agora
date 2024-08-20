@@ -15,7 +15,7 @@ import Videomaker from "../../assets/videomaker.png";
 import VideoRecord from "../../assets/videorecord.png";
 import RecordedSongs from "../../assets/recordedSongs.png";
 import { Link } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./home.sass";
 
 const Home = () => {
