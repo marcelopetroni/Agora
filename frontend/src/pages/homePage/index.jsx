@@ -14,6 +14,8 @@ import Grid3 from "../../assets/gridImages4.png";
 import Videomaker from "../../assets/videomaker.png";
 import VideoRecord from "../../assets/videorecord.png";
 import RecordedSongs from "../../assets/recordedSongs.png";
+import Check from "../../assets/check";
+import CloseButton from "../../assets/closeButton";
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import "./home.sass";
@@ -23,13 +25,23 @@ const Home = () => {
   const [showCreateProject, setShowCreateProject] = useState(false);
 
   const [showDonationBox, setShowDonationBox] = useState(false);
+  const [showDonationMessage, setshowDonationMessage] = useState(false);
 
   const handleDonateClick = () => {
     setShowDonationBox(true);
   };
 
+  const handleMessageDonation = () => {
+    setShowDonationBox(false);
+    setshowDonationMessage(true);
+  };
+
   const handleCloseDonationBox = () => {
     setShowDonationBox(false);
+  };
+
+  const handleCloseDonationBox2 = () => {
+    setshowDonationMessage(false);
   };
 
   const handleOutsideClick = (e) => {
@@ -290,7 +302,25 @@ const Home = () => {
             {showDonationBox && (
               <div className="donation-box-overlay" onClick={handleOutsideClick}>
                 <div className="donation-box-content">
-                  <DonationBox onClose={handleCloseDonationBox} />
+                  <DonationBox onClose={handleCloseDonationBox} onClose2={handleMessageDonation}/>
+                </div>
+              </div>
+            )}
+            {showDonationMessage && (
+              <div className="donation-box-overlay" onClick={handleOutsideClick}>
+                <div className="donation-box-content2">
+                  <div className="closeButtonSvg" onClick={handleCloseDonationBox2}>
+                    <CloseButton/>
+                  </div>
+                  <div className="donation-message">
+                    <Check/>
+                    <div className="message-donation">
+                      Thank you for your donation!
+                    </div>
+                    <div className="message-donation2">
+                    Your support empower and connect talented artists with new opportunities. 
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
