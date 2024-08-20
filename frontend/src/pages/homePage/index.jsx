@@ -5,6 +5,12 @@ import DonationBox from "../../components/DonationBox";
 import SearchInput from "../../components/SearchInput";
 import CreateProject from "../../components/CreateProject";
 import WomanImage from "../../assets/woman.png";
+import Singer from "../../assets/singer.jpg";
+import Dancer from "../../assets/dancer2.jpg";
+import Guitarist from "../../assets/guitarist.jpg";
+import Grid from "../../assets/gridImages2.png";
+import Grid2 from "../../assets/gridImages3.png";
+import Grid3 from "../../assets/gridImages4.png";
 import Videomaker from "../../assets/videomaker.png";
 import VideoRecord from "../../assets/videorecord.png";
 import RecordedSongs from "../../assets/recordedSongs.png";
@@ -204,7 +210,7 @@ const Home = () => {
 
               <div className="donation-projects">
                 <div className="donation-box">
-                  <img src={Videomaker} alt="Project" className="donation-image" />
+                  <img src={Singer} alt="Project" className="donation-image" />
                   <div className="donation-title">Small town concert</div>
                   <div className="donation-description">
                     I'm doing my first concert in my hometown and I need to raise money to build the structure.
@@ -212,14 +218,14 @@ const Home = () => {
                   <div className="collaborators-section">
                     <div className="images-plus-collaborators">
                       <div className="collaborators-images">
-                        <div className="image-container">
-                          <img src={Videomaker} alt="Profile" className="profile-image3" />
+                      <div className="image-container">
+                          <img src={Grid} alt="Profile" className="profile-image3" />
                         </div>
                         <div className="image-container">
-                          <img src={Videomaker} alt="Profile" className="profile-image3" />
+                          <img src={Grid2} alt="Profile" className="profile-image3" />
                         </div>
                         <div className="image-container">
-                          <img src={Videomaker} alt="Profile" className="profile-image3" />
+                          <img src={Grid3} alt="Profile" className="profile-image3" />
                         </div>
                       </div>
                       <div className="collaborators-text">+ 10 collaborators</div>
@@ -229,7 +235,7 @@ const Home = () => {
                 </div>
 
                 <div className="donation-box">
-                  <img src={Videomaker} alt="Project" className="donation-image" />
+                  <img src={Dancer} alt="Project" className="donation-image" />
                   <div className="donation-title">Pay dance class</div>
                   <div className="donation-description">
                     I'm doing my first concert in my hometown and I need to raise money to build the structure.
@@ -237,14 +243,14 @@ const Home = () => {
                   <div className="collaborators-section">
                     <div className="images-plus-collaborators">
                       <div className="collaborators-images">
-                        <div className="image-container">
-                          <img src={Videomaker} alt="Profile" className="profile-image3" />
+                      <div className="image-container">
+                          <img src={Grid} alt="Profile" className="profile-image3" />
                         </div>
                         <div className="image-container">
-                          <img src={Videomaker} alt="Profile" className="profile-image3" />
+                          <img src={Grid2} alt="Profile" className="profile-image3" />
                         </div>
                         <div className="image-container">
-                          <img src={Videomaker} alt="Profile" className="profile-image3" />
+                          <img src={Grid3} alt="Profile" className="profile-image3" />
                         </div>
                       </div>
                       <div className="collaborators-text">+ 10 collaborators</div>
@@ -254,7 +260,7 @@ const Home = () => {
                 </div>
 
                 <div className="donation-box">
-                  <img src={Videomaker} alt="Project" className="donation-image" />
+                  <img src={Guitarist} alt="Project" className="donation-image" />
                   <div className="donation-title">New instrument</div>
                   <div className="donation-description">
                     I'm doing my first concert in my hometown and I need to raise money to build the structure.
@@ -262,14 +268,14 @@ const Home = () => {
                   <div className="collaborators-section">
                     <div className="images-plus-collaborators">
                       <div className="collaborators-images">
-                        <div className="image-container">
-                          <img src={Videomaker} alt="Profile" className="profile-image3" />
+                      <div className="image-container">
+                          <img src={Grid} alt="Profile" className="profile-image3" />
                         </div>
                         <div className="image-container">
-                          <img src={Videomaker} alt="Profile" className="profile-image3" />
+                          <img src={Grid2} alt="Profile" className="profile-image3" />
                         </div>
                         <div className="image-container">
-                          <img src={Videomaker} alt="Profile" className="profile-image3" />
+                          <img src={Grid3} alt="Profile" className="profile-image3" />
                         </div>
                       </div>
                       <div className="collaborators-text">+ 10 collaborators</div>

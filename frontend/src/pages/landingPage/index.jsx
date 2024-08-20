@@ -3,11 +3,64 @@ import './landing.sass';
 import LanguageSelector from '../../components/LanguageSelector';
 import ArtisticFieldSelector from '../../components/ArtisticFieldSelector';
 import CountrySelector from '../../components/CountrySelector';
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
-  const [step, setStep] = useState('login'); // Inicial state of login screen
+  const [step, setStep] = useState('login');
+  const navigate = useNavigate();
 
-  // to handle with the screen change
+  const [name, setName] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [country, setCountry] = useState('');
+  const [languages, setLanguages] = useState([]);
+  const [searchFields, setSearchFields] = useState([]);
+ 
+  const handleRegisterClick = async (e) => {
+    e.preventDefault();
+  
+    const newUser = {
+      name,
+      email,
+      birthDate,
+      password,
+      country,
+      searchFields: JSON.stringify(searchFields),
+      private_key: null,
+      hedera_account_id: null,
+    };    
+  
+    try {
+      const response = await fetch('https://agorahacka.onrender.com/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('User created:', data);
+  
+        setName('');
+        setEmail('');
+        setBirthDate('');
+        setPassword('');
+        setCountry('');
+        setLanguages([]);       
+        setSearchFields([]); 
+  
+      } else {
+        console.error('Failed to create user');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  
   const handleSignUpClick = () => {
     setStep('chooseRole');
   };
@@ -20,16 +73,37 @@ const LandingPage = () => {
     setStep('login');
   };
 
-  const handleLogin = () => {
-    useState('')
-  }
-
-  const handleRegister = () => {
-    useState('')
-  }
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
   // Anchors
+    const credentials = { email, password };
 
+    try {
+      const response = await fetch('https://agorahacka.onrender.com/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
+        console.log('Login successful');
+
+        // go to "/home" if it's authenticated
+        navigate('/home');
+      } else {
+        console.error('Login failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  // Anchors
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -49,8 +123,13 @@ const LandingPage = () => {
             <li onClick={() => scrollToSection('feedback')}>Feedback</li>
           </ul>
           <div className="auth-buttons">
-            <button className="login" onClick={() => (scrollToSection('join'), handleLoginClick())}  >Login</button>
-            <button className="register" onClick={() => (scrollToSection('join'), handleSignUpClick())}>Register</button>
+            <a href="#login-section">
+              <button className="login" onClick={handleLoginClick}>Login</button>
+            </a>
+            <a href="#login-section">
+              <button className="register" onClick={() => (scrollToSection('join'), handleSignUpClick())}>Register</button>
+            </a>
+            
           </div>
         </nav>
       </header>
@@ -91,8 +170,8 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Seção de Login */}
-      <div id='join' className="login-section">
+      {/* Login Section */}
+      <div id="login-section" className="login-section">
         {step === 'login' && (
           <div className="login-content">
             <div className="signup-info">
@@ -102,14 +181,12 @@ const LandingPage = () => {
             <div className="login-form">
               <h3>Welcome Back</h3>
               <p>We're glad you're here</p>
-              <form>
+              <form onSubmit={handleLogin}>
                 <label>Email</label>
-                <input type="email" />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <label>Password</label>
-                <input type="password" />
-                <a href='/home' >
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit" className="login-button" onClick={handleLogin}>Login</button>
-                </a>
               </form>
             </div>
           </div>
@@ -142,49 +219,47 @@ const LandingPage = () => {
                 <div className='form-line'>
                   <div className='name-input'>
                     <label>Full Name</label>
-                    <input type="text" />
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
                   </div>
                   <div className='date-input'>
                     <label>Date of Birth</label>
-                    <input type="date" />
+                    <input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} />
                   </div>
                   <div>
-                    <CountrySelector />
+                    <CountrySelector setCountry={setCountry} />
                   </div>
                 </div>
                 <div className='form-line'>
                   <div>
                     <label>E-mail</label>
-                    <input type="email" />
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                   </div>
                   <div>
                     <label>Password</label>
-                    <input type="password" />
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                   </div>
                 </div>
                 <div>
                 <div>
-                  <LanguageSelector />
+                  <LanguageSelector setLanguages={setLanguages} />
                 </div>
                 </div>
                 <div>
-                 <ArtisticFieldSelector />
+                  <ArtisticFieldSelector setSearchFields={setSearchFields} />
                 </div>
               </form>
               <div className='checkbox-section'>
                 <input className='checkbox' type="checkbox" />
                 <p className='checkbox-label'>I agree to the <a href="#">terms and policies</a><p>and confirm that I have read and understood them.</p></p>
-                <a href='/home' >
-                <button type="submit" className="register-button" onClick={handleRegister} >Register</button>
-                </a>
+                <button type="submit" className="register-button" onClick={handleRegisterClick}>Register</button>
               </div>
             </div>
           </div>
         )}
       </div>
 
-    {/* Seção Hedera Hashgraph */}
-    <div id='security' className="hedera-section">
+    {/* Hedera Hashgraph Section */}
+    <div className="hedera-section">
         <div className="hedera-content">
           <div className="hedera-left">
             <h2>Built on</h2>
