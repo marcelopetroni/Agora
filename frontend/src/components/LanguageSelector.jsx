@@ -74,7 +74,7 @@ const LanguageSelector = ({ setLanguages }) => {
           onChange={handleInputChange}
           onFocus={() => setShowDropdown(true)}
         />
-        <img src='./src/assets/DownArrow.svg' className="dropdown-icon" onClick={handleSelectClick} />
+        <img src='/DownArrow.svg' className="dropdown-icon" onClick={handleSelectClick} />
         {showDropdown && filteredLanguages.length > 0 && (
           <ul className="dropdown">
             {filteredLanguages.map((language) => (
