@@ -120,7 +120,7 @@ const LandingPage = () => {
     <div className="landing-page">
       <header className="header">
         <nav className="navbar">
-          <img src='./src/assets/landingPage/agoraLogo.svg' alt="Agora Logo" className="logo"/>
+          <img src='/agoraLogo.svg' alt="Agora Logo" className="logo"/>
           <ul>
             <li onClick={() => scrollToSection('about')}>About Us</li>
             <li onClick={() => scrollToSection('join')}>Join</li>
@@ -144,7 +144,7 @@ const LandingPage = () => {
           <div className='overview-container'>
             <div id='about' className="welcome-text">
               <h1>Welcome to</h1>
-              <img src='./src/assets/landingPage/agoraLogoName.svg' alt="Agora Name Logo"/>
+              <img src='/agoraLogoName.svg' alt="Agora Name Logo"/>
               <p>Connecting Talent and Opportunity</p>
             </div>
             <div className="description">
@@ -268,7 +268,7 @@ const LandingPage = () => {
         <div className="hedera-content">
           <div className="hedera-left">
             <h2>Built on</h2>
-            <img src='./src/assets/landingPage/hederaLogo.svg' alt="Hedera Logo"/>
+            <img src='/hederaLogo.svg' alt="Hedera Logo"/>
           </div>
           <div className="hedera-right">
             <h1>Security and Trust</h1>
@@ -295,7 +295,7 @@ const LandingPage = () => {
             <p>Lorem ipsum dolor sit amet consectetur. Sed eleifend nibh vitae eros consequat sed odio. Orci a posuere fermentum consectetur elementum.</p>
           </div>
           <div className="card highlighted">
-            <img src='./src/assets/landingPage/cristinaPhoto.svg' alt="Cristina Amaral" className="specialist-photo"/>
+            <img src='/cristinaPhoto.svg' alt="Cristina Amaral" className="specialist-photo"/>
             <h4>Brazilian Singer</h4>
             <p>Cristina Amaral</p>
             <p>Lorem ipsum dolor sit amet consectetur. Sed eleifend nibh vitae eros consequat sed odio. Orci a posuere fermentum consectetur elementum.</p>
@@ -313,7 +313,7 @@ const LandingPage = () => {
       <footer className="footer">
         <div className="footer-content">
           <div className='footer-logo'>
-            <img src='./src/assets/landingPage/agoraLogoNameBlack.svg' alt="Agora Footer Logo"/>
+            <img src='/agoraLogoNameBlack.svg' alt="Agora Footer Logo"/>
             <p>AGORA™. All rights reserved.</p>
           </div>
           <div className="footer-links">
