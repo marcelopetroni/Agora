@@ -59,7 +59,7 @@ const ArtisticFieldSelector = ({ setSearchFields }) => {
           onChange={handleInputChange}
           onFocus={() => setShowDropdown(true)}
         />
-        <img src='./src/assets/DownArrow.svg' className="dropdown-icon" onClick={handleSelectClick} />
+        <img src='/DownArrow.svg' className="dropdown-icon" onClick={handleSelectClick} />
         {showDropdown && filteredFields.length > 0 && (
           <ul className="dropdown">
             {filteredFields.map((field) => (
