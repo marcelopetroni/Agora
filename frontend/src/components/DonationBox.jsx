@@ -1,8 +1,37 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./Donation.sass";
 import PhotoIndicator from '../assets/photoIndicator';
 
 const DonationBox = ({ onClose }) => {
+
+  const [walletAddress, setWalletAddress] = useState('');
+
+  const connectWallet = async () => {
+      if (window.ethereum) {
+          try {
+              const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+              setWalletAddress(accounts[0]);
+          } catch (error) {
+              console.error('Error connecting to MetaMask:', error);
+          }
+      } else {
+          alert('MetaMask is not installed. Please install it to use this app.');
+      }
+  };
+
+  useEffect(() => {
+      if (window.ethereum) {
+          window.ethereum.on('accountsChanged', (accounts) => {
+              setWalletAddress(accounts[0]);
+          });
+
+          window.ethereum.on('chainChanged', () => {
+              window.location.reload();
+          });
+      }
+  }, []);
+
+
   return (
     <div className="donation-box-overlay">
       <div className="donation-box-content">
@@ -35,8 +64,14 @@ const DonationBox = ({ onClose }) => {
                 <div className="input-wrapper">
                     <div className="amount-label">US$</div>
                     <input type="text" placeholder="00,00" />
+                  <div>
+                    {walletAddress ? (
+                        <p>Connected</p>
+                    ) : (
+                        <button className="connect-wallet" onClick={connectWallet}>Connect Wallet</button>
+                    )}
                 </div>
-                <button className="connect-wallet">Connect Wallet</button>
+                </div>
             </div>
             </div>
         </div>
