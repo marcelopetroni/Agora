@@ -15,6 +15,8 @@ const LandingPage = () => {
   const [password, setPassword] = useState('');
   const [country, setCountry] = useState('');
   const [languages, setLanguages] = useState([]);
+  const [role, setRole] = useState();
+  
   const [searchFields, setSearchFields] = useState([]);
  
   const handleRegisterClick = async (e) => {
@@ -26,6 +28,7 @@ const LandingPage = () => {
       birthDate,
       password,
       country,
+      type: role,
       searchFields: JSON.stringify(searchFields),
       private_key: null,
       hedera_account_id: null,
@@ -66,6 +69,7 @@ const LandingPage = () => {
   };
 
   const handleRoleClick = (role) => {
+    setRole(role)
     setStep('personalInfo');
   };
 
@@ -202,7 +206,7 @@ const LandingPage = () => {
               <h3>Which role fits you best?</h3>
               <p>Choose the option that describes your talent or priorities.</p>
               <button className="role-button artist" onClick={() => handleRoleClick('artist')}>I am an <strong>Artist</strong></button>
-              <button className="role-button hunter" onClick={() => handleRoleClick('hunter')}>I am an <strong>Talent Hunter</strong></button>
+              <button className="role-button hunter" onClick={() => handleRoleClick('talent_hunter')}>I am an <strong>Talent Hunter</strong></button>
             </div>
           </div>
         )}

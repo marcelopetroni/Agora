@@ -15,7 +15,7 @@ const getUsers = async (req, res) => {
 
 // POST: Add new user
 const createUser = async (req, res) => {
-  const { name, email, birthDate, country, searchFields, password, hedera_account_id } = req.body;
+  const { name, email, birthDate, country, searchFields, password, hedera_account_id, type } = req.body;
 
   try {
     const user = await prisma.user.create({
@@ -27,6 +27,7 @@ const createUser = async (req, res) => {
         searchFields, 
         hedera_account_id,
         password,
+        type
       }
     });
     res.status(201).json(user); 
