@@ -76,6 +76,7 @@ const LandingPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+  // Anchors
     const credentials = { email, password };
 
     try {
@@ -250,6 +251,7 @@ const LandingPage = () => {
               <div className='checkbox-section'>
                 <input className='checkbox' type="checkbox" />
                 <p className='checkbox-label'>I agree to the <a href="#">terms and policies</a><p>and confirm that I have read and understood them.</p></p>
+                <button type="submit" className="register-button" onClick={handleRegister} >Register</button>
                 <button type="submit" className="register-button" onClick={handleRegisterClick}>Register</button>
               </div>
             </div>
