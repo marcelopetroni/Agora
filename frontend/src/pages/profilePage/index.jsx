@@ -4,7 +4,7 @@ import HunterProfile from '../../components/HunterProfile';
 
 const getAccountType = () => {
 
-return 'artist';
+return 'talent_hunter';
 
 };
 
@@ -13,7 +13,7 @@ const Profile = () => {
 
   if (accountType === 'artist') {
     return <ArtistProfile />;
-  } else if (accountType === 'talent-hunter') {
+  } else if (accountType === 'talent_hunter') {
     return <HunterProfile />;
   } else {
     return <div>Invalid account type.</div>;

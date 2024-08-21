@@ -4,6 +4,7 @@ import NavbarItems from './Navbar';
 import CountrySelector from './CountrySelector';
 import LanguageSelector from './LanguageSelector';
 import ArtisticFieldSelector from './ArtisticFieldSelector';
+import ManImage from '../assets/man.jpg'
 
 const Profile = () => {
   return (
@@ -14,7 +15,7 @@ const Profile = () => {
           <h2>Personal informations</h2>
           <form className="profile-form">
             <div className="profile-picture">
-              <img src="/man.jpg" alt="Profile" />
+              <img src={ManImage} alt="Profile" />
               <button className="upload-button">Upload new picture</button>
             </div>
     
