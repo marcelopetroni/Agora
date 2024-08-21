@@ -23,7 +23,7 @@ const Profile = () => {
               <div className="form-line">
                 <div className="email-field">
                   <label>Full Name</label>
-                  <input type="text" value="Joana de Sá" />
+                  <input type="text" value="Tyler" />
                 </div>
                 <div className="form-field">
                   <label>Date of birth</label>
@@ -37,7 +37,7 @@ const Profile = () => {
               <div className="form-line">
                 <div className="email-field">
                   <label>E-mail</label>
-                    <input className='email-input' type="email" value="joana.sa@example.com" />
+                    <input className='email-input' type="email" value="tyler@hotmail.com" />
                   </div>
                 <div className="form-field">
                   <label>Password</label>
