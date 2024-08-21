@@ -128,10 +128,10 @@ const LandingPage = () => {
             <li onClick={() => scrollToSection('feedback')}>Feedback</li>
           </ul>
           <div className="auth-buttons">
-            <a href="#login-section">
+            <a href="#join">
               <button className="login" onClick={handleLoginClick}>Login</button>
             </a>
-            <a href="#login-section">
+            <a href="#join">
               <button className="register" onClick={() => (scrollToSection('join'), handleSignUpClick())}>Register</button>
             </a>
             
@@ -176,7 +176,7 @@ const LandingPage = () => {
       </div>
 
       {/* Login Section */}
-      <div id="login-section" className="login-section">
+      <div id="join" className="login-section">
         {step === 'login' && (
           <div className="login-content">
             <div className="signup-info">
@@ -264,7 +264,7 @@ const LandingPage = () => {
       </div>
 
     {/* Hedera Hashgraph Section */}
-    <div className="hedera-section">
+    <div id='security' className="hedera-section">
         <div className="hedera-content">
           <div className="hedera-left">
             <h2>Built on</h2>
