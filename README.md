@@ -26,7 +26,7 @@ Aligned with Web3 principles, Agora promotes a decentralized, fair, and transpar
 ![Hedera Hashgraph](https://img.shields.io/badge/Hedera%20Hashgraph-2C3454?style=for-the-badge&logo=hedera&logoColor=white)
 
 ## Project Demo Link 🔗
-- colocar aqui o link do testnet
+- [Project site](https://agora-liart.vercel.app/)
 
 ## Team 🏆
 
@@ -38,7 +38,31 @@ Aligned with Web3 principles, Agora promotes a decentralized, fair, and transpar
 ## Documentation 📄
 
 - [Figma](https://www.figma.com/design/z0LVUH2xzazGOR9SXHCKX5/Agora---Hedera-Hackathon?node-id=0-1&t=NfeaWuxFurA2sJEP-1)
-- add pitch quando tiver pronto
-- add video da solução também
-  
+- [Pitch](https://drive.google.com/file/d/1W9drPUFJgocR1hrkHcj75Eb9dQUmMiem/view)
+- [Demo Video](https://www.youtube.com/watch?v=T5lC7Mt8H6c)
 
+## How to acess our page ⬇️
+  1. Go to our project website: [Project site](https://agora-liart.vercel.app/)
+  2. Click in "Login"
+  3. Insert the fields:
+#### Tyler: Talent Hunter
+```bash
+Email: tyler@hotmail.com
+Password: 123
+```
+
+## Try yourself 🏃
+### Clone the repository
+Write the following commands in the terminal to test the frontend:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Write the following commands in the terminal to test the backend:
+```bash
+cd backend
+npm install
+npm run start
+```
+  
