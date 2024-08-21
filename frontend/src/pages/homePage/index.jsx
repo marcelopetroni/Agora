@@ -21,7 +21,7 @@ import { useState, useEffect } from "react";
 import "./home.sass";
 
 const Home = () => {
-  const [userType, setUserType] = useState("artist");
+  const [userType, setUserType] = useState("talent_hunter");
   const [showCreateProject, setShowCreateProject] = useState(false);
 
   const [showDonationBox, setShowDonationBox] = useState(false);
