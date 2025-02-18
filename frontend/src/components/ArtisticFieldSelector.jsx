@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ArtisticFieldSelector.sass'
 
 const ArtisticFieldSelector = ({ setSearchFields }) => {
-  const allFields = ['Music', 'Theater', 'Dance', 'Painting', 'Sculpture', 'Photography', 'Film', 'Literature'];
+  const allFields = ['Música', 'Teatro', 'Dança', 'Pintura', 'Escultura', 'Fotografia', 'Cinema', 'Literatura'];
   const [filteredFields, setFilteredFields] = useState(allFields);
   const [selectedFields, setSelectedFields] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -43,7 +43,7 @@ const ArtisticFieldSelector = ({ setSearchFields }) => {
 
   return (
     <div className="field-selector">
-      <label>Artistic Field</label>
+      <label>Ramo Artístico</label>
       <div className="field-input">
         <ul className="field-list">
           {selectedFields.map((field) => (

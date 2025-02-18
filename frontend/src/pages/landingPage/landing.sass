@@ -6,7 +6,7 @@ body
   overflow-x: hidden
 
 .landing-page
-  background: #2B2726
+  background: rgba(60, 35, 60, 1)
   color: #f8f8f8
   font-family: 'Amiko', sans-serif
 
@@ -17,62 +17,64 @@ body
   display: flex
   flex-direction: row
   align-items: center
-  
+  width: 100%
+  justify-content: space-between
 
-.navbar
-  display: flex
-  flex-direction: row
-  align-items: center
-  margin-right: auto
-
-  ul
+  .navbar
     display: flex
-    list-style: none
-    color: #FFF
-    text-align: center
-    font-family: Amiko, sans-serif
-    font-size: 20px
-    font-style: normal
-    font-weight: 600
-    line-height: normal
-    letter-spacing: 2px
+    flex-direction: row
+    align-items: center
+    margin-right: auto
+    
 
-    li
-      margin: 0 15px
+    ul
+      display: flex
+      list-style: none
+      color: #FFF
+      text-align: center
+      font-family: Amiko, sans-serif
+      font-size: 20px
+      font-style: normal
+      font-weight: 600
+      line-height: normal
+      letter-spacing: 2px
+
+      li
+        margin: 0 15px
+        cursor: pointer
+
+  .auth-buttons
+    position: relative
+    display: flex
+    align-items: center
+    right: 50px
+    gap: 15px
+
+    .login
+      color: rgba(231, 227, 227, 1)
+      background: none
+      border: none
+      font-family: Amiko
+      font-size: 20px
+      font-weight: 400
+      letter-spacing: 2px
+      margin-left: auto
       cursor: pointer
 
-.auth-buttons
-  position: absolute
-  display: flex
-  align-items: center
-  gap: 15px
-  left: 170vh
-
-  .login
-    color: #E6D9AE
-    background: none
-    border: none
-    font-family: Amiko
-    font-size: 20px
-    font-weight: 400
-    letter-spacing: 2px
-    margin-left: auto
-    cursor: pointer
-
-  .register
-    color: #2B2726
-    font-family: Amiko, sans-serif
-    font-size: 20px
-    font-weight: 600
-    letter-spacing: 2px
-    width: 126px
-    height: 40px
-    border-radius: 60px
-    border: none
-    background: #E6D9AE
-    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25)
-    margin-left: auto
-    cursor: pointer
+    .register
+      color: rgba(43, 39, 38, 1)
+      font-family: Amiko, sans-serif
+      font-size: 20px
+      font-weight: 600
+      letter-spacing: 2px
+      width: 200px
+      height: 40px
+      border-radius: 60px
+      border: none
+      background: rgba(231, 227, 227, 1)
+      box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25)
+      margin-left: auto
+      cursor: pointer
 
 .content
   display: flex
@@ -82,10 +84,9 @@ body
   text-align: center
 
 .background-overlay
-  background: linear-gradient(0deg, rgba(43, 39, 38, 0.53) 0%, rgba(43, 39, 38, 0.53) 100%), linear-gradient(178deg, rgba(43, 39, 38, 0.00) 51.59%, #2B2726 96.07%), linear-gradient(93deg, rgba(43, 39, 38, 0.00) 37.19%, #2B2726 92.51%), linear-gradient(359deg, rgba(43, 39, 38, 0.00) 69.77%, #2B2726 93.04%), url('/grecia.svg') lightgray 50% / cover no-repeat
+  background: linear-gradient(359.14deg, rgba(60, 35, 60, 0) 69.77%, #3C233C 93.04%), linear-gradient(84.03deg, rgba(60, 35, 60, 0) 40.66%, rgba(60, 35, 60, 0.875972) 74.4%, #3C233C 93.87%), linear-gradient(178.49deg, rgba(60, 35, 60, 0) 51.59%, #3C233C 96.07%), linear-gradient(0deg, rgba(60, 35, 60, 0.08), rgba(60, 35, 60, 0.08)),  url('/bgLandingPage.png')
   background-size: cover
   padding-top: 200px
-  margin-bottom: 80px
   width: 100vw
   height: 100vh
 
@@ -161,7 +162,7 @@ body
       height: 200px
       flex-shrink: 0
       border-radius: 10px
-      background: #4D4A4C
+      background: rgba(83, 55, 83, 1)
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
 
       h4
@@ -187,15 +188,20 @@ body
 
 .login-section
   background-color: #f4f4f4
-  padding: 20px 0
+  padding: 30px
+  padding-top: 80px
   width: 100%
-  height: 25em
+  height: 28em
 
 .login-content
   display: flex
   justify-content: center
   align-items: center
   gap: 100px
+  background-color: #f4f4f4
+  padding: 20px 0
+  width: 100%
+  height: 20em
 
 .signup-info
   h2
@@ -231,7 +237,7 @@ body
 
 .login-form
   padding: 40px
-  width: 350px
+  width: 400px
 
   h3
     color: #2B2726
@@ -277,7 +283,8 @@ body
     flex-shrink: 0
     border-radius: 10px
     border: none
-    background: #2B2726
+    background: rgba(121, 7, 7, 1)
+
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
     cursor: pointer
 
@@ -339,8 +346,9 @@ body
     cursor: pointer
 
   .artist
-    background-color: #E6D9AE
-    color: #2c2c2c
+    background-color: rgba(83, 55, 83, 1)
+    color: rgba(255, 255, 255, 1)
+
 
 /* Personal Information Form */
 
@@ -348,9 +356,16 @@ body
   display: flex
   justify-content: center
   align-items: center
-  gap: 100px
+  // gap: 50px
+  background-color: #f4f4f4
+  padding: 20px 0
+  width: 100%
+  height: 20em
 
 .personal-info-form
+  display: flex
+  flex-direction: column
+  padding: 40px
   width: 550px
 
   h3
@@ -410,10 +425,9 @@ body
       display: flex
       flex-direction: row
       align-items: center
-      gap: 2px
       color: #000
       font-family: Amiko, sans-serif
-      font-size: 8px
+      font-size: 10px
       font-weight: 600
       
       a
@@ -421,10 +435,15 @@ body
         font-weight: bold
 
       p
-        color: #B6926F  
+        color: #B6926F
+
+  .register-button-div
+    display: flex
+    justify-content: right
+    align-items: right
 
     .register-button
-      background-color: #2c2c2c
+      background-color: rgba(121, 7, 7, 1)
       color: #fff
       padding: 10px
       border: none
@@ -433,91 +452,12 @@ body
       font-family: Amiko, sans-serif
       font-size: 16px
       font-weight: 700
-      margin-left: 10vh
-
-    
-
-
-
-  
-
-    /* Seção Hedera Hashgraph */
-
-.hedera-section
-  background: #2B2726
-  padding: 60px 20px
-  color: #f8f8f8
-
-.hedera-content
-  display: flex
-  flex-direction: row
-  align-items: center
-  max-width: 1200px
-  margin: 0 auto
-  gap: 15px
-
-.hedera-left
-  max-width: 600px
-  margin-right: 100px 
-  align-items: center
-
-  h2
-    color: #E6D9AE
-    font-family: Amiko, sans-serif
-    font-size: 30px
-    font-style: normal
-    font-weight: 400
-    line-height: normal
-    letter-spacing: 3px
-
-  img
-    width: 583px
-    height: 153px
-    flex-shrink: 0
-
-.hedera-right
-  max-width: 600px
-
-  h1
-    color: #FFF
-    font-family: Amiko, sans-serif
-    font-size: 36px
-    font-style: normal
-    font-weight: 700
-    line-height: normal
-    letter-spacing: 3.6px
-
-  p
-    color: #FFF
-    font-family: Amiko, sans-serif
-    font-size: 17px
-    font-style: normal
-    font-weight: 400
-    line-height: normal
-    letter-spacing: 1.7px
-
-  .visit-hedera
-    width: 146px
-    height: 36px
-    color: #2B2726
-    text-align: center
-    font-family: Amiko, sans-serif
-    font-size: 16px
-    font-style: normal
-    font-weight: 700
-    line-height: normal
-    border-radius: 10px
-    border: none
-    background: #E6D9AE
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
-    cursor: pointer
 
 /* Seção de Depoimentos */
 
 .testimonials-section
-  background: #2B2726
+  background: rgba(60, 35, 60, 1)
   padding: 60px 20px
-
   h3
     color: #FFF
     text-align: center
@@ -559,15 +499,19 @@ body
         line-height: normal
 
       p
-        color: #2c2c2c
+        color: rgba(0, 0, 0, 1)
         font-family: Amiko, sans-serif
         font-size: 14px
         line-height: 1.6
 
     .highlighted
       border-radius: 30px
-      background: #E6D9AE
+      background: rgba(83, 55, 83, 1)
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+
+      p
+        color: rgba(255, 255, 255, 1)
+
 
 
       .specialist-photo
@@ -579,7 +523,7 @@ body
 /* Footer */
 
 .footer
-  background: #E6D9AE
+  background: rgba(83, 55, 83, 1)
   padding: 20px 0
   height: 100px
   width: 100%
@@ -599,7 +543,8 @@ body
         max-width: 220px
         height: auto
       p
-        color: #000
+        color: rgba(238, 235, 179, 1)
+
         font-family: Amiko, sans-serif
         font-size: 14px
         font-style: normal
@@ -613,7 +558,7 @@ body
     gap: 15px
 
     a
-      color: #2c2c2c
+      color: rgba(238, 235, 179, 1)
       font-family: Amiko, sans-serif
       font-size: 14px
       text-decoration: none
