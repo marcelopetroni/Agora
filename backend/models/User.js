@@ -9,11 +9,11 @@ export default class User extends Sequelize.Model {
 			password: DataTypes.STRING
 			},
 			{
-			timestamps: true,
+			timestamps: false,
 			paranoid: true,
 			sequelize,
 			modelName: 'User',
-			tableName: 'Users',
+			tableName: 'users',
 			createdAt: 'created_at',
 			updatedAt: 'updated_at',
 			deletedAt: 'deleted_at'

@@ -9,7 +9,7 @@ export default {
 	test: {
 		username: 'postgres',
 		password: '123',
-		database: 'teste',
+		database: 'Agora',
 		host: '127.0.0.1',
 		dialect: 'postgres',
 	},
