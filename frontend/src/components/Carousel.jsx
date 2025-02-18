@@ -11,9 +11,9 @@ const Carousel = () => {
     const contents = [
         {
             title: 'Luna Vega',
-            roles: ['Singer', 'Dancer'],
+            roles: ['Cantora', 'Dançarina'],
             imageUrl: Singer,
-            description: "Hi, I'm Luna Vega, a passionate singer and dancer dedicated to creating unforgettable experiences for my audience. From a young age, music and dance have been at the center of...",
+            description: "Oi, eu sou Luna Vega, uma cantora e dançarina apaixonada, dedicada a criar experiências inesquecíveis para meu público. Desde muito jovem, a música e a dança estiveram no centro da minha vida...",
         },
         {
             title: 'Jade Tori',

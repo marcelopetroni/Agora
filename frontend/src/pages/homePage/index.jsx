@@ -84,9 +84,9 @@ const Home = () => {
             </>
           ) : (
             <>
-              <div className="title-container-home">Hello, Tyler!</div>
+              <div className="title-container-home">Olá, Tayler!</div>
               <div className="sub-title-talent-hunter">
-                Meet the talents that you're looking for right here.
+                Encontre os talentos que você procura aqui!
               </div>
             </>
           )}
