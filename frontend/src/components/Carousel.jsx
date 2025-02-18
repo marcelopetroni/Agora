@@ -17,21 +17,21 @@ const Carousel = () => {
         },
         {
             title: 'Jade Tori',
-            roles: ['Singer', 'Dancer'],
+            roles: ['Cantora', 'Dançarina'],
             imageUrl: Singer2,
-            description: "Hi, I'm Jade Tori, a passionate singer and dancer dedicated to creating unforgettable experiences for my audience. From a young age, music and dance have been at the center of...",
+            description: "Oi, eu sou Jade Tori, uma cantora e dançarina apaixonada, dedicada a criar experiências inesquecíveis para meu público. Desde muito jovem, a música e a dança estiveram no centro da minha vida...",
         },
         {
             title: 'Joana de Sá',
-            roles: ['Singer', 'Dancer'],
+            roles: ['Cantora', 'Dançarina'],
             imageUrl: Woman,
-            description: "Hi, I'm Joana de Sá, a passionate singer and dancer dedicated to creating unforgettable experiences for my audience. From a young age, music and dance have been at the center of...",
+            description: "Oi, eu sou Joana de Sá, uma cantora e dançarina apaixonada, dedicada a criar experiências inesquecíveis para meu público. Desde muito jovem, a música e a dança estiveram no centro da minha vida...",
         },
         {
             title: 'Robert Sparks',
-            roles: ['Singer', 'Dancer'],
+            roles: ['Cantor', 'Dançarino'],
             imageUrl: Guitarist,
-            description: "Hi, I'm a new artist called Robert, a passionate singer and dancer dedicated to creating unforgettable experiences for my audience.",
+            description: "Olá, sou um novo artista chamado Robert, um cantor e dançarino apaixonado e dedicado a criar experiências inesquecíveis para o meu público.",
         },
     ];
 
@@ -75,7 +75,7 @@ const Carousel = () => {
                             ))}
                         </div>
                         <div className="carousel-description2">{contents[i].description}</div>
-                        <button className="see-more-button2">See more</button>
+                        <button className="see-more-button2">Leia mais</button>
                     </div>
                 ))}
             </div>

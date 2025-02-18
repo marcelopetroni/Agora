@@ -39,36 +39,36 @@ const DonationBox = ({ onClose, onClose2 }) => {
             <div className="left-section">
             <div className="image-placeholder"><PhotoIndicator/></div>
             <div className="info-group">
-                <div className="ends-in">Ends in:</div>
-                <div className="date">mm/dd/yy</div>
+                <div className="ends-in">Acaba em:</div>
+                <div className="date">dd/mm/aa</div>
             </div>
             <div className="progress-container2">
                 <div className="progress-bar2">
                 <div className="progress-filled2"></div>
                 </div>
                 <div className="progress-values2">
-                <span>US$150</span>
-                <span>US$200</span>
+                <span>R$150</span>
+                <span>R$200</span>
                 </div>
             </div>
             </div>
             <div className="right-section">
-            <div className="project-name">Project Name</div>
+            <div className="project-name">Nome do projeto</div>
             <div className="project-owner">Sofia Nogueira</div>
             <div className="project-description2">
-            I'm Sofia Nogueira, a singer and songwriter dedicated to turning emotions into music. I'm seeking partners and investors to help me launch my debut EP, a project I've been developing with great care and believe has the potential to make a meaningful impact.
+            Sou Sofia Nogueira, cantora e compositora dedicada a transformar emoções em música. Estou em busca de parceiros e investidores para me ajudar a lançar meu EP de estreia, um projeto que venho desenvolvendo com muito carinho e que acredito ter o potencial de causar um impacto significativo.
             </div>
-            <div className="payment-info">Payment Information</div>
-            <div className="amount">Amount</div>
+            <div className="payment-info">Informações de pagamento</div>
+            <div className="amount">Valor</div>
             <div className="input-and-button">
                 <div className="input-wrapper">
-                    <div className="amount-label">US$</div>
+                    <div className="amount-label">R$</div>
                     <input type="text" placeholder="00,00" />
                   <div>
                     {walletAddress ? (
                         <p>Connected</p>
                     ) : (
-                        <button className="connect-wallet" onClick={connectWallet}>Connect Wallet</button>
+                        <button className="connect-wallet" onClick={connectWallet}>Cadastrar cartão</button>
                     )}
                 </div>
                 </div>
@@ -76,8 +76,8 @@ const DonationBox = ({ onClose, onClose2 }) => {
             </div>
         </div>
         <div className="action-buttons">
-          <button className="cancel-button" onClick={onClose}>Cancel</button>
-          <button className="donate-button2" onClick={onClose2}>Donate</button>
+          <button className="cancel-button" onClick={onClose}>Cancelar</button>
+          <button className="donate-button2" onClick={onClose2}>Doar</button>
         </div>
       </div>
     </div>

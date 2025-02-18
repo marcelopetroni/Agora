@@ -16,7 +16,7 @@ const Profile = () => {
           <form className="profile-form">
             <div className="profile-picture">
               <img src={ManImage} alt="Profile" />
-              <button className="upload-button">Upload new picture</button>
+              <button className="upload-button">Enviar nova imagem</button>
             </div>
     
             <div className="form-group">
