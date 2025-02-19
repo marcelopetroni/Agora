@@ -5,7 +5,7 @@ import CountrySelector from './CountrySelector';
 import LanguageSelector from './LanguageSelector';
 import ArtisticFieldSelector from './ArtisticFieldSelector';
 import ManImage from '../assets/man.jpg'
-import { FaPen } from "react-icons/fa";
+import { FaPen, FaCalendarAlt, FaChevronDown } from "react-icons/fa";
 
 const Profile = () => {
   return (
@@ -31,9 +31,14 @@ const Profile = () => {
                     </span>
                   </div>
                 </div>
-                <div className="form-field">
-                  <label>Date of birth</label>
-                  <input type="date" value="1994-04-25" />
+                <div className="birth-field">
+                  <label>Data de nascimento</label>
+                  <div className="input-container">
+                    <input type="text" placeholder="dd/mm/aaaa" />
+                    <span className="calendar-icon">
+                      <FaCalendarAlt />
+                    </span>
+                  </div>
                 </div>
                 <div className="form-field">
                   <CountrySelector />

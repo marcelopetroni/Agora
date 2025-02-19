@@ -44,7 +44,7 @@
           flex-direction: column
           align-items: center
           margin-bottom: 20px
-          margin-right: 100px
+          margin-right: 35px
 
           img
             width: 180px
@@ -107,21 +107,70 @@
                 border: none
                 border-radius: 10px
                 font-size: 14px
-          
-          .name-field
-              font: Amiko
-              display: flex
-              flex-direction: column
-              width: 49%
 
-              label
+
+          .birth-field
+            font: Amiko, sans-serif
+            display: flex
+            flex-direction: column
+            width: 60%
+
+            label
                 font-size: 14px
+                margin-bottom: 5px  // Deixa a distância entre label e input menor
+                color: #2b2726
 
-              input
-                padding: 10px
+            .input-container
+                position: relative 
+                width: 70%
+
+            input
+                width: 100%
+                padding: 10px 50px 10px 15px
                 border: none
                 border-radius: 10px
                 font-size: 14px
+
+
+            .calendar-icon
+                position: absolute
+                right: 1px
+                top: 50%
+                transform: translateY(-50%)
+                font-size: 14px
+                color: #533753
+                pointer-events: none
+          
+          .name-field
+              font: Amiko, sans-serif
+              display: flex
+              flex-direction: column
+              width: 100%
+
+              label
+                font-size: 14px
+                margin-bottom: 5px  // Deixa a distância entre label e input menor
+                color: #2b2726
+
+              .input-container
+                position: relative 
+                width: 70%
+
+              input
+                width: 100%
+                padding: 10px 50px 10px 15px
+                border: none
+                border-radius: 10px
+                font-size: 14px
+
+              .edit-icon
+                position: absolute
+                right: 1px
+                top: 50%
+                transform: translateY(-50%)
+                font-size: 14px
+                color: #533753
+                pointer-events: none
 
           .password-field
             display: flex
