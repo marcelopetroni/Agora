@@ -1,6 +1,6 @@
 import express from 'express';
 import { sequelize } from './config/db.js';
-import { UserRoutes } from './routes/index.js';
+import { UserRoutes, ProjectRoutes } from './routes/index.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -13,7 +13,10 @@ app.use(express.json());
 app.use(cors());
 
 const userRoute = new UserRoutes();
+const projectRoute = new ProjectRoutes();
+
 app.use('/users', userRoute.setup());
+app.use('/projects', projectRoute.setup());
 
 sequelize.authenticate()
 .then(() => {

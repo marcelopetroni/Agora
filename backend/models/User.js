@@ -6,7 +6,13 @@ export default class User extends Sequelize.Model {
 			{
 			name: DataTypes.STRING,
 			email: DataTypes.STRING,
-			password: DataTypes.STRING
+			password: DataTypes.STRING,
+			birthDate: DataTypes.DATEONLY,
+			country: DataTypes.STRING,
+			languages: DataTypes.JSON,
+			artisticField: DataTypes.JSON,
+			company: DataTypes.STRING,
+			experience: DataTypes.STRING,
 			},
 			{
 			timestamps: false,
