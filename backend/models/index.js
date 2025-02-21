@@ -4,6 +4,7 @@ import User from './User.js';
 import Project from './Project.js';
 
 User.init(sequelize, Sequelize.DataTypes);
+Project.init(sequelize, Sequelize.DataTypes);
 
 const db = {
   sequelize,
