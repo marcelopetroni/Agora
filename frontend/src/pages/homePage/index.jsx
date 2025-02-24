@@ -21,7 +21,7 @@ import { useState, useEffect } from "react";
 import "./home.sass";
 
 const Home = () => {
-  const [userType, setUserType] = useState("talent_hunter");
+  const [userType, setUserType] = useState("artist");
   const [showCreateProject, setShowCreateProject] = useState(false);
 
   const [showDonationBox, setShowDonationBox] = useState(false);
@@ -66,19 +66,19 @@ const Home = () => {
         <div className="title-buttons">
           {userType === "artist" ? (
             <>
-              <div className="title-container-home">Hello, Joana de Sá!</div>
+              <div className="title-container-home">Olá, Joana de Sá!</div>
               <div className="button-container">
               <button
                 className={`projects-button ${!showCreateProject ? "active" : ""}`}
                 onClick={handleBackToProjects}
               >
-                Projects
+                Projetos
               </button>
               <button
                 className={`create-project-button ${showCreateProject ? "active" : ""}`}
                 onClick={toggleCreateProject}
               >
-                Create Project
+                Criar Projeto
               </button>
               </div>
             </>
@@ -98,21 +98,21 @@ const Home = () => {
           <>
             {userType === "artist" ? (
               <>
-                <div className="title-container2">My projects</div>
+                <div className="title-container2">Meus Projetos</div>
                 <section className="projects-container">
                   <div className="project-box">
                     <div className="project-image">
                       <img src={WomanImage} alt="Profile" className="profile-image2" />
                     </div>
                     <div className="project-details">
-                      <div className="project-title">My first EP</div>
+                      <div className="project-title">Meu primeiro EP</div>
                       <div className="project-description">
                         Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
                       </div>
                       <div className="progress-plus-buttons">
                         <div className="progress-content">
                           <div className="project-progress">
-                            <div className="progress-label">Progress:</div>
+                            <div className="progress-label">Progresso:</div>
                             <div className="progress-bar">
                               <div className="progress-filled"></div>
                             </div>
@@ -120,8 +120,8 @@ const Home = () => {
                           <div className="progress-percentage">30%</div>
                         </div>
                         <div className="project-buttons">
-                          <button className="finish-button">Finish</button>
-                          <button className="see-more-button">See More</button>
+                          <button className="finish-button">Finalizar</button>
+                          <button className="see-more-button">Ver mais</button>
                         </div>
                       </div>
                     </div>
@@ -132,14 +132,14 @@ const Home = () => {
                       <img src={Videomaker} alt="Profile" className="profile-image2" />
                     </div>
                     <div className="project-details">
-                      <div className="project-title">Pay videomaker</div>
+                      <div className="project-title">Contratar Editor</div>
                       <div className="project-description">
                         Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
                       </div>
                       <div className="progress-plus-buttons">
                         <div className="progress-content">
                           <div className="project-progress">
-                            <div className="progress-label">Progress:</div>
+                            <div className="progress-label">Progresso:</div>
                             <div className="progress-bar">
                               <div className="progress-filled"></div>
                             </div>
@@ -147,8 +147,8 @@ const Home = () => {
                           <div className="progress-percentage">30%</div>
                         </div>
                         <div className="project-buttons">
-                          <button className="finish-button">Finish</button>
-                          <button className="see-more-button">See More</button>
+                          <button className="finish-button">Finalizar</button>
+                          <button className="see-more-button">Ver mais</button>
                         </div>
                       </div>
                     </div>
@@ -159,14 +159,14 @@ const Home = () => {
                       <img src={VideoRecord} alt="Profile" className="profile-image2" />
                     </div>
                     <div className="project-details">
-                      <div className="project-title">Video record</div>
+                      <div className="project-title">Gravação de vídeo</div>
                       <div className="project-description">
                         Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
                       </div>
                       <div className="progress-plus-buttons">
                         <div className="progress-content">
                           <div className="project-progress">
-                            <div className="progress-label">Progress:</div>
+                            <div className="progress-label">Progresso:</div>
                             <div className="progress-bar">
                               <div className="progress-filled2"></div>
                             </div>
@@ -174,8 +174,8 @@ const Home = () => {
                           <div className="progress-percentage">70%</div>
                         </div>
                         <div className="project-buttons">
-                          <button className="finish-button">Finish</button>
-                          <button className="see-more-button">See More</button>
+                          <button className="finish-button">Finalizar</button>
+                          <button className="see-more-button">Ver mais</button>
                         </div>
                       </div>
                     </div>
@@ -186,14 +186,14 @@ const Home = () => {
                       <img src={RecordedSongs} alt="Profile" className="profile-image2" />
                     </div>
                     <div className="project-details">
-                      <div className="project-title">Record songs for my EP</div>
+                      <div className="project-title">Gravação das músicas</div>
                       <div className="project-description">
                         Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
                       </div>
                       <div className="progress-plus-buttons">
                         <div className="progress-content">
                           <div className="project-progress">
-                            <div className="progress-label">Progress:</div>
+                            <div className="progress-label">Progresso:</div>
                             <div className="progress-bar">
                               <div className="progress-filled2"></div>
                             </div>
@@ -201,8 +201,8 @@ const Home = () => {
                           <div className="progress-percentage">70%</div>
                         </div>
                         <div className="project-buttons">
-                          <button className="finish-button">Finish</button>
-                          <button className="see-more-button">See More</button>
+                          <button className="finish-button">Finalizar</button>
+                          <button className="see-more-button">Ver mais</button>
                         </div>
                       </div>
                     </div>
