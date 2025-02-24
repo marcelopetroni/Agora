@@ -31,6 +31,7 @@ const Profile = () => {
                     </span>
                   </div>
                 </div>
+
                 <div className="birth-field">
                   <label>Data de nascimento</label>
                   <div className="input-container">
@@ -51,10 +52,10 @@ const Profile = () => {
                   <input className='email-input' type="email" value="tyler@hotmail.com" />
                 </div>
                 <div className="form-field">
-                  <label>Password</label>
+                  <label>Senha</label>
                   <div className="password-field">
                     <input type="password" value="password123" />
-                    <button className="change-password">Change password</button>
+                    <button className="change-password">Mudar senha</button>
                   </div>
                 </div>
               </div>
