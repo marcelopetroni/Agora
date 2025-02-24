@@ -17,10 +17,10 @@ const UserSchema = {
                 .max(30, 'A senha pode ter até 30 caracteres')
                 .test('invalidFormat', 'Formato de senha inválido', value => isValidPassword(value))
                 .required('Senha é obrigatória'),
-            birthDate: yup.date().nullable(),
+            birth: yup.date().nullable(),
             country: yup.string().min(2).max(100).nullable(),
             languages: yup.array().of(yup.string()).nullable(),
-            artisticField: yup.array().of(yup.string()).nullable(),
+            field: yup.array().of(yup.string()).nullable(),
             company: yup.string().nullable(),
             experience: yup.string().nullable()
         }).noUnknown(),
