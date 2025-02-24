@@ -6,11 +6,11 @@ export default class Project extends Sequelize.Model {
             {
                 title: DataTypes.STRING,
                 type: DataTypes.STRING,
-                startDate: DataTypes.DATEONLY,
-                endDate: DataTypes.DATEONLY,
-                fundingGoal: DataTypes.DECIMAL(10, 2),
+                start: DataTypes.DATEONLY,
+                end: DataTypes.DATEONLY,
+                goal: DataTypes.DECIMAL(10, 2),
                 description: DataTypes.TEXT,
-                imageUrl: DataTypes.STRING
+                image: DataTypes.STRING
             },
             {
                 timestamps: false,
