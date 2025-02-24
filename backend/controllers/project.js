@@ -9,17 +9,17 @@ class ProjectController {
     }
 
     async create(req, res) {
-        const { title, type, startDate, endDate, fundingGoal, description, imageUrl } = req.body;
+        const { title, type, start, end, goal, description, image } = req.body;
 
         try {
             const project = await this.projectService.create({
                 title,
                 type,
-                startDate,
-                endDate,
-                fundingGoal,
+                start,
+                end,
+                goal,
                 description,
-                imageUrl
+                image
             });
 
             res.status(201).json({

@@ -10,17 +10,17 @@ class UserController {
     }
 
     async create(req, res) {
-        const { name, email, password, birthDate, country, languages, artisticField, company, experience} = req.body;
+        const { name, email, password, birth, country, languages, field, company, experience } = req.body;
 
         try {
             const user = await this.userService.create({
                 name,
                 email,
                 password,
-                birthDate,
+                birth,
                 country,
                 languages,
-                artisticField,
+                field,
                 company,
                 experience
             });

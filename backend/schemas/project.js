@@ -11,13 +11,13 @@ const ProjectSchema = {
                 .min(3, 'O tipo deve ter pelo menos 3 caracteres')
                 .max(50, 'O tipo pode ter até 50 caracteres')
                 .nullable(),
-            startDate: yup.date().nullable(),
-            endDate: yup.date().nullable(),
-            fundingGoal: yup.number()
+            start: yup.date().nullable(),
+            end: yup.date().nullable(),
+            goal: yup.number()
                 .min(0, 'A meta de financiamento deve ser um valor positivo')
                 .nullable(),
             description: yup.string().max(1000, 'A descrição pode ter até 1000 caracteres').nullable(),
-            imageUrl: yup.string().url('Formato de URL inválido').nullable()
+            image: yup.string().url('Formato de URL inválido').nullable()
         }).noUnknown(),
     },
 
@@ -28,11 +28,11 @@ const ProjectSchema = {
         body: yup.object({
             title: yup.string().min(3).max(100),
             type: yup.string().min(3).max(50),
-            startDate: yup.date(),
-            endDate: yup.date(),
-            fundingGoal: yup.number().min(0),
+            start: yup.date(),
+            end: yup.date(),
+            goal: yup.number().min(0),
             description: yup.string().max(1000),
-            imageUrl: yup.string().url(),
+            image: yup.string().url(),
         }).noUnknown(),
     },
 };
