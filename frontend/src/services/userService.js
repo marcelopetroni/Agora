@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://agora-production-0cb9.up.railway.app/';
+const API_URL = 'https://agora-production-0cb9.up.railway.app';
 
 export const userService = {
 	getAllUsers: async () => {
@@ -13,17 +13,17 @@ export const userService = {
 		}
 	},
 
-	login: async () => {
-		try {
-			const response = await axios.post(`${API_URL}/users/login`);
-			return response.data;
-		} catch (error) {
-			console.error('Error fetching users:', error);
-			throw error;
-		}
-	},
+	login: async credentials => {
+        try {
+            const response = await axios.post(`${API_URL}/users/login`, credentials);
+            return response.data;
+        } catch (error) {
+            console.error('Error logging in:', error.response?.data || error.message);
+            throw error;
+        }
+    },
 
-	createUser: async (userData) => {
+	createUser: async userData => {
 		try {
 			const response = await axios.post(`${API_URL}/users/create-user`, userData);
 			return response.data;
@@ -33,7 +33,7 @@ export const userService = {
 		}
 	},
 
-	updateUser: async (userData) => {
+	updateUser: async userData => {
 		try {
 			const response = await axios.put(`${API_URL}/users/update-user`, userData);
 			return response.data;
