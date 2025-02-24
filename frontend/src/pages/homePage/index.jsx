@@ -60,7 +60,10 @@ const Home = () => {
 
   return (
     <div className="homepage-container">
-      <NavbarItems activePage="home" />
+      <NavbarItems 
+        activePage="home"
+        userType={userType}  
+    />
       <div className="home-items">
         {/* Cabeçalho fixo */}
         <div className="title-buttons">
