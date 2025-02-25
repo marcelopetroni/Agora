@@ -21,7 +21,7 @@ import { useState, useEffect } from "react";
 import "./home.sass";
 
 const Home = () => {
-  const [userType, setUserType] = useState("talent_hunter");
+  const [userType, setUserType] = useState("artist");
   const [showCreateProject, setShowCreateProject] = useState(false);
 
   const [showDonationBox, setShowDonationBox] = useState(false);
@@ -60,33 +60,36 @@ const Home = () => {
 
   return (
     <div className="homepage-container">
-      <NavbarItems activePage="home" />
+      <NavbarItems 
+        activePage="home"
+        userType={userType}  
+    />
       <div className="home-items">
         {/* Cabeçalho fixo */}
         <div className="title-buttons">
           {userType === "artist" ? (
             <>
-              <div className="title-container-home">Hello, Joana de Sá!</div>
+              <div className="title-container-home">Olá, Joana de Sá!</div>
               <div className="button-container">
               <button
                 className={`projects-button ${!showCreateProject ? "active" : ""}`}
                 onClick={handleBackToProjects}
               >
-                Projects
+                Projetos
               </button>
               <button
                 className={`create-project-button ${showCreateProject ? "active" : ""}`}
                 onClick={toggleCreateProject}
               >
-                Create Project
+                Criar Projeto
               </button>
               </div>
             </>
           ) : (
             <>
-              <div className="title-container-home">Hello, Tyler!</div>
+              <div className="title-container-home">Olá, Tayler!</div>
               <div className="sub-title-talent-hunter">
-                Meet the talents that you're looking for right here.
+                Encontre os talentos que você procura aqui!
               </div>
             </>
           )}
@@ -98,21 +101,21 @@ const Home = () => {
           <>
             {userType === "artist" ? (
               <>
-                <div className="title-container2">My projects</div>
+                <div className="title-container2">Meus Projetos</div>
                 <section className="projects-container">
                   <div className="project-box">
                     <div className="project-image">
                       <img src={WomanImage} alt="Profile" className="profile-image2" />
                     </div>
                     <div className="project-details">
-                      <div className="project-title">My first EP</div>
+                      <div className="project-title">Meu primeiro EP</div>
                       <div className="project-description">
                         Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
                       </div>
                       <div className="progress-plus-buttons">
                         <div className="progress-content">
                           <div className="project-progress">
-                            <div className="progress-label">Progress:</div>
+                            <div className="progress-label">Progresso:</div>
                             <div className="progress-bar">
                               <div className="progress-filled"></div>
                             </div>
@@ -120,8 +123,8 @@ const Home = () => {
                           <div className="progress-percentage">30%</div>
                         </div>
                         <div className="project-buttons">
-                          <button className="finish-button">Finish</button>
-                          <button className="see-more-button">See More</button>
+                          <button className="finish-button">Finalizar</button>
+                          <button className="see-more-button">Ver mais</button>
                         </div>
                       </div>
                     </div>
@@ -132,14 +135,14 @@ const Home = () => {
                       <img src={Videomaker} alt="Profile" className="profile-image2" />
                     </div>
                     <div className="project-details">
-                      <div className="project-title">Pay videomaker</div>
+                      <div className="project-title">Contratar Editor</div>
                       <div className="project-description">
                         Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
                       </div>
                       <div className="progress-plus-buttons">
                         <div className="progress-content">
                           <div className="project-progress">
-                            <div className="progress-label">Progress:</div>
+                            <div className="progress-label">Progresso:</div>
                             <div className="progress-bar">
                               <div className="progress-filled"></div>
                             </div>
@@ -147,8 +150,8 @@ const Home = () => {
                           <div className="progress-percentage">30%</div>
                         </div>
                         <div className="project-buttons">
-                          <button className="finish-button">Finish</button>
-                          <button className="see-more-button">See More</button>
+                          <button className="finish-button">Finalizar</button>
+                          <button className="see-more-button">Ver mais</button>
                         </div>
                       </div>
                     </div>
@@ -159,14 +162,14 @@ const Home = () => {
                       <img src={VideoRecord} alt="Profile" className="profile-image2" />
                     </div>
                     <div className="project-details">
-                      <div className="project-title">Video record</div>
+                      <div className="project-title">Gravação de vídeo</div>
                       <div className="project-description">
                         Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
                       </div>
                       <div className="progress-plus-buttons">
                         <div className="progress-content">
                           <div className="project-progress">
-                            <div className="progress-label">Progress:</div>
+                            <div className="progress-label">Progresso:</div>
                             <div className="progress-bar">
                               <div className="progress-filled2"></div>
                             </div>
@@ -174,8 +177,8 @@ const Home = () => {
                           <div className="progress-percentage">70%</div>
                         </div>
                         <div className="project-buttons">
-                          <button className="finish-button">Finish</button>
-                          <button className="see-more-button">See More</button>
+                          <button className="finish-button">Finalizar</button>
+                          <button className="see-more-button">Ver mais</button>
                         </div>
                       </div>
                     </div>
@@ -186,14 +189,14 @@ const Home = () => {
                       <img src={RecordedSongs} alt="Profile" className="profile-image2" />
                     </div>
                     <div className="project-details">
-                      <div className="project-title">Record songs for my EP</div>
+                      <div className="project-title">Gravação das músicas</div>
                       <div className="project-description">
                         Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
                       </div>
                       <div className="progress-plus-buttons">
                         <div className="progress-content">
                           <div className="project-progress">
-                            <div className="progress-label">Progress:</div>
+                            <div className="progress-label">Progresso:</div>
                             <div className="progress-bar">
                               <div className="progress-filled2"></div>
                             </div>
@@ -201,8 +204,8 @@ const Home = () => {
                           <div className="progress-percentage">70%</div>
                         </div>
                         <div className="project-buttons">
-                          <button className="finish-button">Finish</button>
-                          <button className="see-more-button">See More</button>
+                          <button className="finish-button">Finalizar</button>
+                          <button className="see-more-button">Ver mais</button>
                         </div>
                       </div>
                     </div>
@@ -213,20 +216,20 @@ const Home = () => {
               <Carousel />
             )}
             <div className="button-container-home">
-              <button className="view-all-button">View All</button>
+              <button className="view-all-button">Veja todos</button>
             </div>
 
             <div className="donations-container">
-              <div className="title-container2">Collaborate</div>
-              <SearchInput placeholderContent={"Search for a type of project you'd like to donate"} />
-              <div className="title-container3">Projects you may like</div>
+              <div className="title-container2">Colabore</div>
+              <SearchInput placeholderContent={"Pesquise um tipo de projeto para o qual deseja doar"} />
+              <div className="title-container3">Projetos que podem te interessar</div>
 
               <div className="donation-projects">
                 <div className="donation-box">
                   <img src={Singer} alt="Project" className="donation-image" />
-                  <div className="donation-title">Small town concert</div>
+                  <div className="donation-title">Show na minha cidade</div>
                   <div className="donation-description">
-                    I'm doing my first concert in my hometown and I need to raise money to build the structure.
+                  Estou realizando meu primeiro show na minha cidade natal e preciso arrecadar dinheiro para construir a estrutura.
                   </div>
                   <div className="collaborators-section">
                     <div className="images-plus-collaborators">
@@ -241,17 +244,17 @@ const Home = () => {
                           <img src={Grid3} alt="Profile" className="profile-image3" />
                         </div>
                       </div>
-                      <div className="collaborators-text">+ 10 collaborators</div>
+                      <div className="collaborators-text">+ 10 colaboradores</div>
                     </div>
-                    <button className="donate-button" onClick={handleDonateClick}>Donate</button>
+                    <button className="donate-button" onClick={handleDonateClick}>Doar</button>
                   </div>
                 </div>
 
                 <div className="donation-box">
                   <img src={Dancer} alt="Project" className="donation-image" />
-                  <div className="donation-title">Pay dance class</div>
+                  <div className="donation-title">Pagar aula de dança</div>
                   <div className="donation-description">
-                    I'm doing my first concert in my hometown and I need to raise money to build the structure.
+                  Preciso arrecadar dinheiro para pagar minha aula de dança e continuar aprimorando minha paixão.
                   </div>
                   <div className="collaborators-section">
                     <div className="images-plus-collaborators">
@@ -266,17 +269,17 @@ const Home = () => {
                           <img src={Grid3} alt="Profile" className="profile-image3" />
                         </div>
                       </div>
-                      <div className="collaborators-text">+ 10 collaborators</div>
+                      <div className="collaborators-text">+ 10 colaboradores</div>
                     </div>
-                    <button className="donate-button" onClick={handleDonateClick}>Donate</button>
+                    <button className="donate-button" onClick={handleDonateClick}>Doar</button>
                   </div>
                 </div>
 
                 <div className="donation-box">
                   <img src={Guitarist} alt="Project" className="donation-image" />
-                  <div className="donation-title">New instrument</div>
+                  <div className="donation-title">Novo instrumento</div>
                   <div className="donation-description">
-                    I'm doing my first concert in my hometown and I need to raise money to build the structure.
+                  Meu violão quebrou e preciso de um novo para continuar trabalhando na minha música.
                   </div>
                   <div className="collaborators-section">
                     <div className="images-plus-collaborators">
@@ -291,9 +294,9 @@ const Home = () => {
                           <img src={Grid3} alt="Profile" className="profile-image3" />
                         </div>
                       </div>
-                      <div className="collaborators-text">+ 10 collaborators</div>
+                      <div className="collaborators-text">+ 10 colaboradores</div>
                     </div>
-                    <button className="donate-button" onClick={handleDonateClick}>Donate</button>
+                    <button className="donate-button" onClick={handleDonateClick}>Doar</button>
                   </div>
                 </div>
               </div>
@@ -325,7 +328,7 @@ const Home = () => {
               </div>
             )}
         <div className="button-container-home">
-          <button className="view-all-button">View All</button>
+          <button className="view-all-button">Veja todos</button>
         </div>
         </>
          ) : (

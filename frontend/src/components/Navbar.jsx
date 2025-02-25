@@ -12,7 +12,10 @@ import WomanImage from '../assets/woman.png';
 import ManImage from '../assets/man.jpg'
 import { Link, useNavigate } from "react-router-dom";
 
-const NavbarItems = ({ className = "", activePage = "home" }) => {
+const NavbarItems = ({ className = "", activePage = "home", userType = "talent_hunter" }) => {
+
+  const profileImage = userType === 'artist' ? WomanImage : ManImage;
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -27,17 +30,17 @@ const NavbarItems = ({ className = "", activePage = "home" }) => {
             <LogoIcon />
           </div>
           <div className="circle-container">
-            <img src={ManImage} alt="Profile" className="profile-image" />
+            <img src={profileImage} alt="Profile" className="profile-image" />
           </div>
         </div>
         <div className="frame-parent14">
           <Link to="/home" className={`teenyiconshome-solid-group ${activePage === "home" ? "active" : ""}`} style={{ textDecoration: 'none' }}>
             {activePage === "home" ? <HomeIcon2 /> : <HomeIcon />} 
-            <div className="homepage1">Homepage</div>
+            <div className="homepage1">Início</div>
           </Link>
           <Link to="/profile" className={`iconamoonprofile-fill-group ${activePage === "profile" ? "active" : ""}`} style={{ textDecoration: 'none' }}>
             {activePage === "profile" ? <UserIcon2 /> : <UserIcon />}
-            <div className="profile1">Profile</div>
+            <div className="profile1">Perfil</div>
           </Link>
           <Link to="/social" className={`material-symbolssocial-distan-group ${activePage === "social" ? "active" : ""}`} style={{ textDecoration: 'none' }}>
             {activePage === "social" ? <SocialIcon2 /> : <SocialIcon />}
@@ -47,7 +50,7 @@ const NavbarItems = ({ className = "", activePage = "home" }) => {
         <div className="rilogout-circle-r-line-group" onClick={handleLogout}>
           <LogOutIcon />
           <div className="log-out-container">
-            <div className="log-out1">Log Out</div>
+            <div className="log-out1">Sair</div>
           </div>
         </div>
       </div>

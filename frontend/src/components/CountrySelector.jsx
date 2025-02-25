@@ -49,7 +49,7 @@ export default function CountrySelector({ setCountry }) {
 
     return (
         <div className="country-selector-container">
-            <label className="country-selector-label">Country</label>
+            <label className="country-selector-label">País</label>
             <input
                 type="text"
                 value={inputValue}
