@@ -1,29 +1,31 @@
-const path = require('path');
-require('dotenv').config({
-    override: true,
-    path: path.join(__dirname, '.env')
+import express from 'express';
+import { sequelize } from './config/db.js';
+import { UserRoutes, ProjectRoutes } from './routes/index.js';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(cors());
+
+const userRoute = new UserRoutes();
+const projectRoute = new ProjectRoutes();
+
+app.use('/users', userRoute.setup());
+app.use('/projects', projectRoute.setup());
+
+sequelize.authenticate()
+.then(() => {
+    console.log('Banco de dados conectado com sucesso!');
+})
+.catch((err) => {
+    console.error('Erro ao conectar ao banco de dados:', err);
 });
 
-console.log('Database URL:', process.env.DATABASE_URL);
-const express = require('express');
-const cors = require('cors');  
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-
-// user route
-const userRouter = require('./routes/user');
-app.use('/users', userRouter);
-
-// auth route
-const authRouter = require('./routes/auth');
-app.use('/auth', authRouter);
-
-const SECRET_KEY = process.env.SECRET_KEY;
-const DATABASE_URL = process.env.DATABASE_URL;
-const PORT = 3000;
-
-app.listen(PORT, () => {
-    console.log(`Backend running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
 });

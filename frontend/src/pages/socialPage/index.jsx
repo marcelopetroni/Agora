@@ -6,23 +6,23 @@ import { FaPaperPlane, FaSearch } from 'react-icons/fa';
 const Social = () => {
   const [chatHistory, setChatHistory] = useState([
     {
-      user: "Alice",
+      user: "Usuário",
       messages: [
-        { text: "Hello, I am interested in your work, can we schedule a meeting?", sender: "other" },
-        { text: "Sure, let me know when you're available.", sender: "user" },
-        { text: "How about tomorrow at 10 AM?", sender: "other" },
+        { text: "Olá, estou interessado no seu trabalho, podemos agendar uma reunião?", sender: "other" },
+        { text: "Claro, me avise quando estiver disponível.", sender: "user" },
+        { text: "Que tal amanhã às 10h?", sender: "other" },
       ],
     },
     {
-      user: "Bob",
+      user: "Usuário",
       messages: [
-        { text: "Hi, I would like to discuss a project with you.", sender: "other" },
+        { text: "Olá, gostaria de discutir um projeto com você.", sender: "other" },
       ],
     },
     {
-      user: "Charlie",
+      user: "Usuário",
       messages: [
-        { text: "Hey, can we have a quick call tomorrow?", sender: "other" },
+        { text: "Ei, podemos fazer uma ligação rápida amanhã?", sender: "other" },
       ],
     },
   ]);
@@ -67,7 +67,7 @@ const Social = () => {
           <FaSearch className="search-icon" />
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Pesquisar"
             value={searchTerm}
             onChange={handleSearch}
           />
@@ -111,7 +111,7 @@ const Social = () => {
         <div className="message-input">
           <input
             type="text"
-            placeholder="write your message..."
+            placeholder="escreva sua mensagem..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />

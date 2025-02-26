@@ -4,117 +4,101 @@ import LanguageSelector from '../../components/LanguageSelector';
 import ArtisticFieldSelector from '../../components/ArtisticFieldSelector';
 import CountrySelector from '../../components/CountrySelector';
 import { useNavigate } from 'react-router-dom';
+import { userService } from '../../services/userService';
 
 const LandingPage = () => {
-  const [step, setStep] = useState('login');
-  const navigate = useNavigate();
+const [step, setStep] = useState('login');
+const navigate = useNavigate();
 
-  const [name, setName] = useState('');
-  const [birthDate, setBirthDate] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [country, setCountry] = useState('');
-  const [languages, setLanguages] = useState([]);
-  const [role, setRole] = useState();
-  
-  const [searchFields, setSearchFields] = useState([]);
- 
-  const handleRegisterClick = async (e) => {
+const [name, setName] = useState('');
+const [birth, setBirthDate] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const [country, setCountry] = useState('');
+const [languages, setLanguages] = useState([]);
+const [role, setRole] = useState();
+
+const [searchFields, setSearchFields] = useState([]);
+
+
+const handleRegisterClick = async (e) => {
     e.preventDefault();
-  
+
     const newUser = {
-      name,
-      email,
-      birthDate,
-      password,
-      country,
-      type: role,
-      languages: JSON.stringify(languages),
-      searchFields: JSON.stringify(searchFields),
-      private_key: null,
-      hedera_account_id: null,
-    };    
-  
+        name,
+        email,
+        birth,
+        password,
+        country,
+        languages,
+        field: searchFields,
+        company: "",
+        experience: ""
+    };
+
     try {
-      const response = await fetch('https://agorahacka.onrender.com/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newUser),
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        console.log('User created:', data);
-  
-        setName('');
-        setEmail('');
-        setBirthDate('');
-        setPassword('');
-        setCountry('');
-        setLanguages([]);       
-        setSearchFields([]); 
-  
-      } else {
-        console.error('Failed to create user');
-      }
+        const response = await userService.createUser(newUser);
+
+        if (response.success) {
+            console.log('User created:', response.data);
+
+            setName('');
+            setEmail('');
+            setBirthDate('');
+            setPassword('');
+            setCountry('');
+            setLanguages([]);
+            setSearchFields([]);
+
+            navigate('/home');
+        } else {
+            console.error('Failed to create user:', response.error);
+        }
     } catch (error) {
-      console.error('Error:', error);
+        console.error('Error:', error);
     }
-  };
+};
 
-  
-  const handleSignUpClick = () => {
-    setStep('chooseRole');
-  };
+const handleSignUpClick = () => {
+	setStep('chooseRole');
+};
 
-  const handleRoleClick = (role) => {
-    setRole(role)
-    setStep('personalInfo');
-  };
+const handleRoleClick = (role) => {
+	setRole(role)
+	setStep('personalInfo');
+};
 
-  const handleLoginClick = () => {
-    setStep('login');
-  };
+const handleLoginClick = () => {
+	setStep('login');
+};
 
-  const handleLogin = async (e) => {
+const handleLogin = async (e) => {
     e.preventDefault();
 
-  // Anchors
     const credentials = { email, password };
 
     try {
-      const response = await fetch('https://agorahacka.onrender.com/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      });
+        const response = await userService.login(credentials);
 
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('token', data.token);
-        console.log('Login successful');
+        if (response) {
+            localStorage.setItem('token', response.token);
+            console.log('Login successful');
 
-        // go to "/home" if it's authenticated
-        navigate('/home');
-      } else {
-        console.error('Login failed');
-      }
+            navigate('/home');
+        } else {
+            console.error('Algo deu errado:', response.message || 'Credenciais inválidas');
+        }
     } catch (error) {
-      console.error('Error:', error);
+        console.error('Erro:', error.response?.data?.message || 'Erro ao tentar fazer login');
     }
-  };
+};
 
-  // Anchors
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+const scrollToSection = (sectionId) => {
+	const section = document.getElementById(sectionId);
+	if (section) {
+	section.scrollIntoView({ behavior: 'smooth' });
+	}
+};
 
   return (
     <div className="landing-page">
