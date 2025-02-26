@@ -3,20 +3,20 @@ import './LanguageSelector.sass'
 
 const LanguageSelector = ({ setLanguages }) => {
   const allLanguages = [
-    "Mandarin Chinese", "Spanish", "English", "Hindi", "Arabic", "Bengali", "Portuguese", "Russian", "Japanese", "Western Punjabi",
-    "Marathi", "Telugu", "Wu Chinese", "Turkish", "Korean", "French", "German", "Vietnamese", "Tamil", "Urdu", "Javanese",
-    "Italian", "Egyptian Arabic", "Gujarati", "Iranian Persian", "Bhojpuri", "Southern Min", "Hakka Chinese", "Jin Chinese",
-    "Hausa", "Kannada", "Indonesian", "Polish", "Yoruba", "Xiang Chinese", "Malayalam", "Odia", "Maithili", "Burmese",
-    "Eastern Punjabi", "Sunda", "Sudanese Arabic", "Algerian Arabic", "Moroccan Arabic", "Ukrainian", "Igbo", "Northern Uzbek",
-    "Sindhi", "North Levantine Arabic", "Romanian", "Tagalog", "Dutch", "Saʽidi Arabic", "Gan Chinese", "Amharic", "Northern Pashto",
-    "Magahi", "Thai", "Saraiki", "Khmer", "Chhattisgarhi", "Somali", "Malagasy", "Cebuano", "Nepali", "Mesopotamian Arabic",
-    "Assamese", "Sinhalese", "Northern Kurdish", "Hejazi Arabic", "Nigerian Fulfulde", "Bavarian", "South Azerbaijani",
-    "Greek", "Chittagonian", "Kazakh", "Deccan", "Hungarian", "Kinyarwanda", "Zulu", "South Levantine Arabic", "Tunisian Arabic",
-    "Sanaani Spoken Arabic", "Min Bei Chinese", "Min Dong Chinese", "Southern Kurdish", "Czech", "Uyghur", "Sylheti", "Zulu",
-    "Haitian Creole", "Belarusian", "Balochi", "Mandinka", "Shona", "Kirundi", "Swedish", "Hmong", "Catalan", "Mossi", "Xhosa",
-    "Afrikaans", "Lithuanian", "Serbo-Croatian", "Slovak", "Lombard", "Shan", "Tachelhit", "Quechua", "Armenian", "Azerbaijani",
-    "Fijian", "Finnish", "Georgian", "Hebrew", "Khasi", "Lao", "Latvian", "Luxembourgish", "Maltese", "Māori", "Marshallese",
-    "Mongolian", "Navajo", "Samoan", "Sardinian", "Seychellois Creole", "Tongan", "Turkmen", "Welsh", "Zulu"
+    "Chinês Mandarim", "Espanhol", "Inglês", "Hindi", "Árabe", "Bengali", "Português", "Russo", "Japonês", "Punjabi Ocidental",
+    "Marathi", "Telugu", "Chinês Wu", "Turco", "Coreano", "Francês", "Alemão", "Vietnamita", "Tâmil", "Urdu", "Javanês",
+    "Italiano", "Árabe Egípcio", "Gujarati", "Persa Iraniano", "Bhojpuri", "Min do Sul", "Chinês Hakka", "Chinês Jin",
+    "Hauçá", "Canarês", "Indonésio", "Polonês", "Iorubá", "Chinês Xiang", "Malaiala", "Odia", "Maithili", "Birmanês",
+    "Punjabi Oriental", "Sundanês", "Árabe Sudanês", "Árabe Argelino", "Árabe Marroquino", "Ucraniano", "Igbo", "Usbeque do Norte",
+    "Sindi", "Árabe do Levante Norte", "Romeno", "Tagalo", "Holandês", "Árabe Saídi", "Chinês Gan", "Amárico", "Pachto do Norte",
+    "Magahi", "Tailandês", "Saraiki", "Khmer", "Chhattisgarhi", "Somali", "Malgaxe", "Cebuano", "Nepalês", "Árabe Mesopotâmico",
+    "Assamês", "Cingalês", "Curdo do Norte", "Árabe Hejazi", "Fulfulde Nigeriano", "Bávaro", "Azerbaijano do Sul",
+    "Grego", "Chittagonian", "Cazaque", "Deccan", "Húngaro", "Quiniaruanda", "Zulu", "Árabe do Levante Sul", "Árabe Tunisiano",
+    "Árabe Sanaani Falado", "Chinês Min Bei", "Chinês Min Dong", "Curdo do Sul", "Tcheco", "Uigur", "Silheti", "Zulu",
+    "Crioulo Haitiano", "Bielorrusso", "Balochi", "Mandinga", "Shona", "Kirundi", "Sueco", "Hmong", "Catalão", "Mossi", "Xhosa",
+    "Africâner", "Lituano", "Servo-Croata", "Eslovaco", "Lombardo", "Shan", "Tachelhit", "Quíchua", "Armênio", "Azeri",
+    "Fijiano", "Finlandês", "Georgiano", "Hebraico", "Khasi", "Lao", "Letão", "Luxemburguês", "Maltês", "Maori", "Marshalês",
+    "Mongol", "Navajo", "Samoano", "Sardo", "Crioulo Seichelense", "Tonganês", "Turcomeno", "Galês", "Zulu"
     ];
   const [filteredLanguages, setFilteredLanguages] = useState(allLanguages);
   const [selectedLanguages, setSelectedLanguages] = useState([]);
@@ -58,7 +58,7 @@ const LanguageSelector = ({ setLanguages }) => {
 
   return (
     <div className="language-selector">
-      <label>Languages Spoken</label>
+      <label>Idiomas falados</label>
       <div className="language-input">
         <ul className="language-list">
           {selectedLanguages.map((language) => (

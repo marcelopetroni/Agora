@@ -2,27 +2,27 @@ import React, { useState } from 'react';
 import './CountrySelector.sass';
 
 const countries = [
-  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia",
-  "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
-  "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
-  "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia",
-  "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Côte d'Ivoire", "Croatia",
-  "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador",
-  "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France",
-  "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
-  "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica",
-  "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan",
-  "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
-  "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia",
-  "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal",
-  "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau",
-  "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia",
-  "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe",
-  "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
-  "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
-  "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan",
-  "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
-  "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+    "Afeganistão", "Albânia", "Argélia", "Andorra", "Angola", "Antígua e Barbuda", "Argentina", "Armênia", "Austrália",
+    "Áustria", "Azerbaijão", "Bahamas", "Bahrein", "Bangladesh", "Barbados", "Bielorrússia", "Bélgica", "Belize", "Benim",
+    "Butão", "Bolívia", "Bósnia e Herzegovina", "Botsuana", "Brasil", "Brunei", "Bulgária", "Burkina Faso", "Burundi",
+    "Cabo Verde", "Camboja", "Camarões", "Canadá", "República Centro-Africana", "Chade", "Chile", "China", "Colômbia",
+    "Comores", "Congo, República Democrática do", "Congo, República do", "Costa Rica", "Costa do Marfim", "Croácia",
+    "Cuba", "Chipre", "República Tcheca", "Dinamarca", "Djibuti", "Dominica", "República Dominicana", "Timor-Leste", "Equador",
+    "Egito", "El Salvador", "Guiné Equatorial", "Eritreia", "Estônia", "Eswatini", "Etiópia", "Fiji", "Finlândia", "França",
+    "Gabão", "Gâmbia", "Geórgia", "Alemanha", "Gana", "Grécia", "Granada", "Guatemala", "Guiné", "Guiné-Bissau", "Guiana",
+    "Haiti", "Honduras", "Hungria", "Islândia", "Índia", "Indonésia", "Irã", "Iraque", "Irlanda", "Israel", "Itália", "Jamaica",
+    "Japão", "Jordânia", "Cazaquistão", "Quênia", "Kiribati", "Coreia do Norte", "Coreia do Sul", "Kosovo", "Kuwait", "Quirguistão",
+    "Laos", "Letônia", "Líbano", "Lesoto", "Libéria", "Líbia", "Liechtenstein", "Lituânia", "Luxemburgo", "Madagascar",
+    "Malaui", "Malásia", "Maldivas", "Mali", "Malta", "Ilhas Marshall", "Mauritânia", "Maurício", "México", "Micronésia",
+    "Moldávia", "Mônaco", "Mongólia", "Montenegro", "Marrocos", "Moçambique", "Mianmar", "Namíbia", "Nauru", "Nepal",
+    "Países Baixos", "Nova Zelândia", "Nicarágua", "Níger", "Nigéria", "Macedônia do Norte", "Noruega", "Omã", "Paquistão", "Palau",
+    "Panamá", "Papua-Nova Guiné", "Paraguai", "Peru", "Filipinas", "Polônia", "Portugal", "Catar", "Romênia", "Rússia",
+    "Ruanda", "São Cristóvão e Névis", "Santa Lúcia", "São Vicente e Granadinas", "Samoa", "San Marino", "São Tomé e Príncipe",
+    "Arábia Saudita", "Senegal", "Sérvia", "Seicheles", "Serra Leoa", "Singapura", "Eslováquia", "Eslovênia", "Ilhas Salomão",
+    "Somália", "África do Sul", "Sudão do Sul", "Espanha", "Sri Lanka", "Sudão", "Suriname", "Suécia", "Suíça", "Síria",
+    "Taiwan", "Tadjiquistão", "Tanzânia", "Tailândia", "Togo", "Tonga", "Trinidad e Tobago", "Tunísia", "Turquia", "Turcomenistão",
+    "Tuvalu", "Uganda", "Ucrânia", "Emirados Árabes Unidos", "Reino Unido", "Estados Unidos", "Uruguai", "Uzbequistão", "Vanuatu",
+    "Cidade do Vaticano", "Venezuela", "Vietnã", "Iêmen", "Zâmbia", "Zimbábue"
 ];
 
 export default function CountrySelector({ setCountry }) {
