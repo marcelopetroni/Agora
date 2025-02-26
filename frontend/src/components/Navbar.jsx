@@ -12,14 +12,14 @@ import WomanImage from '../assets/woman.png';
 import ManImage from '../assets/man.jpg'
 import { Link, useNavigate } from "react-router-dom";
 
-const NavbarItems = ({ className = "", activePage = "home", userType = "talent_hunter" }) => {
+const NavbarItems = ({ className = "", activePage = "home", role = "talent_hunter" }) => {
 
-  const profileImage = userType === 'artist' ? WomanImage : ManImage;
+  const profileImage = role === 'artist' ? WomanImage : ManImage;
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate('/'); 
+    navigate('/');
   };
   return (
     <div className="line-group">
@@ -61,6 +61,7 @@ const NavbarItems = ({ className = "", activePage = "home", userType = "talent_h
 NavbarItems.propTypes = {
   className: PropTypes.string,
   activePage: PropTypes.string,
+  role: PropTypes.string
 };
 
 export default NavbarItems;

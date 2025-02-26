@@ -21,323 +21,325 @@ import { useState, useEffect } from "react";
 import "./home.sass";
 
 const Home = () => {
-  const [userType, setUserType] = useState("artist");
-  const [showCreateProject, setShowCreateProject] = useState(false);
+	const role = localStorage.getItem('role') || 'artist';
 
-  const [showDonationBox, setShowDonationBox] = useState(false);
-  const [showDonationMessage, setshowDonationMessage] = useState(false);
+	const [showCreateProject, setShowCreateProject] = useState(false);
 
-  const handleDonateClick = () => {
-    setShowDonationBox(true);
-  };
+	const [showDonationBox, setShowDonationBox] = useState(false);
 
-  const handleMessageDonation = () => {
-    setShowDonationBox(false);
-    setshowDonationMessage(true);
-  };
+	const [showDonationMessage, setshowDonationMessage] = useState(false);
 
-  const handleCloseDonationBox = () => {
-    setShowDonationBox(false);
-  };
+	const handleDonateClick = () => {
+		setShowDonationBox(true);
+	};
 
-  const handleCloseDonationBox2 = () => {
-    setshowDonationMessage(false);
-  };
+	const handleMessageDonation = () => {
+		setShowDonationBox(false);
+		setshowDonationMessage(true);
+	};
 
-  const handleOutsideClick = (e) => {
-    if (e.target.className === "donation-box-overlay") {
-      handleCloseDonationBox();
-    }
-  };
+	const handleCloseDonationBox = () => {
+		setShowDonationBox(false);
+	};
 
-  const toggleCreateProject = () => {
-    setShowCreateProject(!showCreateProject);
-  };
+	const handleCloseDonationBox2 = () => {
+		setshowDonationMessage(false);
+	};
 
-  const handleBackToProjects = () => {
-    setShowCreateProject(false);
-  };
+	const handleOutsideClick = (e) => {
+		if (e.target.className === "donation-box-overlay") {
+		handleCloseDonationBox();
+		}
+	};
 
-  return (
-    <div className="homepage-container">
-      <NavbarItems 
-        activePage="home"
-        userType={userType}  
-    />
-      <div className="home-items">
-        {/* Cabeçalho fixo */}
-        <div className="title-buttons">
-          {userType === "artist" ? (
-            <>
-              <div className="title-container-home">Olá, Joana de Sá!</div>
-              <div className="button-container">
-              <button
-                className={`projects-button ${!showCreateProject ? "active" : ""}`}
-                onClick={handleBackToProjects}
-              >
-                Projetos
-              </button>
-              <button
-                className={`create-project-button ${showCreateProject ? "active" : ""}`}
-                onClick={toggleCreateProject}
-              >
-                Criar Projeto
-              </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="title-container-home">Olá, Tayler!</div>
-              <div className="sub-title-talent-hunter">
-                Encontre os talentos que você procura aqui!
-              </div>
-            </>
-          )}
-        </div>
-        <div className="line-home"></div>
+	const toggleCreateProject = () => {
+		setShowCreateProject(!showCreateProject);
+	};
 
-        {/* Renderização Condicional do Conteúdo */}
-        {!showCreateProject ? (
-          <>
-            {userType === "artist" ? (
-              <>
-                <div className="title-container2">Meus Projetos</div>
-                <section className="projects-container">
-                  <div className="project-box">
-                    <div className="project-image">
-                      <img src={WomanImage} alt="Profile" className="profile-image2" />
-                    </div>
-                    <div className="project-details">
-                      <div className="project-title">Meu primeiro EP</div>
-                      <div className="project-description">
-                        Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
-                      </div>
-                      <div className="progress-plus-buttons">
-                        <div className="progress-content">
-                          <div className="project-progress">
-                            <div className="progress-label">Progresso:</div>
-                            <div className="progress-bar">
-                              <div className="progress-filled"></div>
-                            </div>
-                          </div>
-                          <div className="progress-percentage">30%</div>
-                        </div>
-                        <div className="project-buttons">
-                          <button className="finish-button">Finalizar</button>
-                          <button className="see-more-button">Ver mais</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+	const handleBackToProjects = () => {
+		setShowCreateProject(false);
+	};
 
-                  <div className="project-box">
-                    <div className="project-image">
-                      <img src={Videomaker} alt="Profile" className="profile-image2" />
-                    </div>
-                    <div className="project-details">
-                      <div className="project-title">Contratar Editor</div>
-                      <div className="project-description">
-                        Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
-                      </div>
-                      <div className="progress-plus-buttons">
-                        <div className="progress-content">
-                          <div className="project-progress">
-                            <div className="progress-label">Progresso:</div>
-                            <div className="progress-bar">
-                              <div className="progress-filled"></div>
-                            </div>
-                          </div>
-                          <div className="progress-percentage">30%</div>
-                        </div>
-                        <div className="project-buttons">
-                          <button className="finish-button">Finalizar</button>
-                          <button className="see-more-button">Ver mais</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+	return (
+		<div className="homepage-container">
+		<NavbarItems
+			activePage="home"
+			role={role}
+		/>
+		<div className="home-items">
+			{/* Cabeçalho fixo */}
+			<div className="title-buttons">
+			{role === "artist" ? (
+				<>
+				<div className="title-container-home">Olá, Joana de Sá!</div>
+				<div className="button-container">
+				<button
+					className={`projects-button ${!showCreateProject ? "active" : ""}`}
+					onClick={handleBackToProjects}
+				>
+					Projetos
+				</button>
+				<button
+					className={`create-project-button ${showCreateProject ? "active" : ""}`}
+					onClick={toggleCreateProject}
+				>
+					Criar Projeto
+				</button>
+				</div>
+				</>
+			) : (
+				<>
+				<div className="title-container-home">Olá, Tayler!</div>
+				<div className="sub-title-talent-hunter">
+					Encontre os talentos que você procura aqui!
+				</div>
+				</>
+			)}
+			</div>
+			<div className="line-home"></div>
 
-                  <div className="project-box">
-                    <div className="project-image">
-                      <img src={VideoRecord} alt="Profile" className="profile-image2" />
-                    </div>
-                    <div className="project-details">
-                      <div className="project-title">Gravação de vídeo</div>
-                      <div className="project-description">
-                        Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
-                      </div>
-                      <div className="progress-plus-buttons">
-                        <div className="progress-content">
-                          <div className="project-progress">
-                            <div className="progress-label">Progresso:</div>
-                            <div className="progress-bar">
-                              <div className="progress-filled2"></div>
-                            </div>
-                          </div>
-                          <div className="progress-percentage">70%</div>
-                        </div>
-                        <div className="project-buttons">
-                          <button className="finish-button">Finalizar</button>
-                          <button className="see-more-button">Ver mais</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+			{/* Renderização Condicional do Conteúdo */}
+			{!showCreateProject ? (
+			<>
+				{role === "artist" ? (
+				<>
+					<div className="title-container2">Meus Projetos</div>
+					<section className="projects-container">
+					<div className="project-box">
+						<div className="project-image">
+						<img src={WomanImage} alt="Profile" className="profile-image2" />
+						</div>
+						<div className="project-details">
+						<div className="project-title">Meu primeiro EP</div>
+						<div className="project-description">
+							Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
+						</div>
+						<div className="progress-plus-buttons">
+							<div className="progress-content">
+							<div className="project-progress">
+								<div className="progress-label">Progresso:</div>
+								<div className="progress-bar">
+								<div className="progress-filled"></div>
+								</div>
+							</div>
+							<div className="progress-percentage">30%</div>
+							</div>
+							<div className="project-buttons">
+							<button className="finish-button">Finalizar</button>
+							<button className="see-more-button">Ver mais</button>
+							</div>
+						</div>
+						</div>
+					</div>
 
-                  <div className="project-box">
-                    <div className="project-image">
-                      <img src={RecordedSongs} alt="Profile" className="profile-image2" />
-                    </div>
-                    <div className="project-details">
-                      <div className="project-title">Gravação das músicas</div>
-                      <div className="project-description">
-                        Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
-                      </div>
-                      <div className="progress-plus-buttons">
-                        <div className="progress-content">
-                          <div className="project-progress">
-                            <div className="progress-label">Progresso:</div>
-                            <div className="progress-bar">
-                              <div className="progress-filled2"></div>
-                            </div>
-                          </div>
-                          <div className="progress-percentage">70%</div>
-                        </div>
-                        <div className="project-buttons">
-                          <button className="finish-button">Finalizar</button>
-                          <button className="see-more-button">Ver mais</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </>
-            ) : (
-              <Carousel />
-            )}
-            <div className="button-container-home">
-              <button className="view-all-button">Veja todos</button>
-            </div>
+					<div className="project-box">
+						<div className="project-image">
+							<img src={Videomaker} alt="Profile" className="profile-image2" />
+						</div>
+						<div className="project-details">
+							<div className="project-title">Contratar Editor</div>
+							<div className="project-description">
+								Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
+							</div>
+							<div className="progress-plus-buttons">
+								<div className="progress-content">
+									<div className="project-progress">
+										<div className="progress-label">Progresso:</div>
+										<div className="progress-bar">
+											<div className="progress-filled"></div>
+										</div>
+									</div>
+									<div className="progress-percentage">30%</div>
+								</div>
+								<div className="project-buttons">
+									<button className="finish-button">Finalizar</button>
+									<button className="see-more-button">Ver mais</button>
+								</div>
+							</div>
+						</div>
+					</div>
 
-            <div className="donations-container">
-              <div className="title-container2">Colabore</div>
-              <SearchInput placeholderContent={"Pesquise um tipo de projeto para o qual deseja doar"} />
-              <div className="title-container3">Projetos que podem te interessar</div>
+					<div className="project-box">
+						<div className="project-image">
+							<img src={VideoRecord} alt="Profile" className="profile-image2" />
+						</div>
+						<div className="project-details">
+						<div className="project-title">Gravação de vídeo</div>
+						<div className="project-description">
+							Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
+						</div>
+						<div className="progress-plus-buttons">
+							<div className="progress-content">
+							<div className="project-progress">
+								<div className="progress-label">Progresso:</div>
+									<div className="progress-bar">
+										<div className="progress-filled2"></div>
+										</div>
+									</div>
+									<div className="progress-percentage">70%</div>
+								</div>
+								<div className="project-buttons">
+									<button className="finish-button">Finalizar</button>
+									<button className="see-more-button">Ver mais</button>
+								</div>
+							</div>
+						</div>
+					</div>
 
-              <div className="donation-projects">
-                <div className="donation-box">
-                  <img src={Singer} alt="Project" className="donation-image" />
-                  <div className="donation-title">Show na minha cidade</div>
-                  <div className="donation-description">
-                  Estou realizando meu primeiro show na minha cidade natal e preciso arrecadar dinheiro para construir a estrutura.
-                  </div>
-                  <div className="collaborators-section">
-                    <div className="images-plus-collaborators">
-                      <div className="collaborators-images">
-                      <div className="image-container">
-                          <img src={Grid} alt="Profile" className="profile-image3" />
-                        </div>
-                        <div className="image-container">
-                          <img src={Grid2} alt="Profile" className="profile-image3" />
-                        </div>
-                        <div className="image-container">
-                          <img src={Grid3} alt="Profile" className="profile-image3" />
-                        </div>
-                      </div>
-                      <div className="collaborators-text">+ 10 colaboradores</div>
-                    </div>
-                    <button className="donate-button" onClick={handleDonateClick}>Doar</button>
-                  </div>
-                </div>
+					<div className="project-box">
+						<div className="project-image">
+							<img src={RecordedSongs} alt="Profile" className="profile-image2" />
+						</div>
+						<div className="project-details">
+						<div className="project-title">Gravação das músicas</div>
+						<div className="project-description">
+							Lorem ipsum dolor sit amet consectetur. Vel justo egestas ac fringilla nulla egestas. Semper consequat laoreet blandit vitae.
+						</div>
+						<div className="progress-plus-buttons">
+								<div className="progress-content">
+									<div className="project-progress">
+										<div className="progress-label">Progresso:</div>
+											<div className="progress-bar">
+											<div className="progress-filled2"></div>
+										</div>
+									</div>
+									<div className="progress-percentage">70%</div>
+								</div>
+								<div className="project-buttons">
+									<button className="finish-button">Finalizar</button>
+									<button className="see-more-button">Ver mais</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					</section>
+				</>
+				) : (
+				<Carousel />
+				)}
+				<div className="button-container-home">
+					<button className="view-all-button">Veja todos</button>
+				</div>
 
-                <div className="donation-box">
-                  <img src={Dancer} alt="Project" className="donation-image" />
-                  <div className="donation-title">Pagar aula de dança</div>
-                  <div className="donation-description">
-                  Preciso arrecadar dinheiro para pagar minha aula de dança e continuar aprimorando minha paixão.
-                  </div>
-                  <div className="collaborators-section">
-                    <div className="images-plus-collaborators">
-                      <div className="collaborators-images">
-                      <div className="image-container">
-                          <img src={Grid} alt="Profile" className="profile-image3" />
-                        </div>
-                        <div className="image-container">
-                          <img src={Grid2} alt="Profile" className="profile-image3" />
-                        </div>
-                        <div className="image-container">
-                          <img src={Grid3} alt="Profile" className="profile-image3" />
-                        </div>
-                      </div>
-                      <div className="collaborators-text">+ 10 colaboradores</div>
-                    </div>
-                    <button className="donate-button" onClick={handleDonateClick}>Doar</button>
-                  </div>
-                </div>
+				<div className="donations-container">
+					<div className="title-container2">Colabore</div>
+					<SearchInput placeholderContent={"Pesquise um tipo de projeto para o qual deseja doar"} />
+					<div className="title-container3">Projetos que podem te interessar</div>
 
-                <div className="donation-box">
-                  <img src={Guitarist} alt="Project" className="donation-image" />
-                  <div className="donation-title">Novo instrumento</div>
-                  <div className="donation-description">
-                  Meu violão quebrou e preciso de um novo para continuar trabalhando na minha música.
-                  </div>
-                  <div className="collaborators-section">
-                    <div className="images-plus-collaborators">
-                      <div className="collaborators-images">
-                      <div className="image-container">
-                          <img src={Grid} alt="Profile" className="profile-image3" />
-                        </div>
-                        <div className="image-container">
-                          <img src={Grid2} alt="Profile" className="profile-image3" />
-                        </div>
-                        <div className="image-container">
-                          <img src={Grid3} alt="Profile" className="profile-image3" />
-                        </div>
-                      </div>
-                      <div className="collaborators-text">+ 10 colaboradores</div>
-                    </div>
-                    <button className="donate-button" onClick={handleDonateClick}>Doar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+					<div className="donation-projects">
+						<div className="donation-box">
+						<img src={Singer} alt="Project" className="donation-image" />
+						<div className="donation-title">Show na minha cidade</div>
+						<div className="donation-description">
+						Estou realizando meu primeiro show na minha cidade natal e preciso arrecadar dinheiro para construir a estrutura.
+						</div>
+						<div className="collaborators-section">
+							<div className="images-plus-collaborators">
+								<div className="collaborators-images">
+									<div className="image-container">
+										<img src={Grid} alt="Profile" className="profile-image3" />
+										</div>
+										<div className="image-container">
+										<img src={Grid2} alt="Profile" className="profile-image3" />
+										</div>
+										<div className="image-container">
+										<img src={Grid3} alt="Profile" className="profile-image3" />
+										</div>
+									</div>
+									<div className="collaborators-text">+ 10 colaboradores</div>
+								</div>
+								<button className="donate-button" onClick={handleDonateClick}>Doar</button>
+							</div>
+						</div>
 
-            {showDonationBox && (
-              <div className="donation-box-overlay" onClick={handleOutsideClick}>
-                <div className="donation-box-content">
-                  <DonationBox onClose={handleCloseDonationBox} onClose2={handleMessageDonation}/>
-                </div>
-              </div>
-            )}
-            {showDonationMessage && (
-              <div className="donation-box-overlay" onClick={handleOutsideClick}>
-                <div className="donation-box-content2">
-                  <div className="closeButtonSvg" onClick={handleCloseDonationBox2}>
-                    <CloseButton/>
-                  </div>
-                  <div className="donation-message">
-                    <Check/>
-                    <div className="message-donation">
-                      Thank you for your donation!
-                    </div>
-                    <div className="message-donation2">
-                    Your support empower and connect talented artists with new opportunities. 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-        <div className="button-container-home">
-          <button className="view-all-button">Veja todos</button>
-        </div>
-        </>
-         ) : (
-          <CreateProject onBackToProjects={handleBackToProjects} />
-        )}
-      </div>
-      <HelpTips />
-    </div>
-  );
+						<div className="donation-box">
+						<img src={Dancer} alt="Project" className="donation-image" />
+						<div className="donation-title">Pagar aula de dança</div>
+						<div className="donation-description">
+						Preciso arrecadar dinheiro para pagar minha aula de dança e continuar aprimorando minha paixão.
+						</div>
+						<div className="collaborators-section">
+							<div className="images-plus-collaborators">
+								<div className="collaborators-images">
+									<div className="image-container">
+										<img src={Grid} alt="Profile" className="profile-image3" />
+										</div>
+										<div className="image-container">
+										<img src={Grid2} alt="Profile" className="profile-image3" />
+										</div>
+										<div className="image-container">
+										<img src={Grid3} alt="Profile" className="profile-image3" />
+										</div>
+									</div>
+									<div className="collaborators-text">+ 10 colaboradores</div>
+								</div>
+								<button className="donate-button" onClick={handleDonateClick}>Doar</button>
+							</div>
+						</div>
+
+						<div className="donation-box">
+						<img src={Guitarist} alt="Project" className="donation-image" />
+						<div className="donation-title">Novo instrumento</div>
+						<div className="donation-description">
+						Meu violão quebrou e preciso de um novo para continuar trabalhando na minha música.
+						</div>
+						<div className="collaborators-section">
+							<div className="images-plus-collaborators">
+								<div className="collaborators-images">
+									<div className="image-container">
+										<img src={Grid} alt="Profile" className="profile-image3" />
+										</div>
+										<div className="image-container">
+										<img src={Grid2} alt="Profile" className="profile-image3" />
+										</div>
+										<div className="image-container">
+										<img src={Grid3} alt="Profile" className="profile-image3" />
+										</div>
+									</div>
+									<div className="collaborators-text">+ 10 colaboradores</div>
+								</div>
+								<button className="donate-button" onClick={handleDonateClick}>Doar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{showDonationBox && (
+				<div className="donation-box-overlay" onClick={handleOutsideClick}>
+					<div className="donation-box-content">
+					<DonationBox onClose={handleCloseDonationBox} onClose2={handleMessageDonation}/>
+					</div>
+				</div>
+				)}
+				{showDonationMessage && (
+				<div className="donation-box-overlay" onClick={handleOutsideClick}>
+					<div className="donation-box-content2">
+					<div className="closeButtonSvg" onClick={handleCloseDonationBox2}>
+						<CloseButton/>
+					</div>
+					<div className="donation-message">
+						<Check/>
+						<div className="message-donation">
+						Thank you for your donation!
+						</div>
+						<div className="message-donation2">
+						Your support empower and connect talented artists with new opportunities.
+						</div>
+					</div>
+					</div>
+				</div>
+				)}
+			<div className="button-container-home">
+			<button className="view-all-button">Veja todos</button>
+			</div>
+			</>
+			) : (
+			<CreateProject onBackToProjects={handleBackToProjects} />
+			)}
+		</div>
+			<HelpTips />
+		</div>
+	);
 };
 
 export default Home;
