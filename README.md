@@ -49,7 +49,7 @@ Email: teste@hotmail.com
 Senha: Teste123
 ```
 
-## Teste o projeto 🏃
+## Teste você mesmo 🏃
 ### Clona o repositório
 Escreva os seguintes comandos para testar o frontend:
 ```bash
