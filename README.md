@@ -1,8 +1,8 @@
-# Agora 🏛️
+# Ágora 🏛️
 
 ## Descrição ℹ️
 
-Agora é uma plataforma web que conecta artistas com caçadores de talentos de forma eficiente. Projeto ganhador do hackaton da Hedera Hashgraph, ele utiliza tecnologia avançada de matchmaking, facilita o encontro de talentos criativos com as oportunidades certas, com base em descrições específicas. Além disso, permite que artistas criem projetos e arrecadem fundos para torná-los realidade. A tecnologia Hedera Hashgraph garante segurança, transparência e escalabilidade, especialmente no crowdfunding por meio de contratos inteligentes. Isso garante que os artistas possam arrecadar recursos com segurança, enquanto os doadores têm confiança no uso adequado de suas contribuições. Alinhado com os princípios da Web3, Agora promove um ecossistema descentralizado, justo e transparente.
+Ágora é uma plataforma web que conecta artistas com caçadores de talentos de forma eficiente. Projeto ganhador do hackaton da Hedera Hashgraph, ele utiliza tecnologia avançada de matchmaking, facilita o encontro de talentos criativos com as oportunidades certas, com base em descrições específicas. Além disso, permite que artistas criem projetos e arrecadem fundos para torná-los realidade. A tecnologia Hedera Hashgraph garante segurança, transparência e escalabilidade, especialmente no crowdfunding por meio de contratos inteligentes. Isso garante que os artistas possam arrecadar recursos com segurança, enquanto os doadores têm confiança no uso adequado de suas contribuições. Alinhado com os princípios da Web3, Agora promove um ecossistema descentralizado, justo e transparente.
 
 ## Trilha escolhida no hackathon 🚀
 - Trilha Iniciante: Exploradores do Hashgraph - Open Track
