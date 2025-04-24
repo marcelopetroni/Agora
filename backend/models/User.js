@@ -5,8 +5,14 @@ export default class User extends Sequelize.Model {
 		super.init(
 			{
 			name: DataTypes.STRING,
-			email: DataTypes.STRING,
-			password: DataTypes.STRING,
+			email: {
+				type: DataTypes.STRING,
+				allowNull: false
+			},
+			password: {
+				type: DataTypes.STRING(60),
+				allowNull: false
+			},
 			birth: DataTypes.DATEONLY,
 			country: DataTypes.STRING,
 			languages: DataTypes.JSON,

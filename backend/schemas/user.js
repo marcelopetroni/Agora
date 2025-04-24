@@ -14,7 +14,7 @@ const UserSchema = {
                 .required('Email é obrigatório'),
             password: yup.string()
                 .min(6, 'A senha deve ter pelo menos 6 caracteres')
-                .max(30, 'A senha pode ter até 30 caracteres')
+                .max(100, 'A senha pode ter até 100 caracteres')
                 .test('invalidFormat', 'Formato de senha inválido', value => isValidPassword(value))
                 .required('Senha é obrigatória'),
             birth: yup.date().nullable(),
@@ -35,7 +35,7 @@ const UserSchema = {
             email: yup.string().test('invalidFormat', 'Formato de email inválido', value => isValidEmail(value)),
             password: yup.string()
                 .min(6, 'A senha deve ter pelo menos 6 caracteres')
-                .max(30, 'A senha pode ter até 30 caracteres')
+                .max(100, 'A senha pode ter até 100 caracteres')
                 .test('invalidFormat', 'Formato de senha inválido', value => isValidPassword(value)),
         }).noUnknown(),
     },
@@ -46,7 +46,7 @@ const UserSchema = {
                 .required('Email é obrigatório'),
             password: yup.string()
                 .min(6, 'A senha deve ter pelo menos 6 caracteres')
-                .max(30, 'A senha pode ter até 30 caracteres')
+                .max(100, 'A senha pode ter até 100 caracteres')
                 .required('Senha é obrigatória')
         }).noUnknown(),
     },
