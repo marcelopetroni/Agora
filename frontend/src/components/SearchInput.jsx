@@ -10,7 +10,7 @@ const SearchInput = ({placeholderContent}) => {
         <IoMdSearch
             className='lupa2'
             size={20}
-            color="rgba(155, 114, 67, 0.66)"
+            color="#533753"
         />
         <div className="arrow-icon2">
             <Arrow/>
