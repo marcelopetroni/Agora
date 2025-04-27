@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://agora-production-0cb9.up.railway.app';
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const userService = {
 	getAllUsers: async () => {
