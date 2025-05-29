@@ -1,29 +1,63 @@
 import { db } from '../models/index.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import lodash from 'lodash';
 
-const { User } = db;
+const { omit } = lodash;
+
+const { User, Artist, Hirer } = db;
 
 class UserService {
 	async create(data) {
 		const transaction = await User.sequelize.transaction();
 
 		try {
-			const salt = await bcrypt.genSalt(10);
-			data.password = await bcrypt.hash(data.password, salt);
+			data.password = await this.hashPassword(data.password);
 
-			const userCreated = await User.create(data, { transaction });
-			const user = userCreated.toJSON();
-			delete user.password;
+			const promises = [];
+
+			const user = await User.create(data, { transaction });
+
+			if (data.type === 'artist') {
+				promises.push(
+					Artist.create(
+					{
+						user_id: user.id,
+						artistic_field: data?.artistic_field
+
+					}, { transaction })
+				);
+			}
+
+			if (data.type === 'hirer') {
+				promises.push(
+					Hirer.create(
+					{
+						user_id: user.id,
+						work_area: data?.work_area,
+						company: data?.company
+					},
+					{ transaction })
+				);
+			}
+
+			await Promise.all(promises);
 
 			await transaction.commit();
-			return user;
+
+			return omit(user.toJSON(), ['password']);
 
 		} catch (error) {
 			await transaction.rollback();
 			throw error;
 		}
 	}
+
+	async hashPassword(password) {
+		const salt = await bcrypt.genSalt(10);
+
+		return bcrypt.hash(password, salt);
+	};
 
 	async getAllUsers() {
 		const users = await User.findAll({

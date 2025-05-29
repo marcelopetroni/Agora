@@ -10,20 +10,8 @@ class UserController {
     }
 
     async create(req, res) {
-        const { name, email, password, birth, country, languages, field, company, experience } = req.body;
-
         try {
-            const user = await this.userService.create({
-                name,
-                email,
-                password,
-                birth,
-                country,
-                languages,
-                field,
-                company,
-                experience
-            });
+            const user = await this.userService.create({ ...req.body });
 
             res.status(201).json({
                 success: true,
