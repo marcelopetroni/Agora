@@ -11,12 +11,12 @@ Artist.init(sequelize, Sequelize.DataTypes);
 Hirer.init(sequelize, Sequelize.DataTypes);
 
 const db = {
-  sequelize,
-  Sequelize,
-  User,
-  Artist,
-  Hirer,
-  Project
+	sequelize,
+	Sequelize,
+	User,
+	Artist,
+	Hirer,
+	Project
 };
 
 export { db };
