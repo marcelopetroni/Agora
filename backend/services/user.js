@@ -137,13 +137,15 @@ class UserService {
         if (userIdToDelete !== authenticatedUserId) {
             throw new Error('Ação não autorizada');
         }
+
         const user = await this.User.findByPk(userIdToDelete);
         if (!user) {
             throw new Error('Usuário não encontrado');
         }
-        await user.destroy({ force: true }); 
+
+        await user.destroy(); 
         
-        return { message: 'Usuário deletado do banco de dados.' };
+        return { message: 'Usuário desativado com sucesso (soft delete).' };
     }
 }
 
