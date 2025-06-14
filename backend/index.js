@@ -1,6 +1,8 @@
 import express from 'express';
 import { sequelize } from './config/db.js';
-import { UserRoutes, ProjectRoutes } from './routes/index.js';
+import UserRoutes from './routes/user.js';
+import ProjectRoutes from './routes/project.js';
+import MediaRoutes from './routes/media.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -14,9 +16,11 @@ app.use(cors());
 
 const userRoute = new UserRoutes();
 const projectRoute = new ProjectRoutes();
+const mediaRoute = new MediaRoutes();
 
 app.use('/users', userRoute.setup());
 app.use('/projects', projectRoute.setup());
+app.use('/medias', mediaRoute.setup());
 
 sequelize.authenticate()
 .then(() => {

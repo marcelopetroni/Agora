@@ -1,4 +1,4 @@
-import { ProjectService } from '../services/index.js';
+import ProjectService from '../services/project.js';
 
 class ProjectController {
     constructor() {

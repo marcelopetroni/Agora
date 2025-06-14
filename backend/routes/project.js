@@ -1,4 +1,4 @@
-import { ProjectController } from '../controllers/index.js';
+import ProjectController from '../controllers/project.js';
 import { ProjectSchema } from '../schemas/index.js';
 import { SchemaValidator } from '../middlewares/index.js';
 import { Router } from 'express';

@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize';
 
 export default class Project extends Sequelize.Model {
     static init(sequelize, DataTypes) {
-        super.init(
+        return super.init(
             {
                 title: DataTypes.STRING,
                 type: DataTypes.STRING,

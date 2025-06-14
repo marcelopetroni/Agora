@@ -1,134 +1,150 @@
-import { db } from '../models/index.js';
+import db from '../models/index.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import lodash from 'lodash';
 
 const { omit } = lodash;
 
-const { User, Artist, Hirer } = db;
+const getPagination = (page, size) => {
+    const limit = size ? +size : 10;
+    const offset = page ? (page - 1) * limit : 0;
+    return { limit, offset };
+};
 
 class UserService {
-	async create(data) {
-		const transaction = await User.sequelize.transaction();
+    constructor() {
+        this.User = db.User;
+        this.Artist = db.Artist;
+        this.Hirer = db.Hirer;
+    }
 
-		try {
-			data.password = await this.hashPassword(data.password);
+    async create(data) {
+        const transaction = await this.User.sequelize.transaction();
+        try {
+            data.password = await this.hashPassword(data.password);
+            const user = await this.User.create(data, { transaction });
+            if (data.type === 'artist') {
+                await this.Artist.create({ user_id: user.id, artistic_field: data?.artistic_field }, { transaction });
+            }
+            if (data.type === 'hirer') {
+                await this.Hirer.create({ user_id: user.id, work_area: data?.work_area, company: data?.company }, { transaction });
+            }
+            await transaction.commit();
+            return omit(user.toJSON(), ['password']);
+        } catch (error) {
+            await transaction.rollback();
+            throw error;
+        }
+    }
 
-			const promises = [];
+    async hashPassword(password) {
+        const salt = await bcrypt.genSalt(10);
+        return bcrypt.hash(password, salt);
+    }
 
-			const user = await User.create(data, { transaction });
+    async getAllUsers({ page, size }) {
+        const { limit, offset } = getPagination(page, size);
+        const result = await this.User.findAndCountAll({
+            limit,
+            offset,
+            attributes: { exclude: ['password'] },
+            order: [['name', 'ASC']]
+        });
+        const currentPage = page ? +page : 1;
+        const totalPages = Math.ceil(result.count / limit);
+        return { totalItems: result.count, totalPages, currentPage, data: result.rows };
+    }
 
-			if (data.type === 'artist') {
-				promises.push(
-					Artist.create(
-					{
-						user_id: user.id,
-						artistic_field: data?.artistic_field
+    async findOne(id) {
+        const user = await this.User.findByPk(id, {
+            attributes: { exclude: ['password'] },
+            include: [
+                { model: this.Artist, as: 'artist' },
+                { model: this.Hirer, as: 'hirer' }
+            ]
+        });
 
-					}, { transaction })
-				);
-			}
+        if (!user) {
+            throw new Error('Usuário não encontrado');
+        }
+        return user;
+    }
 
-			if (data.type === 'hirer') {
-				promises.push(
-					Hirer.create(
-					{
-						user_id: user.id,
-						work_area: data?.work_area,
-						company: data?.company
-					},
-					{ transaction })
-				);
-			}
+    async login({ email, password }) {
+        const user = await this.User.findOne({ where: { email } });
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+            throw new Error('Invalid email or password');
+        }
+        if (!process.env.JWT_SECRET) {
+            throw new Error('JWT_SECRET is not defined in environment variables');
+        }
+        const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '24h' });
+        const userData = user.toJSON();
+        delete userData.password;
+        return { user: userData, token };
+    }
 
-			await Promise.all(promises);
+    async update({ filter, changes }, authenticatedUserId) {
+        if (filter.id !== authenticatedUserId) {
+            throw new Error('Ação não autorizada');
+        }
 
-			await transaction.commit();
+        const user = await this.User.findByPk(filter.id);
+        if (!user) {
+            throw new Error('Usuário não encontrado');
+        }
 
-			return omit(user.toJSON(), ['password']);
+        const transaction = await this.User.sequelize.transaction();
+        try {
+            if (changes.password) {
+                changes.password = await this.hashPassword(changes.password);
+            }
 
-		} catch (error) {
-			await transaction.rollback();
-			throw error;
-		}
-	}
+            await this.User.update(changes, { where: { id: filter.id }, transaction });
+            
+            if (user.type === 'artist' && changes.artistic_field) {
+                await this.Artist.update(
+                    { artistic_field: changes.artistic_field },
+                    { where: { user_id: filter.id }, transaction }
+                );
+            }
 
-	async hashPassword(password) {
-		const salt = await bcrypt.genSalt(10);
+            if (user.type === 'hirer') {
+                const hirerChanges = {};
+                if (changes.work_area) hirerChanges.work_area = changes.work_area;
+                if (changes.company) hirerChanges.company = changes.company;
+                
+                if (Object.keys(hirerChanges).length > 0) {
+                    await this.Hirer.update(
+                        hirerChanges,
+                        { where: { user_id: filter.id }, transaction }
+                    );
+                }
+            }
 
-		return bcrypt.hash(password, salt);
-	};
+            await transaction.commit();
+            
+            const updatedUser = await this.findOne(filter.id);
+            return updatedUser;
 
-	async getAllUsers() {
-		const users = await User.findAll({
-			attributes: { exclude: ['password'] }
-		});
-		return users;
-	}
+        } catch (error) {
+            await transaction.rollback();
+            throw error;
+        }
+    }
 
-	async login({ email, password }) {
-		const user = await User.findOne({ where: { email } });
-
-		if (!user || !(await bcrypt.compare(password, user.password))) {
-			throw new Error('Invalid email or password');
-		}
-
-		if (!process.env.JWT_SECRET) {
-			throw new Error('JWT_SECRET is not defined in environment variables');
-		}
-
-		const token = jwt.sign(
-			{ id: user.id, email: user.email },
-			process.env.JWT_SECRET,
-			{ expiresIn: '24h' }
-		);
-
-		const userData = user.toJSON();
-		delete userData.password;
-
-		return {
-			user: userData,
-			token
-		};
-	}
-
-	async update({ filter, changes }) {
-		const user = await User.findOne({
-			where: { id: filter.id },
-			attributes: ['id']
-		});
-
-		if (!user) {
-			throw new Error('User not found');
-		}
-
-		const transaction = await User.sequelize.transaction();
-
-		try {
-			if (changes.password) {
-				const salt = await bcrypt.genSalt(10);
-				changes.password = await bcrypt.hash(changes.password, salt);
-			}
-
-			await User.update(changes, {
-				where: { id: filter.id },
-				transaction
-			});
-
-			await transaction.commit();
-
-			const updatedUser = await User.findOne({
-				where: { id: filter.id },
-				attributes: { exclude: ['password'] }
-			});
-
-			return updatedUser.toJSON();
-
-		} catch (error) {
-			await transaction.rollback();
-			throw error;
-		}
-	}
+    async destroy(userIdToDelete, authenticatedUserId) {
+        if (userIdToDelete !== authenticatedUserId) {
+            throw new Error('Ação não autorizada');
+        }
+        const user = await this.User.findByPk(userIdToDelete);
+        if (!user) {
+            throw new Error('Usuário não encontrado');
+        }
+        await user.destroy({ force: true }); 
+        
+        return { message: 'Usuário deletado do banco de dados.' };
+    }
 }
 
 export default UserService;

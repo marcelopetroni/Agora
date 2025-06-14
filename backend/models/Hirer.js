@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize';
 
 export default class Hirer extends Sequelize.Model {
 	static init(sequelize, DataTypes) {
-		super.init(
+		return super.init(
 			{
 				user_id: {
 					type: DataTypes.INTEGER,

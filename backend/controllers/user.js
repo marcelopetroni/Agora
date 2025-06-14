@@ -1,4 +1,4 @@
-import { UserService } from '../services/index.js';
+import UserService from '../services/user.js';
 
 class UserController {
     constructor() {
@@ -7,92 +7,76 @@ class UserController {
         this.login = this.login.bind(this);
         this.getAllUsers = this.getAllUsers.bind(this);
         this.update = this.update.bind(this);
+        this.findOne = this.findOne.bind(this);
+        this.destroy = this.destroy.bind(this);
     }
 
     async create(req, res) {
         try {
             const user = await this.userService.create({ ...req.body });
-
-            res.status(201).json({
-                success: true,
-                data: user,
-            });
+            res.status(201).json({ success: true, data: user });
         } catch (error) {
-            res.status(500).json({
-                success: false,
-                error: error.message || 'Erro inesperado aconteceu',
-            });
+            res.status(500).json({ success: false, error: error.message });
         }
     }
 
     async getAllUsers(req, res) {
         try {
-            const users = await this.userService.getAllUsers();
-            res.status(200).json({
-                success: true,
-                data: users,
-            });
+            const { page, size } = req.query;
+            const users = await this.userService.getAllUsers({ page, size });
+            res.status(200).json({ success: true, data: users });
         } catch (error) {
-            res.status(500).json({
-                success: false,
-                error: error.message || 'Erro inesperado aconteceu',
-            });
+            res.status(500).json({ success: false, error: error.message });
         }
     }
 
     async login(req, res) {
         const { email, password } = req.body;
-
         try {
-            const user = await this.userService.login({ email, password });
-
-            if (!user) {
-                console.log('Email ou senha inválidos');
-
-                return res.status(401).json({
-                    success: false,
-                    message: 'Email ou senha inválidos',
-                });
-            }
-
-            return res.status(200).json({
-                success: true,
-                message: 'Login bem-sucedido'
-            });
+            const loginData = await this.userService.login({ email, password });
+            return res.status(200).json({ success: true, data: loginData });
         } catch (error) {
-            res.status(500).json({
-                success: false,
-                error: error.message || 'Erro inesperado aconteceu',
-            });
+            return res.status(401).json({ success: false, error: error.message });
+        }
+    }
+
+    async findOne(req, res) {
+        try {
+            const { id } = req.params;
+            const user = await this.userService.findOne(parseInt(id, 10));
+            res.status(200).json({ success: true, data: user });
+        } catch (error) {
+            res.status(404).json({ success: false, error: error.message });
         }
     }
 
     async update(req, res) {
-        const { id } = req.query;
-
         try {
             const options = {
-                filter: {
-                    id: id,
-                },
+                filter: { id: parseInt(req.params.id, 10) }, 
                 changes: req.body,
             };
+            // Passa o ID do usuário autenticado para a verificação de permissão
+            const authenticatedUserId = req.user.id;
 
-            const response = await this.userService.update(options);
-
-            res.status(200).json({
-                success: true,
-                data: response,
-            });
-
+            const response = await this.userService.update(options, authenticatedUserId);
+            res.status(200).json({ success: true, data: response });
         } catch (error) {
-            res.status(500).json({
-                success: false,
-                error: error.message || 'Erro inesperado aconteceu',
-            });
+            res.status(500).json({ success: false, error: error.message });
         }
     }
 
+    async destroy(req, res) {
+        try {
+            const userIdToDelete = parseInt(req.params.id, 10);
+            const authenticatedUserId = req.user.id;
+
+            const result = await this.userService.destroy(userIdToDelete, authenticatedUserId);
+            res.status(200).json({ success: true, data: result });
+        } catch (error) {
+            res.status(500).json({ success: false, error: error.message });
+        }
+    }
 }
 
 export default UserController;

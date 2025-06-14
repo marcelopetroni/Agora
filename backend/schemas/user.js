@@ -57,6 +57,17 @@ const UserSchema = {
 				.required('Senha é obrigatória')
 		}).noUnknown(),
 	},
+	findAll: {
+        query: yup.object({
+            page: yup.number().integer().positive().default(1),
+            size: yup.number().integer().positive().default(10)
+        })
+    },
+	getOneOrDelete: {
+    params: yup.object({
+        id: yup.number().integer().positive().required('O ID do usuário é obrigatório.')
+    })
+}
 };
 
 export default UserSchema;
