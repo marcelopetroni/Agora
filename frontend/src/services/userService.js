@@ -13,6 +13,27 @@ export const userService = {
 		}
 	},
 
+	getUserByEmail: async email => {
+		try {
+			const response = await axios.get(`${API_URL}/users/email/info`, { params: { email } });
+			return response.data;
+		} catch (error) {
+			console.error('Error fetching user by email:', error.response?.data || error.message);
+			throw error;
+		}
+	},
+
+	countUserByEmail: async email => {
+		try {
+			const response = await axios.get(`${API_URL}/users/email/count`, { params: { email } });
+			return response.data.data;
+		} catch (error) {
+			console.error('Error counting user by email:', error.response?.data || error.message);
+			throw error;
+		}
+	},
+
+
 	login: async credentials => {
         try {
             const response = await axios.post(`${API_URL}/users/login`, credentials);
@@ -23,9 +44,9 @@ export const userService = {
         }
     },
 
-	loginGoogle: async ({ idToken, type }) => {
+	loginGoogle: async data => {
 		try {
-			const response = await axios.post(`${API_URL}/users/login-google`, { idToken, type });
+			const response = await axios.post(`${API_URL}/users/login-google`, data);
 			return response.data;
 		} catch (error) {
 			console.error('Error logging in with Google:', error.response?.data || error.message);

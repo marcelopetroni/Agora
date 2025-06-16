@@ -2,26 +2,27 @@ import { db } from '../models/index.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import lodash from 'lodash';
-import { OAuth2Client } from 'google-auth-library';
 
 const { omit } = lodash;
 
 const { User, Artist, Hirer } = db;
 
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-
 class UserService {
 	async create(data) {
-		const isRegistered = await this.getUserByEmail(data.email);
-
-		if (isRegistered) {
-			throw new Error('Já existe uma conta criada com esse e-mail');
-		}
+		const isGoogleLogin = data.password ? false : true;
 
 		const transaction = await User.sequelize.transaction();
 
 		try {
-			data.password = await this.hashPassword(data.password);
+			if (!isGoogleLogin){
+				const isRegistered = await this.countUserByEmail(data.email);
+
+				if (isRegistered) {
+					throw new Error('Já existe uma conta criada com esse e-mail');
+				}
+
+				data.password = await this.hashPassword(data.password);
+			}
 
 			const promises = [];
 
@@ -54,7 +55,7 @@ class UserService {
 
 			await transaction.commit();
 
-			return omit(user.toJSON(), ['password']);
+			return omit(user, ['password']);
 
 		} catch (error) {
 			await transaction.rollback();
@@ -78,6 +79,11 @@ class UserService {
 	async getUserByEmail(email) {
 		const user = await User.findOne({ where: { email } });
 		return user;
+	}
+
+	async countUserByEmail(email) {
+		const count = await User.count({ where: { email } });
+		return count;
 	}
 
 	async getUserById(id) {
@@ -111,22 +117,11 @@ class UserService {
 		};
 	}
 
-	async loginGoogle({ idToken, type }) {
-		const validation  = await client.verifyIdToken({
-			idToken,
-			audience: process.env.GOOGLE_CLIENT_ID
-		});
-		const data = validation.getPayload();
-
+	async loginGoogle(data) {
 		let user = await this.getUserByEmail(data.email);
 
 		if (!user) {
-			user = await this.create({
-				email: data.email,
-				name: data.name,
-				profile_picture: data.picture,
-				type: type
-			});
+			user = await this.create(data);
 		}
 
 		const token = jwt.sign(
@@ -136,11 +131,10 @@ class UserService {
 		);
 
 		return {
-			user: user.toJSON(),
-			token
+			user: user,
+			token,
 		};
 	}
-
 
 	async update({ filter, changes }) {
 		const user = await this.getUserById(filter.id);

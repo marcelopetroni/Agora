@@ -8,6 +8,8 @@ class UserController {
         this.loginGoogle = this.loginGoogle.bind(this);
         this.getAllUsers = this.getAllUsers.bind(this);
         this.update = this.update.bind(this);
+        this.getUserByEmail = this.getUserByEmail.bind(this);
+        this.countUserByEmail = this.countUserByEmail.bind(this);
     }
 
     async create(req, res) {
@@ -29,6 +31,7 @@ class UserController {
     async getAllUsers(req, res) {
         try {
             const users = await this.userService.getAllUsers();
+
             res.status(200).json({
                 success: true,
                 data: users,
@@ -41,20 +44,47 @@ class UserController {
         }
     }
 
+    async getUserByEmail(req, res) {
+        const { email } = req.query;
+
+        try {
+            const user = await this.userService.getUserByEmail({ email });
+
+            res.status(200).json({
+                success: true,
+                data: user,
+            });
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                error: error.message || 'Erro inesperado aconteceu',
+            });
+        }
+    }
+
+    async countUserByEmail(req, res) {
+        const { email } = req.query;
+
+        try {
+            const count = await this.userService.countUserByEmail(email);
+
+            res.status(200).json({
+                success: true,
+                data: count
+            });
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                error: error.message || 'Erro inesperado aconteceu',
+            });
+        }
+    };
+
     async login(req, res) {
         const { email, password } = req.body;
 
         try {
             const user = await this.userService.login({ email, password });
-
-            if (!user) {
-                console.log('Email ou senha inválidos');
-
-                return res.status(401).json({
-                    success: false,
-                    message: 'Email ou senha inválidos',
-                });
-            }
 
             return res.status(200).json({
                 success: true,
@@ -69,33 +99,30 @@ class UserController {
     }
 
     async loginGoogle(req, res) {
-        const { idToken, type } = req.body;
+        const { email, name, picture, type } = req.body;
 
         try {
-            const user = await this.userService.loginGoogle({ idToken, type });
-
-            if (!user) {
-                console.log('Falha na autenticação com o Google');
-
-                return res.status(401).json({
-                    success: false,
-                    message: 'Falha na autenticação com o Google',
-                });
-            }
+            const user = await this.userService.loginGoogle({
+                email,
+                name,
+                picture,
+                type,
+            });
 
             return res.status(200).json({
                 success: true,
                 message: 'Login com Google bem-sucedido',
-                data: user
+                data: user,
             });
+
         } catch (error) {
-            console.error('Erro no login com Google:', error);
             return res.status(500).json({
                 success: false,
                 error: error.message || 'Erro inesperado aconteceu',
             });
         }
     }
+
 
     async update(req, res) {
         const { id } = req.query;
