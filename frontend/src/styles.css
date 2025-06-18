@@ -1,3 +1,100 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.text-extra-small {
+	font-family: 'Amiko', sans-serif;
+	font-size: 12px;
+}
+
+.text-small {
+	font-family: 'Amiko', sans-serif;
+	font-size: 14px;
+}
+
+.text-medium {
+	font-family: 'Amiko', sans-serif;
+	font-size: 16px;
+}
+
+.default-button {
+	width: 100px;
+	height: 38px;
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border: 1px solid #d1d5db;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	font-family: 'Amiko', sans-serif;
+	font-size: 16px;
+	transition: background-color 0.2s, color 0.2s;
+	background-color: #fff;
+	color: #000;
+}
+
+.default-button:hover {
+	background-color: #e5e7eb;
+}
+
+.default-button:active {
+	background-color: #d1d5db;
+}
+
+.default-button-purple {
+	width: 100px;
+	height: 38px;
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border: 1px solid #392239;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	font-family: 'Amiko', sans-serif;
+	font-size: 16px;
+	transition: background-color 0.2s, color 0.2s;
+	background-color: #392239;
+	color: #fff;
+}
+
+.default-button-purple:hover {
+	background-color: #2e1b2e;
+}
+
+.default-button-purple:active {
+	background-color: #241523;
+}
+
+.default-button-purple-light {
+	width: 100px;
+	height: 38px;
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border: 1px solid #533753;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	font-family: 'Amiko', sans-serif;
+	font-size: 16px;
+	transition: background-color 0.2s, color 0.2s;
+	background-color: #533753;
+	color: #fff;
+}
+
+.default-button-purple-light:hover {
+	background-color: #3c283c;
+}
+
+.default-button-purple-light:active {
+	background-color: #2e1b2e;
+}

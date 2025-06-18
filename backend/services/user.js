@@ -2,17 +2,14 @@ import { db } from '../models/index.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import lodash from 'lodash';
-import { OAuth2Client } from 'google-auth-library';
 
 const { omit } = lodash;
 
 const { User, Artist, Hirer } = db;
 
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
-
 class UserService {
 	async create(data) {
-		const isRegistered = await this.getUserByEmail(data.email);
+		const isRegistered = await this.countUserByEmail(data.email);
 
 		if (isRegistered) {
 			throw new Error('Já existe uma conta criada com esse e-mail');
@@ -21,40 +18,36 @@ class UserService {
 		const transaction = await User.sequelize.transaction();
 
 		try {
-			data.password = await this.hashPassword(data.password);
+			const isGoogleLogin = !data.password;
 
-			const promises = [];
+			if (!isGoogleLogin){
+				data.password = await this.hashPassword(data.password);
+			}
 
 			const user = await User.create(data, { transaction });
 
 			if (data.type === 'artist') {
-				promises.push(
-					Artist.create(
+					await Artist.create(
 					{
 						user_id: user.id,
 						artistic_field: data?.artistic_field
 
 					}, { transaction })
-				);
 			}
 
 			if (data.type === 'hirer') {
-				promises.push(
-					Hirer.create(
-					{
-						user_id: user.id,
-						work_area: data?.work_area,
-						company: data?.company
-					},
-					{ transaction })
-				);
+				await Hirer.create(
+				{
+					user_id: user.id,
+					work_area: data?.work_area,
+					company: data?.company
+				},
+				{ transaction })
 			}
-
-			await Promise.all(promises);
 
 			await transaction.commit();
 
-			return omit(user.toJSON(), ['password']);
+			return omit(user, ['password']);
 
 		} catch (error) {
 			await transaction.rollback();
@@ -69,20 +62,21 @@ class UserService {
 	};
 
 	async getAllUsers() {
-		const users = await User.findAll({
+		return await User.findAll({
 			attributes: { exclude: ['password'] }
 		});
-		return users;
 	}
 
 	async getUserByEmail(email) {
-		const user = await User.findOne({ where: { email } });
-		return user;
+		return await User.findOne({ where: { email } });
+	}
+
+	async countUserByEmail(email) {
+		return await User.count({ where: { email } });
 	}
 
 	async getUserById(id) {
-		const user = await User.findOne({ where: { id } });
-		return user;
+		return await User.findOne({ where: { id } });
 	}
 
 	async login({ email, password }) {
@@ -111,22 +105,11 @@ class UserService {
 		};
 	}
 
-	async loginGoogle({ idToken, type }) {
-		const validation  = await client.verifyIdToken({
-			idToken,
-			audience: process.env.GOOGLE_CLIENT_ID
-		});
-		const data = validation.getPayload();
-
+	async loginGoogle(data) {
 		let user = await this.getUserByEmail(data.email);
 
 		if (!user) {
-			user = await this.create({
-				email: data.email,
-				name: data.name,
-				profile_picture: data.picture,
-				type: type
-			});
+			user = await this.create(data);
 		}
 
 		const token = jwt.sign(
@@ -136,11 +119,10 @@ class UserService {
 		);
 
 		return {
-			user: user.toJSON(),
+			user: user,
 			token
 		};
 	}
-
 
 	async update({ filter, changes }) {
 		const user = await this.getUserById(filter.id);

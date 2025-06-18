@@ -12,6 +12,8 @@ export default class userRoutes {
 
 	setup() {
 		this.router.get('/', this.UserController.getAllUsers);
+		this.router.get('/email/count', this.SchemaValidator.validate(UserSchema.countUser), this.UserController.countUserByEmail);
+		this.router.get('/email/info', this.SchemaValidator.validate(UserSchema.getByEmail), this.UserController.getUserByEmail);
 		this.router.post('/login', this.SchemaValidator.validate(UserSchema.login), this.UserController.login);
 		this.router.post('/login-google', this.SchemaValidator.validate(UserSchema.loginGoogle), this.UserController.loginGoogle);
 		this.router.post('/create-user', this.SchemaValidator.validate(UserSchema.create), this.UserController.create);

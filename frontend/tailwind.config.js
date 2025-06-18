@@ -6,7 +6,17 @@ export default {
 		'./src/**/*.{js,ts,jsx,tsx}',
 	],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				darkpurple: '#392239',
+				lightpurple: '#533753',
+				bege: '#F6F5D9',
+				yellowag: '#EEEBB3',
+			},
+			fontFamily: {
+				'amiko': ['Amiko', 'sans-serif'] // Example for using Roboto from Google Fonts
+			},
+		},
 	},
 	plugins: [],
 }
