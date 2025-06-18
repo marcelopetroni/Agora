@@ -12,7 +12,7 @@ import BG2 from '../assets/Fundo2.png'
 import LandingCarousel from '../components/LandingCarousel'
 import LogoDourada from '../assets/LogoDourada.svg'
 
-const landingPage = () => {
+const LandingPage = () => {
 
   return (
   <div className='ag-bg-darkpurple'>

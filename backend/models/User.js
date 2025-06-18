@@ -13,7 +13,7 @@ export default class User extends Sequelize.Model {
 				},
 				password: {
 					type: DataTypes.STRING(60),
-					allowNull: false
+					allowNull: true
 				},
 				born: DataTypes.DATEONLY,
 				country: DataTypes.STRING,

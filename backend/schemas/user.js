@@ -59,13 +59,30 @@ const UserSchema = {
 	},
 	loginGoogle: {
 		body: yup.object({
-			idToken: yup.string()
-				.required('Token do Google é obrigatório'),
-			type: yup.string()
-				.oneOf(['artist', 'hirer'])
-				.required('Tipo de usuário é obrigatório')
+			email: yup.string()
+				.email('Formato de email inválido')
+				.required('Email é obrigatório'),
+			name: yup.string().required('Nome é obrigatório'),
+			picture: yup.string().url('URL da foto inválida').nullable(),
+			type: yup.string().oneOf(['artist', 'hirer'], 'Tipo inválido').nullable()
 		}).noUnknown(),
 	},
+
+	getByEmail: {
+		query: yup.object({
+			email: yup.string()
+				.test('invalidFormat', 'Formato de email inválido', value => isValidEmail(value))
+				.required('Email é obrigatório')
+		}).noUnknown(),
+	},
+
+	countUser: {
+		query: yup.object({
+			email: yup.string()
+				.test('invalidFormat', 'Formato de email inválido', value => isValidEmail(value))
+				.required('Email é obrigatório')
+		}).noUnknown(),
+	}
 };
 
 export default UserSchema;
