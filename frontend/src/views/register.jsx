@@ -4,8 +4,9 @@ import GoogleLoginButton from '../components/googleButton';
 import { userService } from '../services/userService';
 import { IoIosArrowBack } from "react-icons/io";
 import { LuEye, LuEyeOff } from 'react-icons/lu';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({ onSwitch }) => {
 	const [step, setStep] = useState('selectType');
 	const [userType, setUserType] = useState(null);
 	const [email, setEmail] = useState('');
@@ -34,7 +35,7 @@ const Register = () => {
 	return (
 		<div
 			className="ag-flex ag-w-full ag-items-center ag-justify-center ag-p-5"
-			style={{ height: '552px', backgroundColor: '#F0EED8' }}
+			style={{ height: '552px' }}
 		>
 			<div className="ag-flex ag-flex-col ag-gap-2" style={{ marginRight: '200px' }}>
 				<h1 className="ag-font-bold" style={{ color: '#3C233C', fontFamily: 'Amiko', fontSize: '40px' }}>
@@ -43,7 +44,7 @@ const Register = () => {
 				<p className="text-small" style={{ color: '#3C233C' }}>
 					Já tem uma conta?{' '}
 					<span
-						onClick={() => navigate('/login')}
+						onClick={onSwitch}
 						className="ag-font-bold ag-cursor-pointer ag-underline"
 					>
 						Entre aqui
@@ -169,6 +170,10 @@ const Register = () => {
 			)}
 		</div>
 	);
+};
+
+Register.propTypes = {
+	onSwitch: PropTypes.func.isRequired,
 };
 
 export default Register;

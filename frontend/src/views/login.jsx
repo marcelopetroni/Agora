@@ -4,8 +4,9 @@ import GoogleLoginButton from '../components/googleButton';
 import { userService } from '../services/userService';
 import { LuEye, LuEyeOff } from 'react-icons/lu';
 import Tags from '../components/tags';
+import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({ onSwitch }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
@@ -90,7 +91,7 @@ const Login = () => {
 	return (
 		<div
 			className="ag-flex ag-w-full ag-items-center ag-justify-center ag-p-5"
-			style={{ height: '552px', backgroundColor: '#F0EED8' }}
+			style={{ height: '552px'}}
 		>
 			<div className="ag-flex ag-flex-col ag-gap-2" style={{ marginRight: '200px' }}>
 				<h1 className="ag-font-bold" style={{ color: '#3C233C', fontFamily: 'Amiko', fontSize: '40px' }}>
@@ -99,7 +100,7 @@ const Login = () => {
 				<p className="text-small" style={{ color: '#3C233C' }}>
 					Ainda não tem uma conta?{' '}
 					<span
-						onClick={() => navigate('/register')}
+						onClick={onSwitch}
 						className="ag-font-bold ag-cursor-pointer ag-underline"
 					>
 						Cadastre-se
@@ -268,6 +269,10 @@ const Login = () => {
 			)}
 		</div>
 	);
+};
+
+Login.propTypes = {
+	onSwitch: PropTypes.func.isRequired,
 };
 
 export default Login;

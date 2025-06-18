@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
+.text-extra-small {
+	font-family: 'Amiko', sans-serif;
+	font-size: 12px;
+}
+
 .text-small {
 	font-family: 'Amiko', sans-serif;
 	font-size: 14px;
