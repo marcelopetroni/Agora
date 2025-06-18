@@ -106,19 +106,19 @@ class UserController {
                 email,
                 name,
                 picture,
-                type,
+                type
             });
 
             return res.status(200).json({
                 success: true,
                 message: 'Login com Google bem-sucedido',
-                data: user,
+                data: user
             });
 
         } catch (error) {
             return res.status(500).json({
                 success: false,
-                error: error.message || 'Erro inesperado aconteceu',
+                error: error.message || 'Erro inesperado aconteceu'
             });
         }
     }

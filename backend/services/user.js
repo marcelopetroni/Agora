@@ -9,49 +9,41 @@ const { User, Artist, Hirer } = db;
 
 class UserService {
 	async create(data) {
-		const isGoogleLogin = data.password ? false : true;
+		const isRegistered = await this.countUserByEmail(data.email);
+
+		if (isRegistered) {
+			throw new Error('Já existe uma conta criada com esse e-mail');
+		}
 
 		const transaction = await User.sequelize.transaction();
 
 		try {
+			const isGoogleLogin = !data.password;
+
 			if (!isGoogleLogin){
-				const isRegistered = await this.countUserByEmail(data.email);
-
-				if (isRegistered) {
-					throw new Error('Já existe uma conta criada com esse e-mail');
-				}
-
 				data.password = await this.hashPassword(data.password);
 			}
-
-			const promises = [];
 
 			const user = await User.create(data, { transaction });
 
 			if (data.type === 'artist') {
-				promises.push(
-					Artist.create(
+					await Artist.create(
 					{
 						user_id: user.id,
 						artistic_field: data?.artistic_field
 
 					}, { transaction })
-				);
 			}
 
 			if (data.type === 'hirer') {
-				promises.push(
-					Hirer.create(
-					{
-						user_id: user.id,
-						work_area: data?.work_area,
-						company: data?.company
-					},
-					{ transaction })
-				);
+				await Hirer.create(
+				{
+					user_id: user.id,
+					work_area: data?.work_area,
+					company: data?.company
+				},
+				{ transaction })
 			}
-
-			await Promise.all(promises);
 
 			await transaction.commit();
 
@@ -70,25 +62,21 @@ class UserService {
 	};
 
 	async getAllUsers() {
-		const users = await User.findAll({
+		return await User.findAll({
 			attributes: { exclude: ['password'] }
 		});
-		return users;
 	}
 
 	async getUserByEmail(email) {
-		const user = await User.findOne({ where: { email } });
-		return user;
+		return await User.findOne({ where: { email } });
 	}
 
 	async countUserByEmail(email) {
-		const count = await User.count({ where: { email } });
-		return count;
+		return await User.count({ where: { email } });
 	}
 
 	async getUserById(id) {
-		const user = await User.findOne({ where: { id } });
-		return user;
+		return await User.findOne({ where: { id } });
 	}
 
 	async login({ email, password }) {
@@ -132,7 +120,7 @@ class UserService {
 
 		return {
 			user: user,
-			token,
+			token
 		};
 	}
 

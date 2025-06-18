@@ -71,21 +71,21 @@ const Login = () => {
 		}
 	};
 
-	const handleRemoveLanguage = (lang) => {
-		setLanguages(languages.filter((l) => l !== lang));
+	const handleRemoveLanguage = language => {
+		setLanguages(languages.filter(item => item !== language));
 	};
 
-	const handleAddCountry = (e) => {
-		const value = e.target.value;
+	const handleAddCountry = item => {
+		const value = item.target.value;
+
 		if (value && !countries.includes(value)) {
 			setCountries([...countries, value]);
 		}
 	};
 
-	const handleRemoveCountry = (country) => {
-		setCountries(countries.filter((c) => c !== country));
+	const handleRemoveCountry = country => {
+		setCountries(countries.filter(item => item !== country));
 	};
-
 
 	return (
 		<div

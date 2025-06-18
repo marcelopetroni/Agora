@@ -33,7 +33,6 @@ export const userService = {
 		}
 	},
 
-
 	login: async credentials => {
         try {
             const response = await axios.post(`${API_URL}/users/login`, credentials);
@@ -72,5 +71,5 @@ export const userService = {
 			console.error('Error updating user:', error);
 			throw error;
 		}
-	},
+	}
 };

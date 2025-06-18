@@ -5,7 +5,7 @@ import { useGoogleLogin as useGoogleOAuth } from '@react-oauth/google';
 export const useGoogleLogin = ({ userType, onMissingType } = {}) => {
 	const navigate = useNavigate();
 
-	const handleSuccess = async (tokenResponse) => {
+	const handleSuccess = async tokenResponse => {
 		try {
 			const accessToken = tokenResponse.access_token;
 
@@ -57,6 +57,6 @@ export const useGoogleLogin = ({ userType, onMissingType } = {}) => {
 	});
 
 	return {
-		login,
+		login
 	};
 };
