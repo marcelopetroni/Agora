@@ -23,6 +23,16 @@ export const userService = {
         }
     },
 
+	loginGoogle: async ({ idToken, type }) => {
+		try {
+			const response = await axios.post(`${API_URL}/users/login-google`, { idToken, type });
+			return response.data;
+		} catch (error) {
+			console.error('Error logging in with Google:', error.response?.data || error.message);
+			throw error;
+		}
+	},
+
 	createUser: async userData => {
 		try {
 			const response = await axios.post(`${API_URL}/users/create-user`, userData);

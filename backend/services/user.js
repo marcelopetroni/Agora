@@ -2,13 +2,22 @@ import { db } from '../models/index.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import lodash from 'lodash';
+import { OAuth2Client } from 'google-auth-library';
 
 const { omit } = lodash;
 
 const { User, Artist, Hirer } = db;
 
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
 class UserService {
 	async create(data) {
+		const isRegistered = await this.getUserByEmail(data.email);
+
+		if (isRegistered) {
+			throw new Error('Já existe uma conta criada com esse e-mail');
+		}
+
 		const transaction = await User.sequelize.transaction();
 
 		try {
@@ -66,6 +75,16 @@ class UserService {
 		return users;
 	}
 
+	async getUserByEmail(email) {
+		const user = await User.findOne({ where: { email } });
+		return user;
+	}
+
+	async getUserById(id) {
+		const user = await User.findOne({ where: { id } });
+		return user;
+	}
+
 	async login({ email, password }) {
 		const user = await User.findOne({ where: { email } });
 
@@ -92,11 +111,39 @@ class UserService {
 		};
 	}
 
-	async update({ filter, changes }) {
-		const user = await User.findOne({
-			where: { id: filter.id },
-			attributes: ['id']
+	async loginGoogle({ idToken, type }) {
+		const validation  = await client.verifyIdToken({
+			idToken,
+			audience: process.env.GOOGLE_CLIENT_ID
 		});
+		const data = validation.getPayload();
+
+		let user = await this.getUserByEmail(data.email);
+
+		if (!user) {
+			user = await this.create({
+				email: data.email,
+				name: data.name,
+				profile_picture: data.picture,
+				type: type
+			});
+		}
+
+		const token = jwt.sign(
+			{ id: user.id, email: user.email },
+			process.env.JWT_SECRET,
+			{ expiresIn: '24h' }
+		);
+
+		return {
+			user: user.toJSON(),
+			token
+		};
+	}
+
+
+	async update({ filter, changes }) {
+		const user = await this.getUserById(filter.id);
 
 		if (!user) {
 			throw new Error('User not found');

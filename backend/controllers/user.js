@@ -5,6 +5,7 @@ class UserController {
         this.userService = new UserService();
         this.create = this.create.bind(this);
         this.login = this.login.bind(this);
+        this.loginGoogle = this.loginGoogle.bind(this);
         this.getAllUsers = this.getAllUsers.bind(this);
         this.update = this.update.bind(this);
     }
@@ -61,6 +62,35 @@ class UserController {
             });
         } catch (error) {
             res.status(500).json({
+                success: false,
+                error: error.message || 'Erro inesperado aconteceu',
+            });
+        }
+    }
+
+    async loginGoogle(req, res) {
+        const { idToken, type } = req.body;
+
+        try {
+            const user = await this.userService.loginGoogle({ idToken, type });
+
+            if (!user) {
+                console.log('Falha na autenticação com o Google');
+
+                return res.status(401).json({
+                    success: false,
+                    message: 'Falha na autenticação com o Google',
+                });
+            }
+
+            return res.status(200).json({
+                success: true,
+                message: 'Login com Google bem-sucedido',
+                data: user
+            });
+        } catch (error) {
+            console.error('Erro no login com Google:', error);
+            return res.status(500).json({
                 success: false,
                 error: error.message || 'Erro inesperado aconteceu',
             });

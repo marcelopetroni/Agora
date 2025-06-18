@@ -165,4 +165,4 @@ const landingPage = () => {
   )
 }
 
-export default landingPage
+export default LandingPage;

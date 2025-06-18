@@ -57,6 +57,15 @@ const UserSchema = {
 				.required('Senha é obrigatória')
 		}).noUnknown(),
 	},
+	loginGoogle: {
+		body: yup.object({
+			idToken: yup.string()
+				.required('Token do Google é obrigatório'),
+			type: yup.string()
+				.oneOf(['artist', 'hirer'])
+				.required('Tipo de usuário é obrigatório')
+		}).noUnknown(),
+	},
 };
 
 export default UserSchema;
