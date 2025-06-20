@@ -2,7 +2,7 @@ import { userService } from '../services/userService';
 import { useNavigate } from 'react-router-dom';
 import { useGoogleLogin as useGoogleOAuth } from '@react-oauth/google';
 
-export const useGoogleLogin = ({ userType, onMissingType } = {}) => {
+export const useGoogleLogin = ({ userType, changeStep } = {}) => {
 	const navigate = useNavigate();
 
 	const handleSuccess = async tokenResponse => {
@@ -15,13 +15,17 @@ export const useGoogleLogin = ({ userType, onMissingType } = {}) => {
 				},
 			});
 
+			if (!res.ok) {
+				throw new Error('Erro ao buscar informações do Google');
+			}
+
 			const userInfo = await res.json();
 
 			const isRegistered = await userService.countUserByEmail(userInfo.email);
 
-			if (!userType && !isRegistered) {
+			if (!isRegistered) {
 				localStorage.setItem('pendingGoogleUser', JSON.stringify({ userInfo }));
-				onMissingType();
+				changeStep();
 
 				return;
 			}
@@ -34,7 +38,9 @@ export const useGoogleLogin = ({ userType, onMissingType } = {}) => {
 				localStorage.setItem('token', result.data.token);
 				localStorage.setItem('user', JSON.stringify(result.data.user));
 				navigate('/home');
-			} else {
+			}
+
+			if (!result.success) {
 				alert(result.message || 'Erro ao fazer login com Google');
 			}
 

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import GoogleLoginButton from '../components/googleButton';
+import GoogleLoginButton from '../components/GoogleButton';
 import { userService } from '../services/userService';
 import { IoIosArrowBack } from "react-icons/io";
 import { LuEye, LuEyeOff } from 'react-icons/lu';
+import CompleteProfile from '../components/completeProfile';
 import PropTypes from 'prop-types';
 
 const Register = ({ onSwitch }) => {
@@ -34,27 +35,22 @@ const Register = ({ onSwitch }) => {
 
 	return (
 		<div
-			className="ag-flex ag-w-full ag-items-center ag-justify-center ag-p-5"
-			style={{ height: '552px' }}
-		>
-			<div className="ag-flex ag-flex-col ag-gap-2" style={{ marginRight: '200px' }}>
-				<h1 className="ag-font-bold" style={{ color: '#3C233C', fontFamily: 'Amiko', fontSize: '40px' }}>
+			className="ag-flex ag-w-full ag-items-center ag-justify-center ag-p-5 lg:ag-gap-20 ag-flex-col lg:ag-flex-row lg:ag-min-h-[525px]">
+			<div className="ag-hidden ag-flex-col ag-gap-2 lg:ag-mr-20 lg:ag-flex">
+				<h1 className="ag-flex ag-gap-2 ag-font-bold ag-leading-snug ag-text-2xl lg:ag-text-[45px] ag-text-center lg:ag-text-start" style={{ color: '#3C233C'}}>
 					Junte-se a nós agora <br /> e conecte-se com <br /> quem você procura
 				</h1>
 				<p className="text-small" style={{ color: '#3C233C' }}>
 					Já tem uma conta?{' '}
-					<span
-						onClick={onSwitch}
-						className="ag-font-bold ag-cursor-pointer ag-underline"
-					>
+					<span onClick={onSwitch} className="ag-font-bold ag-cursor-pointer ag-underline">
 						Entre aqui
 					</span>
 				</p>
 			</div>
 
-			{step === 'selectType' && (
-				<div className="ag-flex ag-flex-col ag-items-center" style={{ width: '338px' }}>
-					<div className='ag-flex ag-flex-col ag-gap-1 ag-mb-3'>
+			{step === 'selectType' ? (
+				<div className="ag-flex ag-flex-col ag-items-start lg:ag-w-[450px] ag-w-[350px]">
+					<div className='ag-flex ag-flex-col ag-gap-1 ag-py-5'>
 						<div className="text-medium ag-w-full ag-font-bold" style={{ fontSize: '24px' }}>
 							Como você se identifica?
 						</div>
@@ -63,6 +59,7 @@ const Register = ({ onSwitch }) => {
 
 					<div className='ag-flex ag-flex-col ag-gap-4'>
 						<button
+							type="button"
 							onClick={() => {
 								setUserType('artist');
 								setStep('register');
@@ -75,6 +72,7 @@ const Register = ({ onSwitch }) => {
 							</span>
 						</button>
 						<button
+							type="button"
 							onClick={() => {
 								setUserType('hirer');
 								setStep('register');
@@ -87,12 +85,10 @@ const Register = ({ onSwitch }) => {
 						</button>
 					</div>
 				</div>
-			)}
-
-			{step === 'register' && (
-				<div className='ag-flex ag-flex-col ag-gap-3'>
-					<form onSubmit={handleSubmit} id="login-form" className="ag-flex ag-flex-col ag-gap-3 ag-w-full">
-						<div className="ag-flex ag-flex-row ag-items-center ag-justify-between ag-w-full">
+			) : step === 'register' ? (
+				<div className='ag-flex ag-flex-col ag-gap-4 lg:ag-w-[450px] ag-w-[350px]'>
+					<form onSubmit={handleSubmit} id="register-form" className="ag-flex ag-flex-col ag-gap-3 ag-w-full">
+						<div className="ag-flex ag-flex-row ag-items-center ag-justify-between ag-w-full lg:ag-w-[350px]">
 							<span
 								onClick={() => setStep('selectType')}
 								className="ag-cursor-pointer ag-flex ag-items-center"
@@ -108,10 +104,8 @@ const Register = ({ onSwitch }) => {
 								Cadastre-se
 							</div>
 						</div>
-
-
-						<div className="ag-flex ag-flex-col ag-gap-1 ag-font-semibold">
-							<label className="text-small">Nome</label>
+						<div className="ag-flex ag-flex-col ag-gap-1 ag-font-semibold lg:ag-w-[350px]">
+							<label className="text-small ag-ml-1">Nome</label>
 							<input
 								placeholder="Nome"
 								type="text"
@@ -122,8 +116,8 @@ const Register = ({ onSwitch }) => {
 							/>
 						</div>
 
-						<div className="ag-flex ag-flex-col ag-gap-1 ag-font-semibold">
-							<label className="text-small">E-mail</label>
+						<div className="ag-flex ag-flex-col ag-gap-1 ag-font-semibold lg:ag-w-[350px]">
+							<label className="text-small ag-ml-1">E-mail</label>
 							<input
 								placeholder="E-mail"
 								type="email"
@@ -134,8 +128,8 @@ const Register = ({ onSwitch }) => {
 							/>
 						</div>
 
-						<div className="ag-flex ag-flex-col ag-gap-1 ag-font-semibold">
-							<label className="text-small">Senha</label>
+						<div className="ag-flex ag-flex-col ag-gap-1 ag-font-semibold lg:ag-w-[350px]">
+							<label className="text-small ag-ml-1">Senha</label>
 							<div className="ag-relative">
 								<input
 									placeholder="Senha"
@@ -158,22 +152,24 @@ const Register = ({ onSwitch }) => {
 							<span>Esqueceu a senha? </span>
 							<span className="ag-font-bold ag-underline">Clique aqui</span>
 						</div>
-					</form>
-					<div className="ag-flex ag-flex-row ag-gap-2 ag-items-center ag-justify-center ag-w-full ag-mt-2">
-						<GoogleLoginButton userType={userType} />
+						<div className="ag-flex ag-flex-row ag-w-[350px] ag-items-center ag-justify-between ag-mt-2">
+							<GoogleLoginButton userType={userType} changeStep={() => setStep('completeProfile')} />
 
-						<button type="submit" className="default-button-purple" style={{ width: '165px' }} form="login-form">
-							Login
-						</button>
-					</div>
+							<button type="submit" className="default-button-purple" style={{ width: '165px' }}>
+								Cadastrar
+							</button>
+						</div>
+					</form>
 				</div>
+			) : (
+				<CompleteProfile userType={userType} variant={'register'} setStep={() => setStep('register')} />
 			)}
 		</div>
 	);
 };
 
 Register.propTypes = {
-	onSwitch: PropTypes.func.isRequired,
+	onSwitch: PropTypes.func
 };
 
 export default Register;

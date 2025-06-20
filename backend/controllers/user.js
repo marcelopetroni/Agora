@@ -99,15 +99,8 @@ class UserController {
     }
 
     async loginGoogle(req, res) {
-        const { email, name, picture, type } = req.body;
-
         try {
-            const user = await this.userService.loginGoogle({
-                email,
-                name,
-                picture,
-                type
-            });
+            const user = await this.userService.loginGoogle(req.body);
 
             return res.status(200).json({
                 success: true,
