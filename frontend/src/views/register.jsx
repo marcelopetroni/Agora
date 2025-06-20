@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import GoogleLoginButton from '../components/GoogleButton';
+import GoogleLoginButton from '../components/googleButton';
 import { userService } from '../services/userService';
 import { IoIosArrowBack } from "react-icons/io";
 import { LuEye, LuEyeOff } from 'react-icons/lu';

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Tags from './Tags';
+import Tags from './tags';
 import { userService } from '../services/userService';
 import { IoIosArrowBack } from "react-icons/io";
 
