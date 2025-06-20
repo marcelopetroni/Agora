@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import GoogleLoginButton from '../components/googleButton';
 import { userService } from '../services/userService';
 import { LuEye, LuEyeOff } from 'react-icons/lu';
-import CompleteProfile from '../components/completeProfile';
+import CompleteProfile from '../components/CompleteProfile';
 import PropTypes from 'prop-types';
 
 const Login = ({ onSwitch }) => {
