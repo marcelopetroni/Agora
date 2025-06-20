@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import GoogleLoginButton from '../components/googleButton';
 import { userService } from '../services/userService';
 import { LuEye, LuEyeOff } from 'react-icons/lu';
-import Tags from '../components/Tags';
 import CompleteProfile from '../components/completeProfile';
 import PropTypes from 'prop-types';
 
