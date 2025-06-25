@@ -8,7 +8,7 @@ import BrenoImg from '../assets/breno.png'
 const CustomLeftArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="ag-absolute ag-left-0 ag-top-1/2 -ag-translate-y-1/2 ag-text-yellowag ag-text-6xl hover:ag-text-opacity-50 transition md:ag-flex md:ag-text-9xl"
+    className="ag-absolute ag-left-0 ag-top-1/2 -ag-translate-y-1/2 ag-text-amareloag ag-text-6xl hover:ag-text-opacity-50 transition md:ag-flex md:ag-text-9xl"
   >
     ‹
   </button>
@@ -17,7 +17,7 @@ const CustomLeftArrow = ({ onClick }) => (
 const CustomRightArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="ag-absolute ag-right-0 ag-top-1/2 -ag-translate-y-1/2 ag-text-yellowag ag-text-6xl hover:ag-text-opacity-50 transition md:ag-flex md:ag-text-9xl"
+    className="ag-absolute ag-right-0 ag-top-1/2 -ag-translate-y-1/2 ag-text-amareloag ag-text-6xl hover:ag-text-opacity-50 transition md:ag-flex md:ag-text-9xl"
   >
     ›
   </button>
@@ -28,13 +28,13 @@ const CustomDot = ({ index, onClick, active, carouselState }) => {
   let dotClass = 'ag-bg-gray-500'
 
   if (index === 0) {
-    dotClass = active ? 'ag-bg-yellowag' : 'ag-bg-gray-500'
+    dotClass = active ? 'ag-bg-amareloag' : 'ag-bg-gray-500'
   } else if (index === 1) {
     dotClass = active ? 'ag-bg-lightpurple' : 'ag-bg-gray-500'
   }
 
   return (
-    <li
+    <span
       className={`ag-w-4 ag-h-4 ag-rounded-full ag-mx-1 ${dotClass}`}
     />
   )
@@ -56,7 +56,6 @@ const TestimonialCarousel = () => {
         customLeftArrow={<CustomLeftArrow />}
         customRightArrow={<CustomRightArrow />}
         renderDotsOutside={false}
-        customDot={<CustomDot />}
         showDots={false}
         infinite
       >
@@ -69,7 +68,7 @@ const TestimonialCarousel = () => {
           <img src={CristinaImg} alt="Cristina Amaral" className="ag-w-44 ag-h-44 ag-rounded-full ag-object-cover ag-mt-10 md:ag-mt-0" />
           <div className="ag-flex ag-flex-col">
             <p className="ag-font-bold ag-font-amiko ag-text-xl ag-text-white">Cristina Amaral</p>
-            <p className="ag-text-md ag-font-amiko ag-text-yellowag">Cantora pernambucana</p>
+            <p className="ag-text-md ag-font-amiko ag-text-amareloag">Cantora pernambucana</p>
             <p className="ag-mt-2 ag-text-md ag-font-amiko ag-text-white">
               Vejo essa plataforma como uma ferramenta que pode contribuir significativamente para o crescimento artístico e cultural,
               investindo no mercado atual e nas redes sociais. As funcionalidades apresentadas estão alinhadas com o mundo musical e artístico,

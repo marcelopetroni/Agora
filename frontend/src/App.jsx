@@ -4,6 +4,7 @@ import LandingPage from './views/landingPage'
 import Login from './views/login';
 import Register from './views/register';
 import Home from './views/home';
+import Perfil from './views/perfil'
 
 function App() {
 return (
@@ -13,6 +14,7 @@ return (
 		<Route path="/home" element={<Home />} />
 		<Route path="/login" element={<Login />} />
 		<Route path="/register" element={<Register />} />
+		<Route path="/perfil" element={<Perfil />} />
 	</Routes>
 	</Router>
 );

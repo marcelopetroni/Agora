@@ -10,7 +10,7 @@ import Comunidade from '../assets/ComunidadeIcon.svg'
 import BG from '../assets/Fundo.png'
 import BG2 from '../assets/Fundo2.png'
 import LandingCarousel from '../components/LandingCarousel'
-import LogoDourada from '../assets/LogoDourada.svg'
+import LogoDourada from '../assets/AgoraLogoDourada.svg'
 import Login from './login'
 import Register from './register'
 import { useState } from 'react';
@@ -48,7 +48,7 @@ return (
 			</div>
 		{/* Seção 1 Comece agora */}
 			<div className='ag-flex ag-relative ag-flex-col ag-justify-between ag-mt-10 md:ag-flex-row md:ag-mt-1'>
-				<div className='ag-ml-2 ag-pt-14 ag-w-full lg:ag-ml-24 lg:ag-pt-52'>
+				<div className='ag-ml-2 ag-pt-14 ag-w-full lg:ag-ml-32 lg:ag-pt-32 2xl:ag-pt-52 2xl:ag-ml-48'>
 					<h1 className='ag-font-amiko ag-font-bold ag-text-3xl ag-text-darkpurple md:ag-text-5xl'>
 						O ponto de encontro digital
 					</h1>
