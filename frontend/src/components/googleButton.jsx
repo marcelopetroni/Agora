@@ -2,14 +2,15 @@ import { useGoogleLogin } from '../utils/googleAuth';
 import { FcGoogle } from 'react-icons/fc';
 import PropTypes from 'prop-types';
 
-const GoogleLoginButton = ({ userType, onMissingType }) => {
+const GoogleLoginButton = ({ userType, changeStep }) => {
 	const { login } = useGoogleLogin({
 		userType,
-		onMissingType
+		changeStep
 	});
 
 	return (
 		<button
+			type="button"
 			onClick={() => login()}
 			style={{
 				width: '165px',
@@ -38,7 +39,7 @@ const GoogleLoginButton = ({ userType, onMissingType }) => {
 
 GoogleLoginButton.propTypes = {
 	userType: PropTypes.string,
-	onMissingType: PropTypes.func,
+	changeStep: PropTypes.func,
 };
 
 export default GoogleLoginButton;
