@@ -37,7 +37,7 @@ const Sidebar = ({ userType }) => {
 				className={({ isActive }) =>
 					`ag-flex ag-flex-row ag-gap-4 ag-justify-start ag-font-amiko ag-font-medium ag-text-lg ag-cursor-pointer hover:ag-text-gray-300`
 				}
-				>
+			>
 				{({ isActive }) => (
 					<>
 						<FaUser className={`ag-text-2xl ${isActive ? "ag-text-white" : "ag-text-gray-400"}`} />
@@ -50,12 +50,12 @@ const Sidebar = ({ userType }) => {
         </div>
       </div>
       <div className="ag-mt-96 ag-ml-8">
-        <a href="/" className="ag-flex ag-flex-row ag-gap-4 ag-items-center">
-        	<RiLogoutCircleRLine className="ag-text-2xl ag-text-amareloag" />
+		<a href="/" className="ag-flex ag-flex-row ag-gap-4 ag-items-center">
+			<RiLogoutCircleRLine className="ag-text-2xl ag-text-amareloag" />
 			<span className="ag-text-lg ag-text-amareloag">
 				Sair
 			</span>
-        </a>
+		</a>
       </div>
     </div>
   );
