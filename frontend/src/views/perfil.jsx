@@ -1,13 +1,9 @@
-import React from 'react'
-import Sidebar from '../components/sidebar'
-
-const perfil = () => {
-  return (
-	<div className='ag-w-full ag-h-full ag-flex ag-flex-row'>
-    <Sidebar/>
-    <h1 className='ag-text-black'>perfil</h1>
-  </div>
-  )
+const Perfil = () => {
+	return (
+		<div className='ag-w-full ag-h-full ag-flex ag-flex-row'>
+			Perfil
+		</div>
+	)
 }
 
-export default perfil
+export default Perfil
