@@ -49,7 +49,7 @@ const Sidebar = ({ userType }) => {
             </NavLink>
         </div>
       </div>
-      <div className="ag-mt-96 ag-ml-8">
+      <div className="ag-mt-80 ag-ml-8">
 		<a href="/" className="ag-flex ag-flex-row ag-gap-4 ag-items-center">
 			<RiLogoutCircleRLine className="ag-text-2xl ag-text-amareloag" />
 			<span className="ag-text-lg ag-text-amareloag">

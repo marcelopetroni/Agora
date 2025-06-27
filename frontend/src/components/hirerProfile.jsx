@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import CountrySelector from './countrySelector';
 
-const hirerProfile = () => {
+const HirerProfile = () => {
 
     const [country, setCountry] = useState('');
 
     return (
-        <> 
-        <div className='ag-flex ag-flex-col ag-ml-32 ag-my-10 ag-h-fit '>
+        <>
+        <div className='ag-flex ag-flex-col ag-my-10 ag-h-fit'>
             <div className='ag-flex  ag-border-b ag-right ag-pb-10 ag-border-gray-300'>
                 <h1 className='ag-font-amiko ag-text-3xl ag-font-bold'>Informações pessoais</h1>
             </div>
@@ -51,4 +51,4 @@ const hirerProfile = () => {
     )
 }
 
-export default hirerProfile
+export default HirerProfile
