@@ -9,8 +9,6 @@ const { User, Artist, Hirer } = db;
 
 class UserService {
 	async create(data) {
-		console.log(data, 'data in user service');
-		
 		const isRegistered = await this.countUserByEmail(data.email);
 
 		if (isRegistered) {
@@ -73,12 +71,16 @@ class UserService {
 		return await User.findOne({ where: { email } });
 	}
 
+	async getUserById(id) {
+		return await User.findOne({ where: { id } });
+	}
+
 	async countUserByEmail(email) {
 		return await User.count({ where: { email } });
 	}
 
-	async getUserById(id) {
-		return await User.findOne({ where: { id } });
+	async countUserById(id) {
+		return await User.count({ where: { id } });
 	}
 
 	async login({ email, password }) {
