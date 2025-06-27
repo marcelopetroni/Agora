@@ -24,7 +24,9 @@ export default class Hirer extends Sequelize.Model {
 				modelName: 'Hirer',
 				tableName: 'hirer',
 				createdAt: 'created_at',
-				updatedAt: 'updated_at'
+				updatedAt: 'updated_at',
+				paranoid: true,
+				deletedAt: 'deleted_at'
 			}
 		);
 	}

@@ -20,8 +20,8 @@ const db = {
 	User,
 	Artist,
 	Hirer,
-	Project, 
-	Post, 
+	Project,
+	Post,
 	Media
 };
 

@@ -84,11 +84,12 @@ class UserController {
         const { email, password } = req.body;
 
         try {
-            const user = await this.userService.login({ email, password });
+            const result = await this.userService.login({ email, password });
 
             return res.status(200).json({
                 success: true,
-                message: 'Login bem-sucedido'
+                message: 'Login bem-sucedido',
+                data: result
             });
         } catch (error) {
             res.status(500).json({

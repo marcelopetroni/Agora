@@ -12,7 +12,7 @@ export default class MediaRoutes {
 
     setup() {
         this.router.post('/', this.SchemaValidator.validate(MediaSchema.create), this.mediaController.create);
-        this.router.get('/user/:userId', this.mediaController.findAllByUser);
+        this.router.get('/user/:user_id', this.SchemaValidator.validate(MediaSchema.getMediasByUser), this.mediaController.getMediasByUser);
         this.router.get('/:id', this.SchemaValidator.validate(MediaSchema.getOne), this.mediaController.findOne);
         this.router.delete('/:id', this.SchemaValidator.validate(MediaSchema.getOne), this.mediaController.destroy);
         return this.router;
