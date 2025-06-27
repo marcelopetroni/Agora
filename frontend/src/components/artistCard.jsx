@@ -1,9 +1,11 @@
 import React from "react";
 import { roleStyles } from "../utils/roleStyles";
 
+
 const ArtistCard = ({ name, roles, description, avatarUrl }) => {
   return (
     <div className="ag-flex ag-bg-white ag-rounded-lg ag-shadow-xl ag-justify-center ag-items-center ag-p-6">
+      {/* integrar foto de perfil e nome */}
         <img
             src={avatarUrl}
             alt={name}
@@ -12,9 +14,11 @@ const ArtistCard = ({ name, roles, description, avatarUrl }) => {
       <div>
         <div className="ag-items-center ag-gap-4">
           <div>
+            {/* integrar nome */}
             <h3 className="ag-text-lg ag-font-amiko ag-font-bold ag-text-gray-800">
               {name}
             </h3>
+            {/* integrar areas artisticas em label */}
             <div className="ag-flex ag-gap-2 ag-mt-1">
               {roles.map(({ label, variant }) => (
                 <span
@@ -30,6 +34,7 @@ const ArtistCard = ({ name, roles, description, avatarUrl }) => {
             </div>
           </div>
         </div>
+        {/* integrar biografia */}
         <p className="ag-font-amiko ag-mt-4 ag-text-gray-600 ag-text-sm leading-relaxed">
           {description}
         </p>
