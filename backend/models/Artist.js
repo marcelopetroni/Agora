@@ -19,7 +19,9 @@ export default class Artist extends Sequelize.Model {
 				modelName: 'Artist',
 				tableName: 'artist',
 				createdAt: 'created_at',
-				updatedAt: 'updated_at'
+				updatedAt: 'updated_at',
+				paranoid: true,
+				deletedAt: 'deleted_at'
 			}
 		);
 	}
