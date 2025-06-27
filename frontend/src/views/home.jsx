@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from 'react';
 import Sidebar from '../components/sidebar'
 import { FaUser } from "react-icons/fa";
@@ -8,7 +7,7 @@ import ArtistHome from '../components/artistHome';
 
 const home = ({ userType = "artist" }) => {
 
-  return (
+return (
 	<div className='ag-w-full ag-h-full ag-flex ag-flex-row ag-bg-brancohome'>
      <Sidebar userType={userType} />
     <div className='ag-flex ag-flex-col ag-w-full ag-ml-60'>
@@ -23,4 +22,4 @@ const home = ({ userType = "artist" }) => {
   )
 }
 
-export default home
+export default Home

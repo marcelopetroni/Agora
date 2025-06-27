@@ -9,7 +9,7 @@ export default class Artist extends Sequelize.Model {
 					allowNull: false
 				},
 				artistic_field: {
-					type: DataTypes.STRING,
+					type: DataTypes.JSON,
 					allowNull: true,
 					defaultValue: null
 				}

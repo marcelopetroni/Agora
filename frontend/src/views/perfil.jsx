@@ -18,4 +18,4 @@ const perfil = ({ userType = "hirer" }) => {
   )
 }
 
-export default perfil
+export default Perfil

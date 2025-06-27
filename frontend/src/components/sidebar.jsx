@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoBranca from "../assets/AgoraLogoBranca.svg";
 import { GoHomeFill } from "react-icons/go";
@@ -51,12 +50,12 @@ const Sidebar = ({ userType }) => {
         </div>
       </div>
       <div className="ag-mt-96 ag-ml-8">
-        <a href="/" className="ag-flex ag-flex-row ag-gap-4 ag-items-center">
-        <RiLogoutCircleRLine className="ag-text-2xl ag-text-amareloag" />
-        <span className="ag-text-lg ag-text-amareloag">
-            Sair
-        </span>
-        </a>
+		<a href="/" className="ag-flex ag-flex-row ag-gap-4 ag-items-center">
+			<RiLogoutCircleRLine className="ag-text-2xl ag-text-amareloag" />
+			<span className="ag-text-lg ag-text-amareloag">
+				Sair
+			</span>
+		</a>
       </div>
     </div>
   );

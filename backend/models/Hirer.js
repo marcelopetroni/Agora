@@ -9,7 +9,7 @@ export default class Hirer extends Sequelize.Model {
 					allowNull: false
 				},
 				work_area: {
-					type: DataTypes.STRING,
+					type: DataTypes.JSON,
 					allowNull: true,
 					defaultValue: null
 				},
