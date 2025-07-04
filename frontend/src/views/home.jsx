@@ -1,7 +1,7 @@
 import HirerHome from '../components/hirerHome';
 import ArtistHome from '../components/artistHome';
 
-const Home = ({ userType = "hirer" }) => {
+const Home = ({ userType = "artist" }) => {
 
 return (
 	<div className='ag-w-full ag-h-full ag-flex ag-flex-row ag-bg-brancohome'>
