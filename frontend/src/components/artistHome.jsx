@@ -73,29 +73,62 @@ const ArtistHome = () => {
 				</button>
 				))}
 			</div>
-
-			<div className="ag-grid ag-grid-cols-3 ag-gap-6">
-				{mockMedia.map((src, i) => (
-				<div
-					key={i}
-					className="ag-relative ag-rounded-lg ag-overflow-hidden ag-bg-black"
-				>
-					<img
-					src={src}
-					alt={`media-${i}`}
-					className="ag-w-full ag-h-60 ag-object-cover"
-					/>
-					{isEditing && (
-					<button
-						onClick={() => handleDelete(media.id)}
-						className="ag-absolute ag-top-2 ag-right-2 ag-bg-white ag-rounded-full ag-w-6 ag-h-6 ag-flex ag-items-center ag-justify-center ag-text-xs ag-font-bold"
-					>
-						×
-					</button>
-					)}
+			{activeTab === "Fotos" && (
+				<div className="ag-grid ag-grid-cols-3 ag-gap-6">
+					{mockMedia.map((src, i) => (
+						<div
+							key={i}
+							className="ag-relative ag-rounded-lg ag-overflow-hidden ag-bg-black"
+						>
+							<img
+								src={src}
+								alt={`media-${i}`}
+								className="ag-w-full ag-h-60 ag-object-cover"
+							/>
+							{isEditing && (
+								<button
+									onClick={() => handleDelete(i)}
+									className="ag-absolute ag-top-2 ag-right-2 ag-bg-white ag-rounded-full ag-w-6 ag-h-6 ag-flex ag-items-center ag-justify-center ag-text-xs ag-font-bold"
+								>
+									×
+								</button>
+							)}
+						</div>
+					))}
 				</div>
+			)}
+			{activeTab === "Textos" && (
+			<div className="ag-flex ag-flex-col ag-gap-6 ag-w-full">
+				{mockMedia.map((src, i) => (
+					<div
+						key={i}
+						className="ag-flex ag-gap-4 ag-w-full ag-bg-white ag-rounded-lg ag-shadow-sm ag-p-4 ag-relative"
+					>
+						<img
+							src={src}
+							alt={`text-media-${i}`}
+							className="ag-w-40 ag-h-28 ag-object-cover ag-rounded-md"
+						/>
+
+						<div className="ag-flex ag-flex-col ag-justify-between ag-w-full">
+							<div>
+								<h3 className="ag-font-amiko ag-text-md ag-font-bold ag-mb-1">
+									{ i % 2 === 0 ? "Vivendo da arte" : "Quando alma canta" }
+								</h3>
+								<p className="ag-text-sm ag-text-gray-700 ag-overflow-hidden ag-text-ellipsis ag-line-clamp-2">
+									Quando decidi viver da minha arte, sabia que não seria uma escolha fácil, mas também não conseguiria imaginar minha vida sendo diferente. Sou cantora, e a música não é só minha profissão, é minha maneira de existir, de sentir e me expressar no mundo...
+								</p>
+							</div>
+							<div className="ag-w-full ag-flex ag-justify-end">
+								<button className="ag-font-amiko ag-text-sm ag-font-semibold ag-text-right">
+									Leia mais
+								</button>
+							</div>
+						</div>
+					</div>
 				))}
 			</div>
+		)}
 		</div>
 	);
 };
